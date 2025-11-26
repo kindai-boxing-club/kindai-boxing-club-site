@@ -35,3 +35,4 @@ next-env.d.ts
 
 # config files with sensitive data
 lib/membersConfig.ts
+config/sheets.ts
