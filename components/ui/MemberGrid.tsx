@@ -10,10 +10,12 @@
 "use client";
 
 import { Member } from "@/types";
+import dynamic from "next/dynamic";
 import MemberCard from "./MemberCard";
-import KiyotakiFumi from "../staff/KiyotakiFumi";
-import AkaiHidekazu from "../staff/AkaiHidekazu";
-import NashiroNobuo from "../staff/NashiroNobuo";
+
+const KiyotakiFumi = dynamic(() => import("../staff/KiyotakiFumi"));
+const AkaiHidekazu = dynamic(() => import("../staff/AkaiHidekazu"));
+const NashiroNobuo = dynamic(() => import("../staff/NashiroNobuo"));
 
 type Props = {
   members: Member[];

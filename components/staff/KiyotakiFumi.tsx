@@ -37,6 +37,8 @@ export default function KiyotakiFumi() {
           <motion.img
             src={member.image}
             alt={member.name}
+            width="800"
+            height="1000"
             className="w-full h-full object-cover object-top transition-transform duration-700 group-hover:scale-105"
             initial={{ filter: "grayscale(100%)" }}
             whileInView={{ filter: "grayscale(0%)" }}

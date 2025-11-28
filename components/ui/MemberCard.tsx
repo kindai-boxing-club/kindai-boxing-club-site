@@ -28,6 +28,8 @@ export default function MemberCard({ member, onClick, variant = "standard" }: Me
           <img
             src={member.image}
             alt={member.name}
+            width="600"
+            height="800"
             className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
           />
           <div className="absolute inset-0 bg-gradient-to-r from-transparent via-transparent to-gray-900/90" />
@@ -73,6 +75,8 @@ export default function MemberCard({ member, onClick, variant = "standard" }: Me
           <img
             src={member.image}
             alt={member.name}
+            width="600"
+            height="800"
             className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
           />
           <div className="absolute inset-0 bg-gradient-to-t from-gray-950 via-transparent to-transparent opacity-80" />
@@ -107,6 +111,8 @@ export default function MemberCard({ member, onClick, variant = "standard" }: Me
         <img
           src={member.image}
           alt={member.name}
+          width="600"
+          height="800"
           className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
         />
         <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />

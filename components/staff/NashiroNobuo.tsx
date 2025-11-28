@@ -32,6 +32,8 @@ export default function NashiroNobuo() {
           <motion.img
             src={member.image}
             alt={member.name}
+            width="1200"
+            height="800"
             className="w-full h-auto object-cover filter contrast-110 brightness-100 transition-transform duration-700 group-hover:scale-105"
             initial={{ scale: 1.1 }}
             whileInView={{ scale: 1 }}

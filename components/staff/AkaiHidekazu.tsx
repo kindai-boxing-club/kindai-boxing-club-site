@@ -32,6 +32,8 @@ export default function AkaiHidekazu() {
           <motion.img
             src={member.image}
             alt={member.name}
+            width="800"
+            height="1000"
             className="w-full h-full object-cover object-top filter contrast-125 brightness-90 group-hover:brightness-110 transition-all duration-500"
             initial={{ scale: 1.1 }}
             whileInView={{ scale: 1 }}
