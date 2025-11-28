@@ -40,6 +40,7 @@ export default function Navigation() {
     { name: "ホーム", href: "/" },
     { name: "部員紹介", href: "#members" },
     { name: "ブログ", href: "/blog" },
+
   ];
 
   return (

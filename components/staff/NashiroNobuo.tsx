@@ -1,0 +1,81 @@
+/**
+ * 名城信男カードコンポーネント
+ */
+"use client";
+
+import { motion } from "framer-motion";
+import { Member } from "@/types";
+// テーマ: 鉄の意志（ユニバーサルポスタースタイル - 最大のインパクト）
+export default function NashiroNobuo() {
+  const member = {
+    name: "名城 信男",
+    classification: "監督",
+    image: "/data/staff/名城信男.png",
+    bio: "",
+  };
+
+  return (
+    <motion.div
+      initial={{ opacity: 0, y: 30 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      viewport={{ once: true }}
+      transition={{ delay: 0.2 }}
+      className="group relative max-w-md mx-auto md:max-w-xl w-full"
+    >
+      {/* 強烈なエネルギーフィールド（赤いオーラ） */}
+      <div className="absolute -inset-8 bg-gradient-to-r from-red-700 to-black opacity-0 group-hover:opacity-30 blur-3xl transition-opacity duration-500 rounded-3xl animate-pulse" />
+      
+      {/* カードコンテナ - 横長スタイル */}
+      <div className="relative bg-black rounded-2xl overflow-hidden border-4 border-red-900 group-hover:border-red-500 transition-colors duration-300 shadow-[0_0_30px_rgba(153,27,27,0.2)] group-hover:shadow-[0_0_60px_rgba(220,38,38,0.6)]">
+        
+        {/* 画像コンテナ - 自然なアスペクト比 */}
+        <div className="relative w-full">
+          <motion.img
+            src={member.image}
+            alt={member.name}
+            className="w-full h-auto object-cover filter contrast-110 brightness-100 transition-transform duration-700 group-hover:scale-105"
+            initial={{ scale: 1.1 }}
+            whileInView={{ scale: 1 }}
+            transition={{ duration: 0.5 }}
+          />
+          
+          {/* グラデーションオーバーレイ: テキスト用に下部を濃く */}
+          <div className="absolute inset-0 bg-gradient-to-t from-black via-black/40 to-transparent opacity-60" />
+        </div>
+
+        {/* 浮遊する赤い粒子（控えめ） */}
+        <div className="absolute bottom-0 left-0 w-full h-1/2 overflow-hidden pointer-events-none">
+           <div className="absolute bottom-[-20%] left-[-10%] w-1/2 h-1/2 bg-red-600/20 blur-[80px] rounded-full mix-blend-screen animate-pulse" />
+           <div className="absolute bottom-[-20%] right-[-10%] w-1/2 h-1/2 bg-red-800/20 blur-[80px] rounded-full mix-blend-screen animate-pulse" />
+        </div>
+
+        {/* コンテンツオーバーレイ */}
+        <div className="absolute inset-0 p-6 md:p-10 flex flex-col justify-end">
+          
+          {/* 上部バッジ */}
+          <div className="absolute top-6 left-6 md:top-8 md:left-8">
+            <span className="inline-block px-4 py-1 border border-red-500/50 bg-black/60 backdrop-blur-md text-red-400 font-black tracking-widest text-sm uppercase shadow-lg transform -skew-x-12">
+              <span className="block transform skew-x-12">{member.classification}</span>
+            </span>
+          </div>
+
+          {/* 下部テキストコンテンツ */}
+          <div className="relative z-10">
+            <h3 className="text-4xl font-black text-white mb-4 md:mb-6 tracking-tighter drop-shadow-[0_4px_8px_rgba(0,0,0,1)] uppercase italic">
+              {member.name}
+            </h3>
+            
+            {/* エネルギーバー装飾 */}
+            <div className="h-1.5 w-32 md:w-48 bg-neutral-800 rounded-full mb-4 md:mb-6 overflow-hidden border border-neutral-700">
+               <div className="h-full w-full bg-gradient-to-r from-red-900 via-red-500 to-red-900 animate-[shimmer_2s_infinite]" />
+            </div>
+            
+            <p className="text-neutral-200 text-sm md:text-base font-bold leading-relaxed whitespace-pre-wrap border-l-4 border-red-600 pl-4 md:pl-6 bg-black/30 backdrop-blur-sm py-2 pr-2 rounded-r-lg max-w-xl">
+              {member.bio}
+            </p>
+          </div>
+        </div>
+      </div>
+    </motion.div>
+  );
+}

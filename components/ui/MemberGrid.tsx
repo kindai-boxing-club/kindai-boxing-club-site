@@ -1,15 +1,19 @@
 /**
  * 部員グリッドコンポーネント
- * メンバーカードをグリッド状に配置する。
- * 特別職（監督など）の場合は中央揃えのレイアウトを適用する。
+ * 
+ * 役割: メンバーカードをグリッド状に配置して表示する
+ * 機能:
+ * - 通常のメンバー（コーチ含む）はグリッド表示
+ * - 幹部（部長、総監督、監督）は特別なコンポーネントとしてリスト表示
+ * - クリック時のモーダル表示ハンドリング
  */
 "use client";
 
 import { Member } from "@/types";
 import MemberCard from "./MemberCard";
-import PresidentCard from "../staff/PresidentCard";
-import GeneralDirectorCard from "../staff/GeneralDirectorCard";
-import DirectorCard from "../staff/DirectorCard";
+import KiyotakiFumi from "../staff/KiyotakiFumi";
+import AkaiHidekazu from "../staff/AkaiHidekazu";
+import NashiroNobuo from "../staff/NashiroNobuo";
 
 type Props = {
   members: Member[];
@@ -26,9 +30,9 @@ export default function MemberGrid({
     return (
       <div className="flex flex-col gap-8 max-w-4xl mx-auto">
         {members.map((member) => {
-          if (member.classification === "部長") return <PresidentCard key={member.id} member={member} />;
-          if (member.classification === "総監督") return <GeneralDirectorCard key={member.id} member={member} />;
-          if (member.classification === "監督") return <DirectorCard key={member.id} member={member} />;
+          if (member.classification === "部長") return <KiyotakiFumi key={member.id} />;
+          if (member.classification === "総監督") return <AkaiHidekazu key={member.id} />;
+          if (member.classification === "監督") return <NashiroNobuo key={member.id} />;
           
           return (
             <MemberCard 
