@@ -3,6 +3,7 @@ import path from "path";
 import { Member } from "@/types";
 import { parseCSV } from "@/lib/utils/csv";
 import { COACHES_DATA } from "./coaches";
+import { getPath } from "@/lib/utils/path";
 
 const DATA_DIR = path.join(process.cwd(), "public", "data", "members");
 
@@ -52,7 +53,7 @@ export async function fetchMembers(): Promise<Member[]> {
     weight: row.weight,
     faculty: row.faculty,
     history: row.history,
-    image: `/data/members/${row.name.replace(/\s+/g, "")}.png`,
+    image: getPath(`/data/members/${row.name.replace(/\s+/g, "")}.png`),
     bio: row.history, // 今のところ経歴をbioとして使用
   }));
 }
@@ -67,7 +68,6 @@ export async function fetchCoaches(): Promise<Member[]> {
     ...member,
     id: `coach_${index}`,
     position: member.classification,
+    image: getPath(member.image || ""),
   }));
 }
-
-

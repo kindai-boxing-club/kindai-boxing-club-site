@@ -4,12 +4,14 @@
 "use client";
 
 import { motion } from "framer-motion";
+import { Member } from "@/types";
+import { getPath } from "@/lib/utils/path";
 
 export default function AkaiHidekazu() {
   const member = {
     name: "赤井 英和",
     classification: "総監督",
-    image: "/data/staff/赤井英和.png",
+    image: getPath("/data/staff/赤井英和.png"),
     bio: "",
   };
 
@@ -21,10 +23,8 @@ export default function AkaiHidekazu() {
       transition={{ delay: 0.2 }}
       className="group relative max-w-md mx-auto md:max-w-none"
     >
-      {/* アニメーション付きグラデーションボーダー */}
       <div className="absolute -inset-1 bg-gradient-to-r from-red-600 via-orange-500 to-red-600 rounded-2xl blur opacity-75 group-hover:opacity-100 transition duration-1000 group-hover:duration-200 animate-gradient-xy"></div>
       
-      {/* テーマ: レジェンド（赤、黒、金 - 炎と力強さ） */}
       <div className="relative h-full bg-black rounded-2xl overflow-hidden border border-red-900/50 flex flex-col md:flex-row shadow-2xl">
         
         {/* 画像コンテナ */}

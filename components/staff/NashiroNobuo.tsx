@@ -5,12 +5,12 @@
 
 import { motion } from "framer-motion";
 import { Member } from "@/types";
-// テーマ: 鉄の意志（ユニバーサルポスタースタイル - 最大のインパクト）
+import { getPath } from "@/lib/utils/path";
 export default function NashiroNobuo() {
   const member = {
     name: "名城 信男",
     classification: "監督",
-    image: "/data/staff/名城信男.png",
+    image: getPath("/data/staff/名城信男.png"),
     bio: "第16代 第18代 WBA世界スーパーフライ級チャンピオン",
   };
 
@@ -22,11 +22,10 @@ export default function NashiroNobuo() {
       transition={{ delay: 0.2 }}
       className="group relative max-w-md mx-auto md:max-w-xl w-full"
     >
-      {/* 強烈なエネルギーフィールド（赤いオーラ） */}
-      <div className="absolute -inset-8 bg-gradient-to-r from-red-700 to-black opacity-0 group-hover:opacity-30 blur-3xl transition-opacity duration-500 rounded-3xl animate-pulse" />
+      <div className="absolute -inset-8 bg-gradient-to-r from-red-700 to-black opacity-0 group-hover:opacity-30 blur-3xl transition-opacity duration-500 rounded-none animate-pulse" />
       
       {/* カードコンテナ - 横長スタイル */}
-      <div className="relative bg-black rounded-2xl overflow-hidden border-4 border-red-900 group-hover:border-red-500 transition-colors duration-300 shadow-[0_0_30px_rgba(153,27,27,0.2)] group-hover:shadow-[0_0_60px_rgba(220,38,38,0.6)]">
+      <div className="relative bg-black rounded-none overflow-hidden border-4 border-red-900 group-hover:border-red-500 transition-colors duration-300 shadow-[0_0_30px_rgba(153,27,27,0.2)] group-hover:shadow-[0_0_60px_rgba(220,38,38,0.6)]">
         
         {/* 画像コンテナ - 自然なアスペクト比 */}
         <div className="relative w-full">

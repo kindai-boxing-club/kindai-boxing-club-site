@@ -4,13 +4,14 @@
 "use client";
 
 import { motion } from "framer-motion";
+import { getPath } from "@/lib/utils/path";
 
 
 export default function KiyotakiFumi() {
   const member = {
     name: "清滝 ふみ",
     classification: "部長",
-    image: "/data/staff/清滝ふみ.png",
+    image: getPath("/data/staff/清滝ふみ.png"),
     bio: "",
   };
 
@@ -20,7 +21,6 @@ export default function KiyotakiFumi() {
   return (
     <motion.div
       initial={{ opacity: 0, y: 20 }}
-     // テーマ: エレガント＆プレステージ（白、金、ピンク）
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true, amount: 0.3 }}
       transition={{ duration: 0.8, ease: "easeOut" }}
