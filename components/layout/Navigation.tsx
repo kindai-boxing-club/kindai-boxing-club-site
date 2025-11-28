@@ -1,6 +1,7 @@
 /**
- * レスポンシブナビゲーションバー
- * スクロールで背景を変え、スマホではハンバーガーメニューを提供する
+ * ナビゲーションバーコンポーネント
+ * サイト全体のヘッダーナビゲーション。
+ * スクロールに応じたスタイル変化やモバイルメニューの制御を行う。
  */
 "use client";
 
@@ -39,7 +40,6 @@ export default function Navigation() {
     { name: "ホーム", href: "/" },
     { name: "部員紹介", href: "#members" },
     { name: "ブログ", href: "/blog" },
-    { name: "TEST", href: "/tmp" },
   ];
 
   return (

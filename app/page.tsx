@@ -1,6 +1,11 @@
+/**
+ * トップページコンポーネント
+ * サイトのメインエントリーポイントであり、各セクション（ヒーロー、紹介、活動、部員など）を統合する。
+ * サーバーコンポーネントとして動作し、ビルド時にデータを取得する。
+ */
 import Link from "next/link";
 
-import { fetchMembers, fetchCoaches, fetchExecutives } from "@/lib/members/fetchMembers";
+import { fetchMembers, fetchCoaches, fetchExecutives } from "@/lib/data/fetchMembers";
 import {
   groupByClassification,
   orderKeys,
@@ -8,13 +13,13 @@ import {
   staffClassificationOrder,
   memberClassificationDisplay,
   staffClassificationDisplay,
-} from "@/lib/members/grouping";
-import MemberSection from "@/components/members/MemberSection";
-import HeroSection from "@/components/home/HeroSection";
-import ClubIntro from "@/components/home/ClubIntro";
-import ActivitySection from "@/components/home/ActivitySection";
-import RecruitmentCTA from "@/components/home/RecruitmentCTA";
-import InstagramSection from "@/components/home/InstagramSection";
+} from "@/lib/data/grouping";
+import MemberSection from "@/components/sections/MemberSection";
+import HeroSection from "@/components/sections/HeroSection";
+import ClubIntro from "@/components/sections/ClubIntro";
+import ActivitySection from "@/components/sections/ActivitySection";
+import RecruitmentCTA from "@/components/sections/RecruitmentCTA";
+import InstagramSection from "@/components/sections/InstagramSection";
 
 export default async function Home() {
   // ローカルCSVから部員データとスタッフデータを取得
@@ -22,6 +27,7 @@ export default async function Home() {
   const coaches = await fetchCoaches();
   const executives = await fetchExecutives();
   
+  // スタッフに幹部を含める
   const staff = [...executives, ...coaches];
 
   const membersByClassification = groupByClassification(members);

@@ -2,6 +2,10 @@
  * アプリケーション全体のレイアウト
  * ナビゲーション、フッター、フォント設定を管理
  */
+/**
+ * ルートレイアウト
+ * アプリケーション全体の共通レイアウト（HTML構造、フォント、ナビゲーション、フッター）を定義する。
+ */
 import type { Metadata } from "next";
 
 import { Noto_Sans_JP } from "next/font/google";
