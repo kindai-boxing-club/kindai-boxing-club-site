@@ -36,7 +36,7 @@ export const orderKeys = (
 ];
 
 /// 部員の分類順序
-export const memberClassificationOrder = ["マネージャー", "4回生", "3回生", "2回生", "1回生"];
+export const memberClassificationOrder = ["マネージャー", "4年", "3年", "2年", "1年"];
 
 /// スタッフの分類順序
 export const staffClassificationOrder = ["部長", "総監督", "監督", "コーチ"];
@@ -44,10 +44,10 @@ export const staffClassificationOrder = ["部長", "総監督", "監督", "コ�
 /// 部員の分類表示名
 export const memberClassificationDisplay: Record<string, string> = {
   マネージャー: "マネージャー",
-  "4回生": "4回生",
-  "3回生": "3回生",
-  "2回生": "2回生",
-  "1回生": "1回生",
+  "4年": "4年",
+  "3年": "3年",
+  "2年": "2年",
+  "1年": "1年",
 };
 
 /// スタッフの分類表示名

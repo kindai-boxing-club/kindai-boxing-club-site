@@ -20,7 +20,7 @@ async function readCSV(filename: string): Promise<Record<string, string>[]> {
 
 function mapClassification(val: string): string {
   if (val === "0") return "マネージャー";
-  if (["1", "2", "3", "4"].includes(val)) return `${val}回生`;
+  if (["1", "2", "3", "4"].includes(val)) return `${val}年`;
   return val; // "コーチ", "監督" など
 }
 
