@@ -8,8 +8,8 @@
 import { useState } from "react";
 import { AnimatePresence } from "framer-motion";
 import type { Member } from "@/types";
-import MemberGrid from "../ui/MemberGrid";
-import MemberModal from "../ui/MemberModal";
+import MemberGrid from "../members/MemberGrid";
+import MemberModal from "../members/MemberModal";
 
 type Props = {
   title: string;

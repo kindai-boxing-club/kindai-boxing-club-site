@@ -1,6 +1,6 @@
 /**
- * Simple CSV Parser
- * Handles quoted fields and newlines within quotes.
+ * 簡易CSVパーサー
+ * 引用符で囲まれたフィールドや、引用符内の改行を処理します。
  */
 export function parseCSV(content: string): Record<string, string>[] {
   const lines: string[][] = [];
