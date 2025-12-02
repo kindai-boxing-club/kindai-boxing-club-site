@@ -8,12 +8,10 @@ import {
 import MemberSectionClient from "./MemberSectionClient";
 
 type Props = {
-  bgColor?: string;
   sectionId?: string;
 };
 
 export default async function MemberSection({
-  bgColor = "bg-gray-50",
   sectionId,
 }: Props) {
   const members = await fetchMembers();
@@ -28,7 +26,7 @@ export default async function MemberSection({
       groups={membersByClassification}
       groupKeys={memberGroupKeys}
       displayNames={memberClassificationDisplay}
-      bgColor={bgColor}
+      bgColor={"bg-gray-50"}
       sectionId={sectionId}
     />
   );

@@ -1,8 +1,3 @@
-/**
- * モバイルメニューコンポーネント
- * スマートフォン向けのフルスクリーンメニュー。
- * アニメーション付きの表示・非表示切り替えを提供する。
- */
 "use client";
 
 import Link from "next/link";
@@ -54,7 +49,7 @@ export default function MobileMenu({ isOpen, onClose, links }: Props) {
           animate="open"
           exit="closed"
           variants={menuVariants}
-          className="fixed top-0 left-0 w-screen h-[100dvh] z-[60] bg-black/80 backdrop-blur-sm flex flex-col justify-center items-center md:hidden"
+          className="fixed top-0 left-0 w-screen h-dvh z-60 bg-black/80 backdrop-blur-sm flex flex-col justify-center items-center md:hidden"
           onClick={onClose}
         >
           {/* Background Elements */}
@@ -84,7 +79,7 @@ export default function MobileMenu({ isOpen, onClose, links }: Props) {
                 href="https://www.instagram.com/kindaiboxing/"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="inline-flex items-center gap-3 text-2xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-[#833ab4] via-[#fd1d1d] to-[#fcb045]"
+                className="inline-flex items-center gap-3 text-2xl font-bold text-transparent bg-clip-text bg-linear-to-r from-[#833ab4] via-[#fd1d1d] to-[#fcb045]"
               >
                 <FaInstagram className="text-[#fd1d1d]" />
                 Official Instagram

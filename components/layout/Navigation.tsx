@@ -74,7 +74,7 @@ export default function Navigation() {
               href="https://www.instagram.com/kindaiboxing/"
               target="_blank"
               rel="noopener noreferrer"
-              className="px-6 py-2 bg-gradient-to-r from-[#833ab4] via-[#fd1d1d] to-[#fcb045] text-white rounded-full font-bold hover:shadow-lg hover:scale-105 transition-all flex items-center gap-2"
+              className="px-6 py-2 bg-linear-to-r from-[#833ab4] via-[#fd1d1d] to-[#fcb045] text-white rounded-full font-bold hover:shadow-lg hover:scale-105 transition-all flex items-center gap-2"
             >
               <FaInstagram /> Instagram
             </a>
@@ -83,7 +83,7 @@ export default function Navigation() {
           {/* Hamburger Button */}
           <button
             onClick={() => setIsOpen(!isOpen)}
-            className="md:hidden relative z-[70] text-white p-2"
+            className="md:hidden relative z-70 text-white p-2"
           >
             <div className="w-8 h-6 flex flex-col justify-between">
               <motion.span 

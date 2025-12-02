@@ -8,12 +8,10 @@ import {
 import StaffSectionClient from "./StaffSectionClient";
 
 type Props = {
-  bgColor?: string;
   sectionId?: string;
 };
 
 export default async function StaffSection({
-  bgColor = "bg-gray-50",
   sectionId,
 }: Props) {
   const coaches = await fetchCoaches();
@@ -31,7 +29,7 @@ export default async function StaffSection({
       groups={staffByClassification}
       groupKeys={staffGroupKeys}
       displayNames={staffClassificationDisplay}
-      bgColor={bgColor}
+      bgColor={"bg-gray-50"}
       sectionId={sectionId}
     />
   );

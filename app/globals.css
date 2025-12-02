@@ -9,7 +9,7 @@
 
 @layer utilities {
   .text-gradient {
-    @apply bg-gradient-to-r from-blue-900 to-blue-700 bg-clip-text text-transparent;
+    @apply bg-linear-to-r from-blue-900 to-blue-700 bg-clip-text text-transparent;
   }
 
   .font-shippori {

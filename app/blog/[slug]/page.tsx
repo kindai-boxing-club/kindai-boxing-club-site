@@ -86,7 +86,7 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
         </div>
 
         {/* アイキャッチ画像 */}
-        <div className="mb-12 h-96 bg-gradient-to-br from-blue-50 to-blue-100 rounded-xl flex items-center justify-center border border-blue-900/20">
+        <div className="mb-12 h-96 bg-linear-to-br from-blue-50 to-blue-100 rounded-xl flex items-center justify-center border border-blue-900/20">
           <span className="text-8xl">📝</span>
         </div>
 
@@ -129,7 +129,7 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
                   href={`/blog/${relatedPost.slug}`}
                   className="bg-white border border-blue-900/20 rounded-xl overflow-hidden hover:border-red-500 transition-all hover:transform hover:scale-105 shadow-lg"
                 >
-                  <div className="h-48 bg-gradient-to-br from-blue-50 to-blue-100 flex items-center justify-center">
+                  <div className="h-48 bg-linear-to-br from-blue-50 to-blue-100 flex items-center justify-center">
                     <span className="text-5xl">📝</span>
                   </div>
                   <div className="p-4">

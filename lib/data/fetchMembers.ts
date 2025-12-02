@@ -4,6 +4,7 @@ import { Member } from "@/types";
 import { parseCSV } from "@/lib/utils/csv";
 import { COACHES_DATA } from "./coaches";
 import { getPath } from "@/lib/utils/path";
+import { mapClassification } from "@/lib/data/mappers";
 
 const DATA_DIR = path.join(process.cwd(), "public", "data", "members");
 
@@ -18,11 +19,7 @@ async function readCSV(filename: string): Promise<Record<string, string>[]> {
   }
 }
 
-function mapClassification(val: string): string {
-  if (val === "0") return "マネージャー";
-  if (["1", "2", "3", "4"].includes(val)) return `${val}年`;
-  return val; // "コーチ", "監督" など
-}
+
 
 /**
  * 幹部データの取得（ダミー）
