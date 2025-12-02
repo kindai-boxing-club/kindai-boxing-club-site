@@ -1,3 +1,6 @@
+/**
+ * ヒーローセクションのスクロールインジケーターコンポーネント
+ */
 "use client";
 
 import { motion, MotionValue } from "framer-motion";

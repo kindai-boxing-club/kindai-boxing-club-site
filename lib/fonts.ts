@@ -1,3 +1,6 @@
+/**
+ * フォント設定ファイル
+ */
 import { Noto_Sans_JP, Shippori_Mincho, Zen_Antique } from "next/font/google";
 
 export const notoSansJP = Noto_Sans_JP({

@@ -1,3 +1,6 @@
+/**
+ * ヒーローセクションの背景コンポーネント
+ */
 import Image from "next/image";
 
 export default function HeroBackground() {

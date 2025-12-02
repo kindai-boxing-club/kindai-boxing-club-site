@@ -2,6 +2,9 @@
  * 入部募集セクション
  * 新入部員勧誘のためのCall To Actionを表示する。
  */
+/**
+ * 入部募集CTAセクションコンポーネント
+ */
 "use client";
 
 import { motion } from "framer-motion";

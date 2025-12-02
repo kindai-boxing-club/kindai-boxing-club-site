@@ -1,3 +1,6 @@
+/**
+ * スタッフ紹介セクション（サーバーコンポーネント）
+ */
 import { fetchCoaches, fetchExecutives } from "@/lib/data/fetchMembers";
 import {
   groupByClassification,

@@ -7,6 +7,10 @@
 
 import { motion } from "framer-motion";
 
+/**
+ * 部員カードコンポーネント
+ */
+import Image from "next/image";
 import type { Member } from "@/types";
 
 type MemberCardProps = {

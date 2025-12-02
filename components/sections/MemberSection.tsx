@@ -1,3 +1,6 @@
+/**
+ * 部員紹介セクション（サーバーコンポーネント）
+ */
 import { fetchMembers } from "@/lib/data/fetchMembers";
 import {
   groupByClassification,

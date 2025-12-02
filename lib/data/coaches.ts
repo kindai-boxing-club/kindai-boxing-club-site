@@ -1,3 +1,6 @@
+/**
+ * コーチデータ定義
+ */
 import { Member } from "@/types";
 
 /**

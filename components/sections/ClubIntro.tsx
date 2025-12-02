@@ -1,6 +1,9 @@
 /**
  * クラブ紹介セクション (OUR SPIRIT)
  */
+/**
+ * クラブ紹介セクションコンポーネント
+ */
 "use client";
 
 import { motion } from "framer-motion";

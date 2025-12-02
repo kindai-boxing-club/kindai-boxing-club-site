@@ -1,4 +1,8 @@
+/**
+ * ヒーローセクションのアクションボタンコンポーネント
+ */
 "use client";
+
 
 import Link from "next/link";
 import { FaInstagram, FaArrowRight } from "react-icons/fa";

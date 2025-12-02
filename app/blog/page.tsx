@@ -4,6 +4,9 @@
  */
 "use client";
 
+/**
+ * ブログ一覧ページコンポーネント
+ */
 import Link from "next/link";
 import { motion } from "framer-motion";
 import { FaTools } from "react-icons/fa";

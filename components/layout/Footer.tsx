@@ -2,6 +2,10 @@
  * サイトフッターコンポーネント
  * ロゴ、ナビゲーションリンク、SNS情報、コピーライトを表示する
  */
+/**
+ * フッターコンポーネント
+ */
+import Link from "next/link";
 import Image from "next/image";
 
 export default function Footer() {

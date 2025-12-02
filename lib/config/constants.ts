@@ -1,4 +1,7 @@
 /**
+ * アプリケーション全体の定数定義
+ */
+/**
  * 部員の分類順序
  */
 export const memberClassificationOrder = ["マネージャー", "4年", "3年", "2年", "1年"];

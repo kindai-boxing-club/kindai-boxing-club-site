@@ -1,3 +1,6 @@
+/**
+ * モバイル用メニューコンポーネント
+ */
 "use client";
 
 import Link from "next/link";

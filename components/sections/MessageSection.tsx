@@ -3,6 +3,9 @@
  * 勧誘用のメッセージを表示するセクション。
  * ActivityとOur Spiritの間に配置される。
  */
+/**
+ * メッセージセクションコンポーネント
+ */
 "use client";
 
 import { motion } from "framer-motion";

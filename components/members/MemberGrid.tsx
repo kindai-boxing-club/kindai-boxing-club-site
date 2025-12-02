@@ -9,6 +9,10 @@
  */
 "use client";
 
+/**
+ * 部員一覧グリッド表示コンポーネント
+ */
+import { motion } from "framer-motion";
 import { Member } from "@/types";
 import dynamic from "next/dynamic";
 import MemberCard from "./MemberCard";

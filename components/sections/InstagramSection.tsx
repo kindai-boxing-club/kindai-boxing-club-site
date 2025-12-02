@@ -2,6 +2,9 @@
  * Instagramセクション
  * 公式Instagramへのリンクと、フィードのモックアップを表示する。
  */
+/**
+ * Instagramセクションコンポーネント
+ */
 "use client";
 
 import { motion } from "framer-motion";

@@ -5,6 +5,9 @@
 import { blogPosts } from "@/lib/blog/data";
 
 import { notFound } from "next/navigation";
+/**
+ * ブログ記事詳細ページコンポーネント
+ */
 import Link from "next/link";
 
 interface BlogPostPageProps {
