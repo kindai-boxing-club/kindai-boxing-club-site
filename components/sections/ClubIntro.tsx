@@ -16,25 +16,28 @@ const features = [
     icon: FaDumbbell,
     title: "強靭",
     subtitle: "強靭な肉体と精神",
-    description: "限界を超えた先にしか見えない景色がある。日々の過酷なトレーニングが、揺るぎない自信と強さを創り出す。",
-    delay: 0.2
+    description:
+      "限界を超えた先にしか見えない景色がある。日々の過酷なトレーニングが、揺るぎない自信と強さを創り出す。",
+    delay: 0.2,
   },
   {
     id: "02",
     icon: FaHandshake,
     title: "結束",
     subtitle: "結束と信頼",
-    description: "同じリングを目指す仲間との絆。苦しみを分かち合い、互いに鼓舞し合うことで、個の力は無限に増幅する。",
-    delay: 0.4
+    description:
+      "同じリングを目指す仲間との絆。苦しみを分かち合い、互いに鼓舞し合うことで、個の力は無限に増幅する。",
+    delay: 0.4,
   },
   {
     id: "03",
     icon: FaTrophy,
     title: "勝利",
     subtitle: "勝利への執念",
-    description: "目指すは頂点のみ。妥協なき挑戦の連続が、我々を勝利へと導く。敗北を恐れず、ただ前へ。",
-    delay: 0.6
-  }
+    description:
+      "目指すは頂点のみ。妥協なき挑戦の連続が、我々を勝利へと導く。敗北を恐れず、ただ前へ。",
+    delay: 0.6,
+  },
 ];
 
 export default function ClubIntro() {
@@ -48,10 +51,13 @@ export default function ClubIntro() {
         <div className="absolute top-0 right-1/4 w-px h-full bg-linear-to-b from-transparent via-gray-800 to-transparent" />
       </div>
 
-      
       <div className="max-w-7xl mx-auto relative z-10">
         {/* セクションヘッダー */}
-        <SectionHeading title="OUR SPIRIT" subtitle="近大ボクシング部の精神" bg="dark" />
+        <SectionHeading
+          title="OUR SPIRIT"
+          subtitle="近大ボクシング部の精神"
+          bg="dark"
+        />
 
         <div className="grid md:grid-cols-3 gap-12">
           {features.map((feature) => (
@@ -72,14 +78,14 @@ export default function ClubIntro() {
                 <div className="mb-6 text-red-600">
                   <feature.icon size={40} />
                 </div>
-                
+
                 <h3 className="text-3xl font-black text-white mb-2 tracking-tight uppercase italic">
                   {feature.title}
                 </h3>
                 <p className="text-sm font-bold text-red-600 mb-4 tracking-widest uppercase">
                   {feature.subtitle}
                 </p>
-                
+
                 <p className="text-gray-400 leading-relaxed text-sm">
                   {feature.description}
                 </p>

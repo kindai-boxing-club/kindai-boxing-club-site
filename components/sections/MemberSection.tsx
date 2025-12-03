@@ -6,11 +6,8 @@ import {
   groupByClassification,
   orderKeys,
   memberClassificationOrder,
-
 } from "@/lib/data/grouping";
 import MemberSectionClient from "./MemberSectionClient";
-
-
 
 export default async function MemberSection() {
   const members = await fetchMembers();

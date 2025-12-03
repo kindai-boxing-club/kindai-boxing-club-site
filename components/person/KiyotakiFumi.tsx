@@ -13,7 +13,7 @@ export default function KiyotakiFumi() {
     id: "member_0",
     name: "清滝 ふみ",
     classification: "部長",
-    image: getPath("/data/staff/清滝ふみ.png"),
+    image: getPath("/person/清滝ふみ.png"),
     bio: "",
     position: "部長",
     weight: "",

@@ -11,7 +11,7 @@ export default function NashiroNobuo() {
     id: "member_0",
     name: "名城 信男",
     classification: "監督",
-    image: getPath("/data/staff/名城信男.png"),
+    image: getPath("/person/名城信男.png"),
     bio: "第16代 第18代 WBA世界スーパーフライ級チャンピオン",
     position: "監督",
     weight: "",

@@ -56,7 +56,7 @@ export default function InstagramSection() {
                 Instagramを見る →
               </a>
             </div>
-            
+
             {/* Mockup or Placeholder for Feed */}
             <div className="grid grid-cols-2 gap-4 opacity-80">
               <div className="aspect-square bg-gray-200 rounded-xl animate-pulse" />

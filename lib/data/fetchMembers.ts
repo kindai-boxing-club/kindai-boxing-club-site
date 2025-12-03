@@ -2,11 +2,9 @@ import fs from "fs";
 import path from "path";
 import { Person } from "@/types";
 import { parseCSV } from "@/lib/utils/csv";
+import { getPath } from "@/lib/utils/path";
 
-import { findImage } from "@/lib/utils/image";
-
-
-const DATA_DIR = path.join(process.cwd(), "public", "data", "members");
+const DATA_DIR = path.join(process.cwd(), "public", "person");
 
 async function readCSV(filename: string): Promise<Record<string, string>[]> {
   const filePath = path.join(DATA_DIR, filename);
@@ -19,13 +17,9 @@ async function readCSV(filename: string): Promise<Record<string, string>[]> {
   }
 }
 
-
-
-
-
 /**
  * 部員データの取得
- * 
+ *
  * 役割: CSVファイルから部員データを読み込み、Member型に変換して返す
  */
 export async function fetchMembers(): Promise<Person[]> {
@@ -37,7 +31,7 @@ export async function fetchMembers(): Promise<Person[]> {
     position: row.position,
     weight: row.weight,
     faculty: row.faculty,
-    image: findImage("/data/members", row.name),
+    image: getPath(`/person/${row.name.replace(/\s+/g, "")}.png`),
     bio: row.bio,
   }));
 }

@@ -38,11 +38,19 @@ export const orderKeys = (
 /**
  * 部員の分類順序
  */
-export const memberClassificationOrder = ["マネージャー", "4年", "3年", "2年", "1年","修士1年","修士2年","博士1年","博士2年"];
+export const memberClassificationOrder = [
+  "マネージャー",
+  "4年",
+  "3年",
+  "2年",
+  "1年",
+  "修士1年",
+  "修士2年",
+  "博士1年",
+  "博士2年",
+];
 
 /**
  * スタッフの分類順序
  */
 export const staffClassificationOrder = ["部長", "総監督", "監督", "コーチ"];
-
-

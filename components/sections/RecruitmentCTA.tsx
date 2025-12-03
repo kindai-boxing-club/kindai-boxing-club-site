@@ -18,7 +18,7 @@ export default function RecruitmentCTA() {
       <div className="absolute inset-0 opacity-20">
         <div className="absolute top-0 left-0 w-full h-full bg-[radial-gradient(circle_at_center,var(--tw-gradient-stops))] from-red-900 via-black to-black" />
       </div>
-      
+
       <div className="max-w-5xl mx-auto relative z-10 text-center">
         <motion.div
           initial={{ opacity: 0, scale: 0.9 }}
@@ -30,7 +30,8 @@ export default function RecruitmentCTA() {
             JOIN THE <span className="text-red-600">TEAM</span>
           </h2>
           <p className="text-xl md:text-2xl text-gray-400 mb-12 max-w-2xl mx-auto leading-relaxed">
-            経験者はもちろん、未経験者も大歓迎。<br />
+            経験者はもちろん、未経験者も大歓迎。
+            <br />
             ボクシングを通じて、一生モノの仲間と強さを手に入れよう。
           </p>
 

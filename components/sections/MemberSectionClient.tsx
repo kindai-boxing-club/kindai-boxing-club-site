@@ -10,13 +10,11 @@
 
 import { useState } from "react";
 import { AnimatePresence } from "framer-motion";
-import type { Person   } from "@/types";
-import Grid from "../team/Grid";
-import TeamMemberModal from "../team/TeamMemberModal";
+import type { Person } from "@/types";
+import Grid from "../person/Grid";
+import TeamMemberModal from "../person/TeamMemberModal";
 import SectionHeading from "../ui/SectionHeading";
 import CategoryHeading from "../ui/CategoryHeading";
-
-
 
 type Props = {
   groups: Record<string, Person[]>;
@@ -33,23 +31,26 @@ export default function MemberSectionClient({
 }: Props) {
   const [selectedMember, setSelectedMember] = useState<Person | null>(null);
 
-
   return (
     <section className={`py-24 px-4 ${bgColor} relative overflow-hidden`}>
       <div className="max-w-7xl mx-auto relative z-10">
-
         {/* セクションヘッダー */}
-        <SectionHeading title="MEMBERS" subtitle="ともにトレーニングに励む仲間たち" bg="light" />
-
+        <SectionHeading
+          title="MEMBERS"
+          subtitle="ともにトレーニングに励む仲間たち"
+          bg="light"
+        />
 
         {groupKeys.map((classification) => {
           const members = groups[classification];
-          const isSpecialRole = ["部長", "総監督", "監督"].includes(classification);
+          const isSpecialRole = ["部長", "総監督", "監督"].includes(
+            classification
+          );
 
           return (
             <div key={classification} className="mb-24">
               <CategoryHeading title={classification} />
-              
+
               <Grid
                 members={members}
                 isSpecialRole={isSpecialRole}

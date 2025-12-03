@@ -12,7 +12,7 @@ export default function AkaiHidekazu() {
     id: "member_0",
     name: "赤井 英和",
     classification: "総監督",
-    image: getPath("/data/staff/赤井英和.png"),
+    image: getPath("/person/赤井英和.png"),
     bio: "",
     position: "総監督",
     weight: "",

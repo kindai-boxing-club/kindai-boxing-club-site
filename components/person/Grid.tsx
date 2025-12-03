@@ -18,9 +18,9 @@ import dynamic from "next/dynamic";
 import MemberCard from "./MemberCard";
 import CoachCard from "./CoachCard";
 
-const KiyotakiFumi = dynamic(() => import("./executives/KiyotakiFumi"));
-const AkaiHidekazu = dynamic(() => import("./executives/AkaiHidekazu"));
-const NashiroNobuo = dynamic(() => import("./executives/NashiroNobuo"));
+const KiyotakiFumi = dynamic(() => import("./KiyotakiFumi"));
+const AkaiHidekazu = dynamic(() => import("./AkaiHidekazu"));
+const NashiroNobuo = dynamic(() => import("./NashiroNobuo"));
 
 type Props = {
   members: Person[];

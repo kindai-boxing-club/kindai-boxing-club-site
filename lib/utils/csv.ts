@@ -2,7 +2,6 @@
  * CSV解析ユーティリティ
  */
 
-
 /**
  * 簡易CSVパーサー
  * 引用符で囲まれたフィールドや、引用符内の改行を処理します。
@@ -29,27 +28,27 @@ export function parseCSV(content: string): Record<string, string>[] {
     } else {
       if (char === '"') {
         inQuotes = true;
-      } else if (char === ',') {
+      } else if (char === ",") {
         currentRow.push(currentField);
         currentField = "";
-      } else if (char === '\n' || (char === '\r' && nextChar === '\n')) {
+      } else if (char === "\n" || (char === "\r" && nextChar === "\n")) {
         currentRow.push(currentField);
         lines.push(currentRow);
         currentRow = [];
         currentField = "";
-        if (char === '\r') i++; // Skip \n
-      } else if (char === '\r') {
-         // Handle CR only line endings if necessary, though rare now
-         currentRow.push(currentField);
-         lines.push(currentRow);
-         currentRow = [];
-         currentField = "";
+        if (char === "\r") i++; // Skip \n
+      } else if (char === "\r") {
+        // Handle CR only line endings if necessary, though rare now
+        currentRow.push(currentField);
+        lines.push(currentRow);
+        currentRow = [];
+        currentField = "";
       } else {
         currentField += char;
       }
     }
   }
-  
+
   // Push last field/row if exists
   if (currentField || currentRow.length > 0) {
     currentRow.push(currentField);
@@ -58,10 +57,10 @@ export function parseCSV(content: string): Record<string, string>[] {
 
   if (lines.length === 0) return [];
 
-  const headers = lines[0].map(h => h.trim());
+  const headers = lines[0].map((h) => h.trim());
   const rows = lines.slice(1);
 
-  return rows.map(row => {
+  return rows.map((row) => {
     const obj: Record<string, string> = {};
     headers.forEach((header, index) => {
       obj[header] = row[index] || "";
