@@ -1,12 +1,11 @@
 // 部員の型定義
-export interface Member {
+export interface Person {
   id: string;
-  name: string;
-  classification: string; // 分類（例: マネージャー、4、3など）
+  name: string; //名前
+  classification: string; // 分類（学年・マネージャー・指導者役職）
   position?: string; // 役職（主将、副主将など）
   weight?: string; // 階級
   faculty?: string; // 学部
-  history?: string; // 経歴
   image?: string;
   bio?: string;
   achievements?: string[];

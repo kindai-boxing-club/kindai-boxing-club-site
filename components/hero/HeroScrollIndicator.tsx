@@ -9,7 +9,7 @@ type Props = {
   opacity: MotionValue<number>;
 };
 
-export default function ScrollIndicator({ opacity }: Props) {
+export default function HeroScrollIndicator({ opacity }: Props) {
   return (
     <motion.div
       className="absolute bottom-10 left-1/2 -translate-x-1/2 z-10 text-white flex flex-col items-center gap-2"

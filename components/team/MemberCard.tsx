@@ -9,10 +9,10 @@ import { motion } from "framer-motion";
  * 部員カードコンポーネント
  */
 import Image from "next/image";
-import type { Member } from "@/types";
+import type { Person } from "@/types";
 
 type MemberCardProps = {
-  member: Member;
+  member: Person;
   onClick: () => void;
 };
 
@@ -37,7 +37,7 @@ export default function MemberCard({ member, onClick }: MemberCardProps) {
         {/* Position Badge (Only if position exists) */}
         {member.position && (
           <div className="absolute top-2 left-2">
-             <span className="inline-block px-2 py-0.5 bg-black text-white text-[10px] font-bold tracking-widest uppercase skew-x-[12deg]">
+             <span className="inline-block px-2 py-0.5 bg-black text-white text-[10px] font-bold tracking-widest uppercase skew-x-12">
                {member.position}
              </span>
           </div>

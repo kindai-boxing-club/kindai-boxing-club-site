@@ -4,14 +4,18 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { Member } from "@/types";
+import { Person } from "@/types";
 import { getPath } from "@/lib/utils/path";
 export default function NashiroNobuo() {
-  const member = {
+  const person: Person = {
+    id: "member_0",
     name: "名城 信男",
     classification: "監督",
     image: getPath("/data/staff/名城信男.png"),
     bio: "第16代 第18代 WBA世界スーパーフライ級チャンピオン",
+    position: "監督",
+    weight: "",
+    faculty: "",
   };
 
   return (
@@ -28,15 +32,15 @@ export default function NashiroNobuo() {
       <div className="relative rounded-none shadow-[0_0_30px_rgba(153,27,27,0.2)] group-hover:shadow-[0_0_60px_rgba(220,38,38,0.6)] transform -skew-x-6 mx-4 md:mx-0 p-2">
         
         {/* アニメーションボーダー背景 */}
-        <div className="absolute inset-0 bg-gradient-to-br from-red-950 via-red-500 to-red-950 bg-[length:400%_400%] animate-gradient-xy" />
+        <div className="absolute inset-0 bg-linear-to-br from-red-950 via-red-500 to-red-950 bg-size-[400%_400%] animate-gradient-xy" />
 
         {/* コンテンツラッパー */}
         <div className="relative h-full w-full bg-black overflow-hidden">
           {/* 画像コンテナ - 自然なアスペクト比 */}
           <div className="relative w-full h-full transform skew-x-6 scale-110 origin-center">
             <motion.img
-              src={member.image}
-              alt={member.name}
+              src={person.image}
+              alt={person.name}
               width="1200"
               height="800"
               className="w-full h-auto object-cover filter contrast-110 brightness-100 transition-transform duration-700 group-hover:scale-105"
@@ -46,7 +50,7 @@ export default function NashiroNobuo() {
             />
             
             {/* グラデーションオーバーレイ: 下部を濃く */}
-            <div className="absolute inset-0 bg-gradient-to-t from-black via-black/5 to-transparent " />
+            <div className="absolute inset-0 bg-linear-to-t from-black via-black/5 to-transparent " />
           </div>
 
           {/* 浮遊する赤い粒子（控えめ） */}
@@ -61,23 +65,23 @@ export default function NashiroNobuo() {
             {/* 役職バッジ */}
             <div className="absolute top-6 left-6 md:top-8 md:left-8">
               <span className="inline-block px-4 py-1 border border-red-500/50 bg-black/60 backdrop-blur-md text-red-400 font-black tracking-widest text-sm uppercase shadow-lg transform -skew-x-6">
-                <span className="block transform skew-x-6">{member.classification}</span>
+                <span className="block transform skew-x-6">{person.classification}</span>
               </span>
             </div>
 
             {/* 下部テキストコンテンツ */}
             <div className="relative z-10">
               <h3 className="text-4xl font-black font-zen-antique text-white mb-4 md:mb-6 tracking-tighter drop-shadow-[0_4px_8px_rgba(0,0,0,1)] uppercase italic">
-                {member.name}
+                {person.name}
               </h3>
               
               {/* エネルギーバー装飾 */}
               <div className="h-1.5 w-32 md:w-48 bg-neutral-800 rounded-full mb-4 md:mb-6 overflow-hidden border border-neutral-700">
-                 <div className="h-full w-full bg-gradient-to-r from-red-900 via-red-500 to-red-900 animate-[shimmer_2s_infinite]" />
+                 <div className="h-full w-full bg-linear-to-r from-red-900 via-red-500 to-red-900 animate-[shimmer_2s_infinite]" />
               </div>
               
               <p className="text-neutral-200 text-sm md:text-base font-bold leading-relaxed whitespace-pre-wrap p-2  bg-black/10 backdrop-blur-sm  rounded-r-lg max-w-xl text-center">
-                {member.bio}
+                {person.bio}
               </p>
             </div>
           </div>

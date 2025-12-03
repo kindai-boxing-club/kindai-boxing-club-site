@@ -3,10 +3,10 @@
  */
 "use client";
 
-import type { Member } from "@/types";
+import type { Person } from "@/types";
 
 type CoachCardProps = {
-  member: Member;
+  member: Person;
   onClick: () => void;
 };
 

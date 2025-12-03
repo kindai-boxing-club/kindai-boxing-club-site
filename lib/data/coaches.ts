@@ -1,14 +1,14 @@
 /**
  * コーチデータ定義
  */
-import { Member } from "@/types";
+import { Person } from "@/types";
 
 /**
  * コーチデータ定義
  * 
  * 役割: コーチの静的データを管理する
  */
-export const COACHES_DATA: Member[] = [
+export const COACHES_DATA: Person[] = [
   {
     id: "coach_kuramoto",
     name: "倉本 亮",

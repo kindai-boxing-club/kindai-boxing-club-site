@@ -18,7 +18,7 @@ export default async function Home() {
       <ClubIntro />
       <MessageSection />
       <ActivitySection />
-      <MemberSection sectionId="members" />
+      <MemberSection/>
       <StaffSection/>
       <RecruitmentCTA />
       <InstagramSection />

@@ -3,15 +3,15 @@
  * 取得した部員データを分類（学年、役職など）ごとにグループ化し、
  * 表示順序を制御するためのユーティリティ関数を提供する。
  */
-import type { Member } from "@/types";
+import type { Person } from "@/types";
 
 const DEFAULT_CLASSIFICATION = "未分類";
 
 /**
  * 分類ごとにグループ化する
  */
-export const groupByClassification = (people: Member[]) =>
-  people.reduce<Record<string, Member[]>>((acc, person) => {
+export const groupByClassification = (people: Person[]) =>
+  people.reduce<Record<string, Person[]>>((acc, person) => {
     const key = person.classification?.trim() || DEFAULT_CLASSIFICATION;
     if (!acc[key]) acc[key] = [];
     acc[key].push(person);
@@ -22,7 +22,7 @@ export const groupByClassification = (people: Member[]) =>
  * グループのキーを優先順位に従って並び替える
  */
 export const orderKeys = (
-  groups: Record<string, Member[]>,
+  groups: Record<string, Person[]>,
   preferredOrder: string[]
 ) => [
   ...preferredOrder.filter((classification) => groups[classification]?.length),
@@ -35,9 +35,14 @@ export const orderKeys = (
     .sort((a, b) => a.localeCompare(b, "ja")),
 ];
 
-export {
-  memberClassificationOrder,
-  staffClassificationOrder,
-  memberClassificationDisplay,
-  staffClassificationDisplay,
-} from "@/lib/config/constants";
+/**
+ * 部員の分類順序
+ */
+export const memberClassificationOrder = ["マネージャー", "4年", "3年", "2年", "1年","修士1年","修士2年","博士1年","博士2年"];
+
+/**
+ * スタッフの分類順序
+ */
+export const staffClassificationOrder = ["部長", "総監督", "監督", "コーチ"];
+
+

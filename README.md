@@ -22,4 +22,3 @@ Macのプレビューアプリや、オンラインの変換ツール（Squoosh�
 *   Next.js (App Router)
 *   TypeScript
 *   Tailwind CSS
-*   Framer Motion

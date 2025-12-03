@@ -8,7 +8,7 @@ import { motion, useScroll, useTransform } from "framer-motion";
 import HeroBackground from "../hero/HeroBackground";
 import HeroTitle from "../hero/HeroTitle";
 import HeroActions from "../hero/HeroActions";
-import ScrollIndicator from "../hero/ScrollIndicator";
+import HeroScrollIndicator from "../hero/HeroScrollIndicator";
 
 export default function HeroSection() {
   const containerRef = useRef<HTMLElement>(null);
@@ -35,7 +35,7 @@ export default function HeroSection() {
         <HeroActions />
       </motion.div>
 
-      <ScrollIndicator opacity={opacity} />
+      <HeroScrollIndicator opacity={opacity} />
     </section>
   );
 }

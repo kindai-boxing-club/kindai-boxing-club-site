@@ -10,15 +10,15 @@
 
 import { motion } from "framer-motion";
 import { FaTimes } from "react-icons/fa";
-import type { Member } from "@/types";
+import { Person } from "@/types";
 
 
 type Props = {
-  member: Member;
+  member: Person;
   onClose: () => void;
 };
 
-export default function MemberModal({ member, onClose }: Props) {
+export default function TeamMemberModal({ member, onClose }: Props) {
 
 
   return (

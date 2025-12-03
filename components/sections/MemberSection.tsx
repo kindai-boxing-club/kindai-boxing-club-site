@@ -6,17 +6,13 @@ import {
   groupByClassification,
   orderKeys,
   memberClassificationOrder,
-  memberClassificationDisplay,
+
 } from "@/lib/data/grouping";
 import MemberSectionClient from "./MemberSectionClient";
 
-type Props = {
-  sectionId?: string;
-};
 
-export default async function MemberSection({
-  sectionId,
-}: Props) {
+
+export default async function MemberSection() {
   const members = await fetchMembers();
   const membersByClassification = groupByClassification(members);
   const memberGroupKeys = orderKeys(
@@ -28,9 +24,7 @@ export default async function MemberSection({
     <MemberSectionClient
       groups={membersByClassification}
       groupKeys={memberGroupKeys}
-      displayNames={memberClassificationDisplay}
       bgColor={"bg-gray-50"}
-      sectionId={sectionId}
     />
   );
 }

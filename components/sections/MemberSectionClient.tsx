@@ -10,33 +10,32 @@
 
 import { useState } from "react";
 import { AnimatePresence } from "framer-motion";
-import type { Member } from "@/types";
-import MemberGrid from "../members/MemberGrid";
-import MemberModal from "../members/MemberModal";
+import type { Person   } from "@/types";
+import Grid from "../team/Grid";
+import TeamMemberModal from "../team/TeamMemberModal";
 import SectionHeading from "../ui/SectionHeading";
+import CategoryHeading from "../ui/CategoryHeading";
 
 
 
 type Props = {
-  groups: Record<string, Member[]>;
+  groups: Record<string, Person[]>;
   groupKeys: string[];
-  displayNames: Record<string, string>;
+
   bgColor?: string;
-  sectionId?: string;
 };
 
 export default function MemberSectionClient({
   groups,
   groupKeys,
-  displayNames,
+
   bgColor = "bg-gray-50",
-  sectionId,
 }: Props) {
-  const [selectedMember, setSelectedMember] = useState<Member | null>(null);
+  const [selectedMember, setSelectedMember] = useState<Person | null>(null);
 
 
   return (
-    <section id={sectionId} className={`py-24 px-4 ${bgColor} relative overflow-hidden`}>
+    <section className={`py-24 px-4 ${bgColor} relative overflow-hidden`}>
       <div className="max-w-7xl mx-auto relative z-10">
 
         {/* セクションヘッダー */}
@@ -49,16 +48,9 @@ export default function MemberSectionClient({
 
           return (
             <div key={classification} className="mb-24">
-              <div className="max-w-5xl mx-auto mb-12">
-                <div className="flex items-center gap-4">
-                  <div className="w-2 h-12 bg-red-600 transform -skew-x-12" />
-                  <h3 className="text-3xl md:text-4xl font-black text-gray-900 tracking-tighter">
-                    {displayNames[classification] ?? classification}
-                  </h3>
-                </div>
-              </div>
+              <CategoryHeading title={classification} />
               
-              <MemberGrid
+              <Grid
                 members={members}
                 isSpecialRole={isSpecialRole}
                 onMemberClick={setSelectedMember}
@@ -70,7 +62,7 @@ export default function MemberSectionClient({
 
       <AnimatePresence>
         {selectedMember && (
-          <MemberModal
+          <TeamMemberModal
             member={selectedMember}
             onClose={() => setSelectedMember(null)}
           />

@@ -13,7 +13,7 @@
  * 部員一覧グリッド表示コンポーネント
  */
 import { motion } from "framer-motion";
-import { Member } from "@/types";
+import { Person } from "@/types";
 import dynamic from "next/dynamic";
 import MemberCard from "./MemberCard";
 import CoachCard from "./CoachCard";
@@ -23,12 +23,12 @@ const AkaiHidekazu = dynamic(() => import("./executives/AkaiHidekazu"));
 const NashiroNobuo = dynamic(() => import("./executives/NashiroNobuo"));
 
 type Props = {
-  members: Member[];
+  members: Person[];
   isSpecialRole: boolean;
-  onMemberClick: (member: Member) => void;
+  onMemberClick: (member: Person) => void;
 };
 
-export default function MemberGrid({
+export default function Grid({
   members,
   isSpecialRole,
   onMemberClick,
