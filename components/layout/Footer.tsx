@@ -46,10 +46,7 @@ export default function Footer() {
                 </a>
               </li>
               <li>
-                <a
-                  href="/blog"
-                  className="hover:text-white transition-colors"
-                >
+                <a href="/blog" className="hover:text-white transition-colors">
                   ブログ
                 </a>
               </li>
@@ -57,7 +54,9 @@ export default function Footer() {
           </div>
 
           <div>
-            <h4 className="text-white font-bold mb-6 tracking-wider">FOLLOW US</h4>
+            <h4 className="text-white font-bold mb-6 tracking-wider">
+              FOLLOW US
+            </h4>
             <div className="flex space-x-4">
               <a
                 href="https://www.instagram.com/kindaiboxing/"
@@ -78,8 +77,14 @@ export default function Footer() {
           </div>
         </div>
 
-        <div className="mt-16 pt-8 border-t border-gray-900 text-center text-xs text-gray-600">
-          <p>&copy; {new Date().getFullYear()} Kindai University Boxing Club. All rights reserved.</p>
+        <div className="mt-16 pt-8 border-t border-gray-900 flex flex-col items-center gap-2 text-xs text-gray-600">
+          <p>
+            &copy; {new Date().getFullYear()} Kindai University Boxing Club. All
+            rights reserved.
+          </p>
+          <p className="text-gray-700 font-medium opacity-80">
+            Created by Keishin Suzuki
+          </p>
         </div>
       </div>
     </footer>
