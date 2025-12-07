@@ -53,7 +53,7 @@ GitHub PagesからNext.jsに適した環境へ移行し、独自のドメイン�
     -   Database: Cloudflare D1 (SQLite) - メンバー情報、ニュース記事の保存。
     -   Storage: Cloudflare R2 - 顔写真、記事画像の保存。
 -   データモデル案:
-    -   `members`: ID, 名前, 役職, 学年, 画像URL, 表示順
+    -   `members`: ID(学籍番号), 名前, 役職, 学年, 画像URL
     -   `news`: ID, タイトル, 本文, 公開日, 画像URL
 -   アプリケーション構成:
     -   `/admin`: 認証付きの管理画面。データの書き込み・更新を行う。
