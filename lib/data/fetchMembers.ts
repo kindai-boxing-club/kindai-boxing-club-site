@@ -31,7 +31,7 @@ export async function fetchMembers(): Promise<Person[]> {
     position: row.position,
     weight: row.weight,
     faculty: row.faculty,
-    image: getPath(`/person/${row.name.replace(/\s+/g, "")}.png`),
+    image: getPath(`/person/${row.image}`),
     bio: row.bio,
   }));
 }

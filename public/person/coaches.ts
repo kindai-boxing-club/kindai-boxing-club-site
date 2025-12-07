@@ -15,7 +15,7 @@ export const COACHES_DATA: Person[] = [
     name: "倉本 亮",
     classification: "コーチ",
     position: "コーチ",
-    image: getPath("/person/倉本亮.png"),
+    image: getPath("/person/kuramoto-ryo.png"),
     bio: "",
   },
   {
@@ -23,7 +23,7 @@ export const COACHES_DATA: Person[] = [
     name: "國重 憲司",
     classification: "コーチ",
     position: "コーチ",
-    image: getPath("/person/國重憲司.png"),
+    image: getPath("/person/kunishige-kenji.png"),
     bio: "",
   },
 ];

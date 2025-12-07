@@ -18,7 +18,7 @@
     - [ ] コーチ名簿 (`coaches.csv`) を正確な情報に更新する。
     - [ ] 顔写真データを集める。
     - [ ] 画像ファイルの軽量化(WebP変換)と命名規則の統一を行う。
-    - [ ] 必要な顔写真データを揃えて配置する。
+    - [ ] R2に顔写真をアップロードする。
 - [ ] コードベースの健全化 (Technical)
     - [ ] 未使用なコンポーネントや画像の削除 (クリーンアップ)。
     - [ ] `npm run build` および `npm run lint` がエラーなく通ることを確認する。
@@ -26,11 +26,12 @@
 ## 2. サーバー移行と本番公開
 GitHub PagesからNext.jsに適した環境へ移行し、独自のドメインで公開します。
 
-- [ ] Vercelへの移行
-    - [ ] GitHubリポジトリをVercelに連携し、デプロイ環境を構築する。
-    - [ ] `next.config.ts` の設定を見直し、Vercelの画像最適化機能などが使えるように調整する（`output: 'export'`の削除検討など）。
-- [ ] DNS設定の変更 (XServer)
-    - [ ] XServerで管理しているドメインのDNS設定を変更し、新サイト(Vercel)が表示されるようにする。
+- [x] Cloudflare Pagesへの移行 (もともとvercelのつもり)
+    - [x] GitHubリポジトリをCloudflare Pagesに連携し、デプロイ環境を構築する。 (完了)
+    - [x] `next.config.ts` の設定調整。
+- [ ] 独自ドメインの設定
+    - [ ] Cloudflare Pagesでカスタムドメインを追加する。
+    - [ ] Xserver側でDNS設定を変更し、新サイトが表示されるようにする。
 - [ ] SEO対策 (Search Engine Optimization)
     - [ ] メタデータ設定: 各ページの `title` と `description` を正しく設定する。
     - [ ] OGP設定: SNSでシェアされた際に表示される画像やタイトルを設定する。
