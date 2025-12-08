@@ -1,4 +1,5 @@
 import { getPath } from "@/lib/utils/path";
+import type { D1Database } from "@cloudflare/workers-types";
 
 export interface Member {
   id: string; // 学籍番号は文字列
