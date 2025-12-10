@@ -28,7 +28,7 @@ export default function CoachCard({ member, onClick }: CoachCardProps) {
           className="object-cover transition-transform duration-700 group-hover:scale-110"
           sizes="(max-width: 768px) 100vw, 33vw"
         />
-        <div className="absolute inset-0 bg-linear-to-t from-gray-950 via-transparent to-transparent opacity-80" />
+        <div className="absolute inset-0 bg-linear-to-t from-gray-950/50 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
 
         {/* Position Badge */}
         <div className="absolute top-3 left-3">
@@ -39,7 +39,7 @@ export default function CoachCard({ member, onClick }: CoachCardProps) {
       </div>
 
       {/* Content */}
-      <div className="absolute bottom-0 left-0 w-full p-4">
+      <div className="p-4 relative">
         <h3 className="text-xl font-black text-white tracking-tighter mb-1 group-hover:text-gray-300 transition-colors">
           {member.name}
         </h3>

@@ -36,17 +36,26 @@ export default function StaffSection({
 
         {/* 役員（静的配置） */}
         <div className="mb-24">
-          <div className="flex flex-col gap-24 max-w-4xl mx-auto">
+          {/* 部長 */}
+          <div className="mb-24">
             <CategoryHeading title="部長" />
-            <div className="flex flex-col gap-8 max-w-4xl mx-auto">
+            <div className="mt-8 flex flex-col gap-8 max-w-4xl mx-auto">
               <KiyotakiFumi />
             </div>
+          </div>
+
+          {/* 総監督 */}
+          <div className="mb-24">
             <CategoryHeading title="総監督" />
-            <div className="flex flex-col gap-8 max-w-4xl mx-auto">
+            <div className="mt-8 flex flex-col gap-8 max-w-4xl mx-auto">
               <AkaiHidekazu />
             </div>
+          </div>
+
+          {/* 監督 */}
+          <div className="mb-24">
             <CategoryHeading title="監督" />
-            <div className="flex flex-col gap-8 max-w-4xl mx-auto">
+            <div className="mt-8 flex flex-col gap-8 max-w-4xl mx-auto">
               <NashiroNobuo />
             </div>
           </div>
@@ -61,7 +70,7 @@ export default function StaffSection({
             <div key={grade} className="mb-24">
               <CategoryHeading title={grade} />
               <div className="mt-8 ">
-                <Grid members={coaches} onMemberClick={setSelectedMember} />
+                <Grid members={coaches} />
               </div>
             </div>
           );
