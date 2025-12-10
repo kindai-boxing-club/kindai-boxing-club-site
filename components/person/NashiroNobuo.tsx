@@ -8,14 +8,15 @@ import { Person } from "@/types";
 import { getPath } from "@/lib/utils/path";
 export default function NashiroNobuo() {
   const person: Person = {
-    id: "member_0",
+    id: 9903,
     name: "名城 信男",
-    classification: "監督",
-    image: getPath("/staff/nashiro-nobuo.webp"),
-    bio: "第16代 第18代 WBA世界スーパーフライ級チャンピオン",
+    grade: "監督",
     position: "監督",
-    weight: "",
-    faculty: "",
+    is_manager: 0,
+    weight_class: null,
+    faculty: null,
+    image_url: getPath("/staff/nashiro-nobuo.webp"),
+    bio: "第16代 第18代 WBA世界スーパーフライ級チャンピオン",
   };
 
   return (
@@ -36,13 +37,13 @@ export default function NashiroNobuo() {
         {/* コンテンツラッパー */}
         <div className="relative h-full w-full bg-black overflow-hidden">
           {/* 画像コンテナ - 自然なアスペクト比 */}
-          <div className="relative w-full h-full transform skew-x-6 scale-110 origin-center">
+          <div className="relative w-full h-[550px] md:h-auto transform skew-x-6 scale-110 origin-center">
             <motion.img
-              src={person.image}
+              src={person.image_url || "/images/default.png"}
               alt={person.name}
               width="1200"
               height="800"
-              className="w-full h-auto object-cover filter contrast-110 brightness-100 transition-transform duration-700 group-hover:scale-105"
+              className="w-full h-full object-cover object-top filter contrast-110 brightness-100 transition-transform duration-700 group-hover:scale-105"
               initial={{ scale: 1 }}
               whileInView={{ scale: 1 }}
               transition={{ duration: 0.5 }}
@@ -63,9 +64,7 @@ export default function NashiroNobuo() {
             {/* 役職バッジ */}
             <div className="absolute top-6 left-6 md:top-8 md:left-8">
               <span className="inline-block px-4 py-1 border border-red-500/50 bg-black/60 backdrop-blur-md text-red-400 font-black tracking-widest text-sm uppercase shadow-lg transform -skew-x-6">
-                <span className="block transform skew-x-6">
-                  {person.classification}
-                </span>
+                <span className="block transform skew-x-6">{person.grade}</span>
               </span>
             </div>
 

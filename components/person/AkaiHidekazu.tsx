@@ -9,15 +9,18 @@ import { getPath } from "@/lib/utils/path";
 
 export default function AkaiHidekazu() {
   const person: Person = {
-    id: "member_0",
+    id: 9902,
     name: "赤井 英和",
-    classification: "総監督",
-    image: getPath("/staff/akai-hidekazu.webp"),
-    bio: "",
+    grade: "総監督",
     position: "総監督",
-    weight: "",
-    faculty: "",
+    is_manager: 0,
+    weight_class: null,
+    faculty: null,
+    image_url: getPath("/staff/akai-hidekazu.webp"),
+    bio: "",
   };
+  // Fallback for bio if empty (to preserve original hardcoded text if data is missing)
+  const displayBio = person.bio || "";
 
   return (
     <motion.div
@@ -33,7 +36,7 @@ export default function AkaiHidekazu() {
         {/* 画像コンテナ */}
         <div className="relative w-full md:w-2/5 h-80 md:h-auto overflow-hidden">
           <motion.img
-            src={person.image}
+            src={person.image_url || "/images/default.png"}
             alt={person.name}
             width="800"
             height="1000"
@@ -49,7 +52,7 @@ export default function AkaiHidekazu() {
           {/* 役職バッジ */}
           <div className="absolute top-4 left-4">
             <span className="inline-block px-4 py-1 bg-linear-to-r from-red-600 to-orange-600 text-white text-xs font-black tracking-widest uppercase shadow-lg skew-x-[-10deg]">
-              {person.classification}
+              {person.grade}
             </span>
           </div>
         </div>
@@ -75,7 +78,7 @@ export default function AkaiHidekazu() {
             <div className="h-3 mb-1 bg-[linear-gradient(90deg,var(--color-yellow-500)_0%,var(--color-red-500)_70%,transparent_100%)]" />
 
             <p className="text-red-100 text-sm font-bold leading-relaxed drop-shadow-md whitespace-pre-wrap">
-              {person.bio}
+              {displayBio}
             </p>
           </div>
         </div>

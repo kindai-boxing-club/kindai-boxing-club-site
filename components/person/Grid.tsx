@@ -13,37 +13,16 @@
  * 部員一覧グリッド表示コンポーネント
  */
 import { Person } from "@/types";
-import dynamic from "next/dynamic";
 import MemberCard from "./MemberCard";
 import CoachCard from "./CoachCard";
 
-const KiyotakiFumi = dynamic(() => import("./KiyotakiFumi"));
-const AkaiHidekazu = dynamic(() => import("./AkaiHidekazu"));
-const NashiroNobuo = dynamic(() => import("./NashiroNobuo"));
-
 type Props = {
   members: Person[];
-  isSpecialRole: boolean;
   onMemberClick?: (member: Person) => void;
 };
 
-export default function Grid({ members, isSpecialRole, onMemberClick }: Props) {
-  if (isSpecialRole) {
-    return (
-      <div className="flex flex-col gap-8 max-w-4xl mx-auto">
-        {members.map((member) => {
-          if (member.classification === "部長")
-            return <KiyotakiFumi key={member.id} />;
-          if (member.classification === "総監督")
-            return <AkaiHidekazu key={member.id} />;
-          if (member.classification === "監督")
-            return <NashiroNobuo key={member.id} />;
-
-          return null;
-        })}
-      </div>
-    );
-  }
+export default function Grid({ members, onMemberClick }: Props) {
+  if (!members || members.length === 0) return null;
 
   return (
     <div className="grid grid-cols-2 md:grid-cols-3 gap-4 md:gap-8 max-w-5xl mx-auto">
@@ -52,7 +31,7 @@ export default function Grid({ members, isSpecialRole, onMemberClick }: Props) {
           key={member.id}
           className="transform hover:-translate-y-1 transition-transform duration-300"
         >
-          {member.classification === "コーチ" ? (
+          {member.grade === "コーチ" ? (
             <CoachCard
               member={member}
               onClick={onMemberClick ? () => onMemberClick(member) : undefined}

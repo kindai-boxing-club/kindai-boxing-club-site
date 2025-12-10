@@ -42,7 +42,7 @@ export default function TeamMemberModal({ member, onClose }: Props) {
           {/* Image Section */}
           <div className="relative w-full md:w-1/2 aspect-square md:aspect-auto md:h-[600px]">
             <Image
-              src={member.image || "/images/placeholder.webp"}
+              src={member.image_url || "/images/default.webp"}
               alt={member.name}
               fill
               className="object-cover"
@@ -74,9 +74,9 @@ export default function TeamMemberModal({ member, onClose }: Props) {
               <h2 className="text-4xl md:text-5xl font-black text-gray-900 mb-2 tracking-tight">
                 {member.name}
               </h2>
-              {member.weight && (
+              {member.weight_class && (
                 <p className="text-red-600 font-bold text-lg tracking-wider uppercase mb-8">
-                  {member.weight}
+                  {member.weight_class}
                 </p>
               )}
 

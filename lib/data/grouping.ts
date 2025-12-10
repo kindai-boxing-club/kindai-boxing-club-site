@@ -5,14 +5,14 @@
  */
 import type { Person } from "@/types";
 
-const DEFAULT_CLASSIFICATION = "未分類";
+const DEFAULT_GRADE = "未分類";
 
 /**
  * 分類ごとにグループ化する
  */
-export const groupByClassification = (people: Person[]) =>
+export const groupByGrade = (people: Person[]) =>
   people.reduce<Record<string, Person[]>>((acc, person) => {
-    const key = person.classification?.trim() || DEFAULT_CLASSIFICATION;
+    const key = person.grade?.trim() || DEFAULT_GRADE;
     if (!acc[key]) acc[key] = [];
     acc[key].push(person);
     return acc;
@@ -25,20 +25,16 @@ export const orderKeys = (
   groups: Record<string, Person[]>,
   preferredOrder: string[]
 ) => [
-  ...preferredOrder.filter((classification) => groups[classification]?.length),
+  ...preferredOrder.filter((grade) => groups[grade]?.length),
   ...Object.keys(groups)
-    .filter(
-      (classification) =>
-        !preferredOrder.includes(classification) &&
-        groups[classification]?.length
-    )
+    .filter((grade) => !preferredOrder.includes(grade) && groups[grade]?.length)
     .sort((a, b) => a.localeCompare(b, "ja")),
 ];
 
 /**
  * 部員の分類順序
  */
-export const memberClassificationOrder = [
+export const memberGradeOrder = [
   "マネージャー",
   "4年",
   "3年",
@@ -53,4 +49,4 @@ export const memberClassificationOrder = [
 /**
  * スタッフの分類順序
  */
-export const staffClassificationOrder = ["部長", "総監督", "監督", "コーチ"];
+export const staffGradeOrder = ["部長", "総監督", "監督", "コーチ"];

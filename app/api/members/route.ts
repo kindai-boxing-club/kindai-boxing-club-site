@@ -1,4 +1,4 @@
-import { getMembersFromD1, mapD1MemberToAppMember } from "@/lib/data/dbMembers";
+import { getMembersFromD1 } from "@/lib/data/dbMembers";
 import { NextResponse } from "next/server";
 import { getRequestContext } from "@cloudflare/next-on-pages";
 
@@ -15,8 +15,9 @@ export async function GET() {
       if (env && env.DB) {
         d1Database = env.DB;
       }
-    } catch (_e) {
-      // ローカル開発(next dev)など、getRequestContextが機能しない場合はここで無視してMockに倒す
+    } catch (e) {
+      console.error("D1 database error:", e);
+      // Fallback to mock data on error (for local dev without D1)など、getRequestContextが機能しない場合はここで無視してMockに倒す
       console.warn(
         "getRequestContext failed or DB not found, falling back to mock data."
       );
@@ -30,10 +31,7 @@ export async function GET() {
     }
 
     // DBからデータ取得
-    const d1Members = await getMembersFromD1(d1Database);
-
-    // アプリで使用する形式に変換
-    const members = d1Members.map(mapD1MemberToAppMember);
+    const members = await getMembersFromD1(d1Database);
 
     return NextResponse.json(members);
   } catch (error) {

@@ -6,11 +6,7 @@
 
 import { useEffect, useState } from "react";
 import { fetchMembers } from "@/lib/data/fetchMembers";
-import {
-  groupByClassification,
-  orderKeys,
-  memberClassificationOrder,
-} from "@/lib/data/grouping";
+import { groupByGrade, orderKeys, memberGradeOrder } from "@/lib/data/grouping";
 import MemberSectionClient from "./MemberSectionClient";
 import type { Person } from "@/types";
 
@@ -43,15 +39,12 @@ export default function MemberSection() {
     );
   }
 
-  const membersByClassification = groupByClassification(members);
-  const memberGroupKeys = orderKeys(
-    membersByClassification,
-    memberClassificationOrder
-  );
+  const membersByGrade = groupByGrade(members);
+  const memberGroupKeys = orderKeys(membersByGrade, memberGradeOrder);
 
   return (
     <MemberSectionClient
-      groups={membersByClassification}
+      groups={membersByGrade}
       groupKeys={memberGroupKeys}
       bgColor={"bg-gray-50"}
     />

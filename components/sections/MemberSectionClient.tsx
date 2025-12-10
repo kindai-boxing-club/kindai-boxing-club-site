@@ -36,23 +36,21 @@ export default function MemberSectionClient({
         <SectionHeading
           title="MEMBERS"
           subtitle="ともにトレーニングに励む仲間たち"
-          bg="light"
         />
-
-        {groupKeys.map((classification) => {
-          const members = groups[classification];
-          const isSpecialRole = ["部長", "総監督", "監督"].includes(
-            classification
-          );
-
-          return (
-            <div key={classification} className="mb-24">
-              <CategoryHeading title={classification} />
-
-              <Grid members={members} isSpecialRole={isSpecialRole} />
-            </div>
-          );
-        })}
+        <div className="container mx-auto px-4">
+          {groupKeys.map((grade) => {
+            const members = groups[grade];
+            if (!members || members.length === 0) return null;
+            return (
+              <div key={grade} className="mb-24">
+                <CategoryHeading title={grade} />
+                <div className="mt-8">
+                  <Grid members={members} />
+                </div>
+              </div>
+            );
+          })}
+        </div>
       </div>
     </section>
   );

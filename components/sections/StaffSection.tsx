@@ -7,60 +7,62 @@
 import { useState } from "react";
 import { AnimatePresence } from "framer-motion";
 import type { Person } from "@/types";
-import Grid from "../person/Grid";
-import TeamMemberModal from "../person/TeamMemberModal";
-import SectionHeading from "../ui/SectionHeading";
+import { groupByGrade, orderKeys, staffGradeOrder } from "@/lib/data/grouping";
+import CategoryHeading from "@/components/ui/CategoryHeading";
+import Grid from "@/components/person/Grid";
+import TeamMemberModal from "@/components/person/TeamMemberModal";
+import KiyotakiFumi from "@/components/person/KiyotakiFumi";
+import AkaiHidekazu from "@/components/person/AkaiHidekazu";
+import NashiroNobuo from "@/components/person/NashiroNobuo";
 import { COACHES_DATA } from "@/public/person/coaches";
-import { EXECUTIVES_DATA } from "@/lib/data/executives";
-import {
-  groupByClassification,
-  orderKeys,
-  staffClassificationOrder,
-} from "@/lib/data/grouping";
-import CategoryHeading from "../ui/CategoryHeading";
-
-type Props = {
-  bgColor?: string;
-  sectionId?: string;
-};
+import SectionHeading from "../ui/SectionHeading";
 
 export default function StaffSection({
-  bgColor = "bg-gray-50",
-  sectionId,
-}: Props) {
+  coaches = COACHES_DATA, // デフォルトで静的データを使用
+}: {
+  coaches?: Person[];
+}) {
   const [selectedMember, setSelectedMember] = useState<Person | null>(null);
 
-  const staff = [...EXECUTIVES_DATA, ...COACHES_DATA];
-  const groups = groupByClassification(staff);
-  const groupKeys = orderKeys(groups, staffClassificationOrder);
+  // コーチデータのみをグルーピング
+  const allStaff = [...coaches];
+  const groups = groupByGrade(allStaff);
+  const groupKeys = orderKeys(groups, staffGradeOrder);
 
   return (
-    <section
-      id={sectionId}
-      className={`py-24 px-4 ${bgColor} relative overflow-hidden`}
-    >
-      <div className="max-w-7xl mx-auto relative z-10">
-        <SectionHeading
-          title="STAFF"
-          subtitle="チームを支えるスタッフ"
-          bg="light"
-        />
+    <section id="staff" className="py-20">
+      <div className="container mx-auto px-4">
+        <SectionHeading title="STAFF" subtitle="チームを支えるスタッフ" />
 
-        {groupKeys.map((classification) => {
-          const members = groups[classification];
-          const isSpecialRole = ["部長", "総監督", "監督"].includes(
-            classification
-          );
+        {/* 役員（静的配置） */}
+        <div className="mb-24">
+          <div className="flex flex-col gap-24 max-w-4xl mx-auto">
+            <CategoryHeading title="部長" />
+            <div className="flex flex-col gap-8 max-w-4xl mx-auto">
+              <KiyotakiFumi />
+            </div>
+            <CategoryHeading title="総監督" />
+            <div className="flex flex-col gap-8 max-w-4xl mx-auto">
+              <AkaiHidekazu />
+            </div>
+            <CategoryHeading title="監督" />
+            <div className="flex flex-col gap-8 max-w-4xl mx-auto">
+              <NashiroNobuo />
+            </div>
+          </div>
+        </div>
+
+        {/* コーチ（動的配置） */}
+        {groupKeys.map((grade) => {
+          const coaches = groups[grade];
+          if (!coaches || coaches.length === 0) return null;
 
           return (
-            <div key={classification} className="mb-24">
-              <CategoryHeading title={classification} />
-
-              <Grid
-                members={members}
-                isSpecialRole={isSpecialRole}
-                onMemberClick={setSelectedMember}
-              />
+            <div key={grade} className="mb-24">
+              <CategoryHeading title={grade} />
+              <div className="mt-8 ">
+                <Grid members={coaches} onMemberClick={setSelectedMember} />
+              </div>
             </div>
           );
         })}

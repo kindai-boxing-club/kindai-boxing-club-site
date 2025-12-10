@@ -1,15 +1,14 @@
 // 部員の型定義
 export interface Person {
-  id: string;
-  name: string; //名前
-  classification: string; // 分類（学年・マネージャー・指導者役職）
-  position?: string; // 役職（主将、副主将、監督など）
-  isManager?: boolean; // マネージャーかどうか
-  weight?: string; // 階級
-  faculty?: string; // 学部
-  image?: string;
-  bio?: string;
-  achievements?: string[];
+  id: number; // D1: INTEGER
+  name: string; // D1: TEXT
+  grade: string; // D1: TEXT ("1", "部長" etc)
+  position: string | null; // D1: TEXT
+  is_manager: number; // D1: BOOLEAN (0 or 1)
+  weight_class: string | null; // D1: TEXT
+  faculty: string | null; // D1: TEXT
+  image_url: string | null; // D1: TEXT
+  bio: string | null; // D1: TEXT
 }
 
 // ブログ投稿の型定義

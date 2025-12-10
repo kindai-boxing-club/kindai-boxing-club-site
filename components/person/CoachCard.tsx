@@ -22,7 +22,7 @@ export default function CoachCard({ member, onClick }: CoachCardProps) {
       {/* Image Container */}
       <div className="relative aspect-3/4 overflow-hidden">
         <Image
-          src={member.image || "/images/placeholder.webp"}
+          src={member.image_url || "/images/default.png"}
           alt={member.name}
           fill
           className="object-cover transition-transform duration-700 group-hover:scale-110"

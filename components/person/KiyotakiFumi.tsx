@@ -10,14 +10,15 @@ import { shipporiMincho } from "@/lib/fonts";
 
 export default function KiyotakiFumi() {
   const person: Person = {
-    id: "member_0",
+    id: 9901,
     name: "清滝 ふみ",
-    classification: "部長",
-    image: getPath("/staff/kiyotaki-fumi.webp"),
-    bio: "",
+    grade: "部長",
     position: "部長",
-    weight: "",
-    faculty: "",
+    is_manager: 0,
+    weight_class: null,
+    faculty: null,
+    image_url: getPath("/staff/kiyotaki-fumi.webp"),
+    bio: null,
   };
 
   const badgeColor = "bg-linear-to-r from-pink-500 to-rose-500";
@@ -39,7 +40,7 @@ export default function KiyotakiFumi() {
         {/* 画像コンテナ */}
         <div className="relative h-80 md:h-auto md:w-2/5 overflow-hidden">
           <motion.img
-            src={person.image}
+            src={person.image_url || "/images/default.png"}
             alt={person.name}
             width="800"
             height="1000"
@@ -55,7 +56,7 @@ export default function KiyotakiFumi() {
             <span
               className={`inline-block px-4 py-1 ${badgeColor} text-white text-xs font-shippori tracking-widest uppercase shadow-md rounded-full`}
             >
-              {person.classification}
+              {person.grade}
             </span>
           </div>
         </div>
@@ -63,7 +64,7 @@ export default function KiyotakiFumi() {
         {/* コンテンツ */}
         <div className="p-6 md:p-8 flex-1 flex flex-col justify-center relative bg-white">
           <h3
-            className={`text-4xl ${shipporiMincho.className} font-bold mb-4 tracking-wide text-slate-800 drop-shadow-sm group-hover:text-pink-600 transition-colors`}
+            className={`text-4xl ${shipporiMincho.className} font-bold font-weight-bold mb-4 tracking-wide text-slate-800 drop-shadow-sm group-hover:text-pink-600 transition-colors`}
           >
             {person.name}
           </h3>
