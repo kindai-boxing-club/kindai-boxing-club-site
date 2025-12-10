@@ -1,10 +1,8 @@
 import type { NextConfig } from "next";
 
-const isProd = process.env.NODE_ENV === "production";
-
 const nextConfig: NextConfig = {
-  // output: isProd ? "export" : undefined, // API Routeを使うためexportモードは無効化が必要です
-  // basePath: isProd ? "/test" : undefined, // User Pages (username.github.io) are served from root
+  // output: "export", // API Routeを使うためexportモードは無効化が必要です
+  // basePath: "/test", // User Pages (username.github.io) are served from root
   images: {
     unoptimized: true,
     remotePatterns: [

@@ -59,6 +59,7 @@ export const MOCK_MEMBERS: Person[] = [
     name: "佐々木 笹子",
     classification: "1年",
     position: "主務",
+    isManager: true,
     weight: "マネージャー",
     faculty: "法学部",
     image: getPath("/members/sasaki-sasako.webp"),

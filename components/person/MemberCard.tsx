@@ -7,6 +7,7 @@
  * 部員カードコンポーネント
  */
 import type { Person } from "@/types";
+import Image from "next/image";
 
 type MemberCardProps = {
   member: Person;
@@ -24,12 +25,12 @@ export default function MemberCard({ member, onClick }: MemberCardProps) {
     >
       {/* Image Container */}
       <div className="relative aspect-3/4 overflow-hidden bg-gray-100">
-        <img
-          src={member.image}
+        <Image
+          src={member.image || "/images/placeholder.webp"}
           alt={member.name}
-          width="600"
-          height="800"
-          className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
+          fill
+          className="object-cover transition-transform duration-700 group-hover:scale-110"
+          sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
         />
         <div className="absolute inset-0 bg-linear-to-t from-black/60 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
 

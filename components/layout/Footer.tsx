@@ -33,22 +33,25 @@ export default function Footer() {
             <h4 className="text-white font-bold mb-6 tracking-wider">LINKS</h4>
             <ul className="space-y-4 text-sm">
               <li>
-                <a href="/" className="hover:text-white transition-colors">
+                <Link href="/" className="hover:text-white transition-colors">
                   ホーム
-                </a>
+                </Link>
               </li>
               <li>
-                <a
+                <Link
                   href="/#members"
                   className="hover:text-white transition-colors"
                 >
                   部員紹介
-                </a>
+                </Link>
               </li>
               <li>
-                <a href="/blog" className="hover:text-white transition-colors">
+                <Link
+                  href="/blog"
+                  className="hover:text-white transition-colors"
+                >
                   ブログ
-                </a>
+                </Link>
               </li>
             </ul>
           </div>

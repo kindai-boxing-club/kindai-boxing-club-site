@@ -32,7 +32,7 @@ export function mapD1MemberToAppMember(member: Member) {
     name: member.name,
     classification: `${member.grade}年`, // 数値を"〇年"に変換
     position: member.position || "",
-    is_manager: member.is_manager === 1,
+    isManager: member.is_manager === 1,
     faculty: member.faculty,
     weight: member.weight_class || "",
     image: member.image_url ? getPath(`/members/${member.image_url}`) : "",

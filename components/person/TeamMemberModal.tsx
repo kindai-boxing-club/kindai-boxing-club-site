@@ -11,7 +11,7 @@
 import { motion } from "framer-motion";
 import { FaTimes } from "react-icons/fa";
 import { Person } from "@/types";
-
+import Image from "next/image";
 
 type Props = {
   member: Person;
@@ -19,8 +19,6 @@ type Props = {
 };
 
 export default function TeamMemberModal({ member, onClose }: Props) {
-
-
   return (
     <>
       {/* Backdrop */}
@@ -43,10 +41,12 @@ export default function TeamMemberModal({ member, onClose }: Props) {
         >
           {/* Image Section */}
           <div className="relative w-full md:w-1/2 aspect-square md:aspect-auto md:h-[600px]">
-            <img
-              src={member.image}
+            <Image
+              src={member.image || "/images/placeholder.webp"}
               alt={member.name}
-              className="w-full h-full object-cover"
+              fill
+              className="object-cover"
+              sizes="(max-width: 768px) 100vw, 50vw"
             />
             {member.position && (
               <div className="absolute top-6 left-6 z-20">

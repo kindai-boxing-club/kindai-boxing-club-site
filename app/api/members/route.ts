@@ -4,7 +4,7 @@ import { getRequestContext } from "@cloudflare/next-on-pages";
 
 export const runtime = "edge"; // Cloudflare Pagesで動かすためにEdge Runtimeを指定
 
-export async function GET(request: Request) {
+export async function GET() {
   try {
     // Cloudflare D1への接続情報(env)を取得
     // Next.js on Cloudflare Pagesでは process.env または requestContext から取得
@@ -15,7 +15,7 @@ export async function GET(request: Request) {
       if (env && env.DB) {
         d1Database = env.DB;
       }
-    } catch (e) {
+    } catch (_e) {
       // ローカル開発(next dev)など、getRequestContextが機能しない場合はここで無視してMockに倒す
       console.warn(
         "getRequestContext failed or DB not found, falling back to mock data."
