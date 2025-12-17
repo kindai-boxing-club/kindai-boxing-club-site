@@ -4,8 +4,10 @@
 "use client";
 
 import { motion } from "framer-motion";
+import { useState } from "react";
 import { Person } from "@/types";
 import { getPath } from "@/lib/utils/path";
+import PositionBadge from "../ui/PositionBadge";
 
 export default function AkaiHidekazu() {
   const person: Person = {
@@ -51,9 +53,10 @@ export default function AkaiHidekazu() {
 
           {/* 役職バッジ */}
           <div className="absolute top-4 left-4">
-            <span className="inline-block px-4 py-1 bg-linear-to-r from-red-600 to-orange-600 text-white text-xs font-black tracking-widest uppercase shadow-lg skew-x-[-10deg]">
-              {person.grade}
-            </span>
+            <PositionBadge
+              label={person.grade}
+              className="bg-linear-to-r from-red-600 to-orange-600 text-white shadow-lg"
+            />
           </div>
         </div>
 

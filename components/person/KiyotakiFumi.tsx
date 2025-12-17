@@ -6,6 +6,8 @@
 import { motion } from "framer-motion";
 import { getPath } from "@/lib/utils/path";
 import { Person } from "@/types";
+import { useState } from "react";
+import PositionBadge from "../ui/PositionBadge";
 import { shipporiMincho } from "@/lib/fonts";
 
 export default function KiyotakiFumi() {
@@ -53,11 +55,10 @@ export default function KiyotakiFumi() {
 
           {/* 役職バッジ */}
           <div className="absolute top-4 left-4">
-            <span
-              className={`inline-block px-4 py-1 ${badgeColor} text-white text-xs font-shippori tracking-widest uppercase shadow-md rounded-full`}
-            >
-              {person.grade}
-            </span>
+            <PositionBadge
+              label={person.grade}
+              className={`${badgeColor} text-white font-shippori shadow-md`}
+            />
           </div>
         </div>
 

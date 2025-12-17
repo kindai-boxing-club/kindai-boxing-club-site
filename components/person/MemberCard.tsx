@@ -8,6 +8,7 @@
  */
 import type { Person } from "@/types";
 import PersonImage from "../ui/PersonImage";
+import PositionBadge from "../ui/PositionBadge";
 
 type MemberCardProps = {
   member: Person;
@@ -37,11 +38,10 @@ export default function MemberCard({ member, onClick }: MemberCardProps) {
         {/* Position Badge (Only if position exists) */}
         {member.position && (
           <div className="absolute top-2 left-2">
-            <div className="inline-block px-2 py-0.5 bg-black -skew-x-12">
-              <span className="block text-white text-[10px] font-bold tracking-widest uppercase skew-x-12">
-                {member.position}
-              </span>
-            </div>
+            <PositionBadge
+              label={member.position}
+              className="bg-black text-white"
+            />
           </div>
         )}
       </div>

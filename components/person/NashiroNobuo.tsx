@@ -3,9 +3,11 @@
  */
 "use client";
 
+import { useState } from "react";
 import { motion } from "framer-motion";
 import { Person } from "@/types";
 import { getPath } from "@/lib/utils/path";
+import PositionBadge from "../ui/PositionBadge";
 export default function NashiroNobuo() {
   const person: Person = {
     id: 9903,
@@ -57,9 +59,10 @@ export default function NashiroNobuo() {
           <div className="absolute inset-0 p-4 md:p-10 flex flex-col justify-end transform skew-x-6">
             {/* 役職バッジ */}
             <div className="absolute top-6 left-6 md:top-8 md:left-8">
-              <span className="inline-block px-4 py-1 border border-red-500/50 bg-black/60 backdrop-blur-md text-red-400 font-black tracking-widest text-sm uppercase shadow-lg transform -skew-x-6">
-                <span className="block transform skew-x-6">{person.grade}</span>
-              </span>
+              <PositionBadge
+                label={person.grade}
+                className="border border-red-500/50 bg-black/60 backdrop-blur-md text-red-400 font-black shadow-lg"
+              />
             </div>
 
             {/* 名前 */}
