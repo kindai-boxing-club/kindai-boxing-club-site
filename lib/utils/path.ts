@@ -25,3 +25,12 @@ export function getPath(path: string): string {
   // それ以外はそのまま（ルート相対パス）
   return normalizedPath;
 }
+
+/**
+ * 部員IDから画像URLを生成する
+ * 例: id=2210001 -> {R2_BASE_URL}/members/2210001.webp
+ */
+export function getMemberImage(id: number): string {
+  if (!id) return "/images/default.png";
+  return `${R2_BASE_URL}/members/${id}.webp`;
+}
