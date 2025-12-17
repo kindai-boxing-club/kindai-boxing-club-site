@@ -4,7 +4,7 @@
 "use client";
 
 import type { Person } from "@/types";
-import Image from "next/image";
+import PersonImage from "../ui/PersonImage";
 
 type CoachCardProps = {
   member: Person;
@@ -21,9 +21,8 @@ export default function CoachCard({ member, onClick }: CoachCardProps) {
     >
       {/* Image Container */}
       <div className="relative aspect-3/4 overflow-hidden">
-        <Image
-          src={member.image_url || "/images/default.png"}
-          alt={member.name}
+        <PersonImage
+          person={member}
           fill
           className="object-cover transition-transform duration-700 group-hover:scale-110"
           sizes="(max-width: 768px) 100vw, 33vw"

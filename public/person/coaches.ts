@@ -18,7 +18,7 @@ export const COACHES_DATA: Person[] = [
     position: "コーチ",
     weight_class: "",
     faculty: null,
-    image_url: getPath("/staff/kuramoto-ryo.webp"),
+    image_url: null,
     bio: null,
   },
   {
@@ -29,7 +29,7 @@ export const COACHES_DATA: Person[] = [
     position: "コーチ",
     weight_class: "",
     faculty: null,
-    image_url: getPath("/staff/nakajima-ken.webp"),
+    image_url: null,
     bio: null,
   },
   {
@@ -40,7 +40,7 @@ export const COACHES_DATA: Person[] = [
     position: "コーチ",
     weight_class: "",
     faculty: null,
-    image_url: getPath("/staff/kunishige-kenji.webp"),
+    image_url: null,
     bio: null,
   },
 ];

@@ -6,10 +6,8 @@
 /**
  * 部員カードコンポーネント
  */
-import { useState } from "react";
 import type { Person } from "@/types";
-import Image from "next/image";
-import { getMemberImage } from "@/lib/utils/path";
+import PersonImage from "../ui/PersonImage";
 
 type MemberCardProps = {
   member: Person;
@@ -17,8 +15,6 @@ type MemberCardProps = {
 };
 
 export default function MemberCard({ member, onClick }: MemberCardProps) {
-  const [imgSrc, setImgSrc] = useState(getMemberImage(member.id));
-
   // Standard Variant (White Theme)
   return (
     <div
@@ -29,13 +25,11 @@ export default function MemberCard({ member, onClick }: MemberCardProps) {
     >
       {/* Image Container */}
       <div className="relative aspect-3/4 overflow-hidden bg-gray-100">
-        <Image
-          src={imgSrc}
-          alt={member.name}
+        <PersonImage
+          person={member}
           fill
           className="object-cover transition-transform duration-700 group-hover:scale-110"
           sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
-          onError={() => setImgSrc("/images/default.png")}
         />
         <div className="absolute inset-0 bg-linear-to-t from-black/60 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
 
