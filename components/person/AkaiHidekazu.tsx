@@ -18,7 +18,7 @@ export default function AkaiHidekazu() {
     is_manager: 0,
     weight_class: null,
     faculty: null,
-    image_url: getPath("/staff/akai-hidekazu.webp"),
+    image_url: getPath("/members/akai-hidekazu.webp"),
     bio: "",
   };
   // Fallback for bio if empty

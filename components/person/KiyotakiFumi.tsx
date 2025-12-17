@@ -19,7 +19,7 @@ export default function KiyotakiFumi() {
     is_manager: 0,
     weight_class: null,
     faculty: null,
-    image_url: getPath("/staff/kiyotaki-fumi.webp"),
+    image_url: getPath("/members/kiyotaki-fumi.webp"),
     bio: null,
   };
 

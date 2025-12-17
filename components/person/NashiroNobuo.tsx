@@ -17,7 +17,7 @@ export default function NashiroNobuo() {
     is_manager: 0,
     weight_class: null,
     faculty: null,
-    image_url: getPath("/staff/nashiro-nobuo.webp"),
+    image_url: getPath("/members/nashiro-nobuo.webp"),
     bio: "第16代 第18代 WBA世界スーパーフライ級チャンピオン",
   };
 
