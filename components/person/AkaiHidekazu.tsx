@@ -21,8 +21,12 @@ export default function AkaiHidekazu() {
     image_url: getPath("/staff/akai-hidekazu.webp"),
     bio: "",
   };
-  // Fallback for bio if empty (to preserve original hardcoded text if data is missing)
+  // Fallback for bio if empty
   const displayBio = person.bio || "";
+
+  const [imgSrc, setImgSrc] = useState(
+    person.image_url || "/images/default.png"
+  );
 
   return (
     <motion.div
@@ -38,7 +42,7 @@ export default function AkaiHidekazu() {
         {/* 画像コンテナ */}
         <div className="relative w-full md:w-2/5 h-80 md:h-auto overflow-hidden">
           <motion.img
-            src={person.image_url || "/images/default.png"}
+            src={imgSrc}
             alt={person.name}
             width="800"
             height="1000"
@@ -46,6 +50,7 @@ export default function AkaiHidekazu() {
             initial={{ scale: 1.1 }}
             whileInView={{ scale: 1 }}
             transition={{ duration: 0.5 }}
+            onError={() => setImgSrc("/images/default.png")}
           />
 
           {/* オーバーレイグラデーション */}

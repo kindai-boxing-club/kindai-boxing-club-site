@@ -26,6 +26,10 @@ export default function KiyotakiFumi() {
   const badgeColor = "bg-linear-to-r from-pink-500 to-rose-500";
   const borderGradient = "from-yellow-400 via-pink-300 to-yellow-400";
 
+  const [imgSrc, setImgSrc] = useState(
+    person.image_url || "/images/default.png"
+  );
+
   return (
     <motion.div
       initial={{ opacity: 0, y: 20 }}
@@ -42,7 +46,7 @@ export default function KiyotakiFumi() {
         {/* 画像コンテナ */}
         <div className="relative h-80 md:h-auto md:w-2/5 overflow-hidden">
           <motion.img
-            src={person.image_url || "/images/default.png"}
+            src={imgSrc}
             alt={person.name}
             width="800"
             height="1000"
@@ -51,6 +55,7 @@ export default function KiyotakiFumi() {
             whileInView={{ filter: "grayscale(0%)" }}
             viewport={{ once: true, amount: 0.3 }}
             transition={{ duration: 1.5, ease: "easeOut" }}
+            onError={() => setImgSrc("/images/default.png")}
           />
 
           {/* 役職バッジ */}

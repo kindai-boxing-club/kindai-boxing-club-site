@@ -21,6 +21,13 @@ export default function NashiroNobuo() {
     bio: "第16代 第18代 WBA世界スーパーフライ級チャンピオン",
   };
 
+  // Fallback for bio if empty
+  const displayBio = person.bio || "";
+
+  const [imgSrc, setImgSrc] = useState(
+    person.image_url || "/images/default.png"
+  );
+
   return (
     <motion.div
       initial={{ opacity: 0, y: 30 }}
@@ -41,7 +48,7 @@ export default function NashiroNobuo() {
           {/* 画像コンテナ */}
           <div className="relative w-full aspect-4/3 md:aspect-video transform skew-x-6 scale-115 md:scale-110 origin-center">
             <motion.img
-              src={person.image_url || "/images/default.png"}
+              src={imgSrc}
               alt={person.name}
               width="1200"
               height="800"
@@ -49,6 +56,7 @@ export default function NashiroNobuo() {
               initial={{ scale: 1 }}
               whileInView={{ scale: 1 }}
               transition={{ duration: 0.5 }}
+              onError={() => setImgSrc("/images/default.png")}
             />
 
             {/* グラデーションオーバーレイ */}

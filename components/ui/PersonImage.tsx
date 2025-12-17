@@ -22,17 +22,11 @@ export default function PersonImage({
   className,
   ...props
 }: Props) {
-  // 初期ソースの決定ロジック
-  const getInitialSrc = () => {
-    if (person.image_url) return person.image_url;
-    return getMemberImage(person.id);
-  };
-
-  const [src, setSrc] = useState(getInitialSrc());
+  const [src, setSrc] = useState(person.image_url || getMemberImage(person.id));
 
   // personが変わったときにソースをリセット (モーダルなどで重要)
   useEffect(() => {
-    setSrc(getInitialSrc());
+    setSrc(person.image_url || getMemberImage(person.id));
   }, [person.id, person.image_url]);
 
   return (
