@@ -21,9 +21,6 @@ export default function NashiroNobuo() {
     bio: "第16代 第18代 WBA世界スーパーフライ級チャンピオン",
   };
 
-  // Fallback for bio if empty
-  const displayBio = person.bio || "";
-
   const [imgSrc, setImgSrc] = useState(
     person.image_url || "/images/default.png"
   );
