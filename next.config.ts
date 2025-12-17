@@ -1,8 +1,6 @@
 import type { NextConfig } from "next";
 
 const nextConfig: NextConfig = {
-  // output: "export", // API Routeを使うためexportモードは無効化が必要です
-  // basePath: "/test", // User Pages (username.github.io) are served from root
   images: {
     unoptimized: true,
     remotePatterns: [
