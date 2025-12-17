@@ -6,7 +6,10 @@
 
 import { useEffect, useState } from "react";
 import { fetchMembers } from "@/lib/data/fetchMembers";
-import { groupByGrade, orderKeys, memberGradeOrder } from "@/lib/data/grouping";
+import {
+  MemberCollection,
+  MEMBER_GRADE_ORDER,
+} from "@/lib/domain/MemberCollection";
 import MemberSectionClient from "./MemberSectionClient";
 import type { Person } from "@/types";
 
@@ -28,7 +31,7 @@ export default function MemberSection() {
     loadMembers();
   }, []);
 
-  // ローディング中は何も表示しないか、スケルトンを表示
+  // ローディング中は何も表示しない
   if (isLoading) {
     return (
       <section id="members" className="py-20 bg-gray-50">
@@ -39,8 +42,13 @@ export default function MemberSection() {
     );
   }
 
-  const membersByGrade = groupByGrade(members);
-  const memberGroupKeys = orderKeys(membersByGrade, memberGradeOrder);
+  // 並び替え
+  const collection = new MemberCollection(members).sortDefault();
+  const membersByGrade = collection.groupByGrade();
+  const memberGroupKeys = MemberCollection.getSortedGroupKeys(
+    membersByGrade,
+    MEMBER_GRADE_ORDER
+  );
 
   return (
     <MemberSectionClient

@@ -7,7 +7,10 @@
 import { useState } from "react";
 import { AnimatePresence } from "framer-motion";
 import type { Person } from "@/types";
-import { groupByGrade, orderKeys, staffGradeOrder } from "@/lib/data/grouping";
+import {
+  MemberCollection,
+  STAFF_GRADE_ORDER,
+} from "@/lib/domain/MemberCollection";
 import CategoryHeading from "@/components/ui/CategoryHeading";
 import Grid from "@/components/person/Grid";
 import TeamMemberModal from "@/components/person/TeamMemberModal";
@@ -25,9 +28,12 @@ export default function StaffSection({
   const [selectedMember, setSelectedMember] = useState<Person | null>(null);
 
   // コーチデータのみをグルーピング
-  const allStaff = [...coaches];
-  const groups = groupByGrade(allStaff);
-  const groupKeys = orderKeys(groups, staffGradeOrder);
+  const collection = new MemberCollection(coaches);
+  const groups = collection.groupByGrade();
+  const groupKeys = MemberCollection.getSortedGroupKeys(
+    groups,
+    STAFF_GRADE_ORDER
+  );
 
   return (
     <section id="staff" className="py-20">
