@@ -11,6 +11,8 @@ import MemberSection from "@/components/sections/MemberSection";
 import RecruitmentCTA from "@/components/sections/RecruitmentCTA";
 import InstagramSection from "@/components/sections/InstagramSection";
 
+export const runtime = "edge";
+
 export default async function Home() {
   return (
     <div className="bg-white">
