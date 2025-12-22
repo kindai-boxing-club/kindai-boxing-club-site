@@ -10,7 +10,7 @@
 "use client";
 
 /**
- * 部員一覧グリッド表示コンポーネント
+ * グリッド表示コンポーネント
  */
 import { Person } from "@/types";
 import PersonCard from "./PersonCard";
@@ -26,16 +26,12 @@ export default function Grid({ members, onMemberClick }: Props) {
   return (
     <div className="grid grid-cols-2 md:grid-cols-3 gap-4 md:gap-8 max-w-5xl mx-auto">
       {members.map((member) => (
-        <div
+        <PersonCard
           key={member.id}
-          className="transform hover:-translate-y-1 transition-transform duration-300"
-        >
-          <PersonCard
-            member={member}
-            variant={member.grade === "コーチ" ? "coach" : "member"}
-            onClick={onMemberClick ? () => onMemberClick(member) : undefined}
-          />
-        </div>
+          member={member}
+          variant={member.grade === "コーチ" ? "coach" : "member"}
+          onClick={onMemberClick ? () => onMemberClick(member) : undefined}
+        />
       ))}
     </div>
   );

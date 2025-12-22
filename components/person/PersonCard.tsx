@@ -50,7 +50,7 @@ export default function PersonCard({
     <div
       onClick={onClick}
       className={cn(
-        "group relative h-full rounded-none overflow-hidden border transition-all duration-500",
+        "group relative h-full rounded-none overflow-hidden border transition-all duration-500 transform hover:-translate-y-1",
         containerStyles,
         onClick && "cursor-pointer"
       )}
