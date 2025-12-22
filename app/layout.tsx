@@ -8,11 +8,41 @@ import "./globals.css";
 import Navigation from "@/components/layout/Navigation";
 import Footer from "@/components/layout/Footer";
 
-
 export const metadata: Metadata = {
-  title: "近畿大学体育会ボクシング部 | Kindai University Boxing Club",
+  metadataBase: new URL("https://kindai-boxing.com"),
+  title: {
+    template: "%s | 近畿大学体育会ボクシング部",
+    default: "近畿大学体育会ボクシング部 | Kindai University Boxing Club",
+  },
   description:
-    "近畿大学体育会ボクシング部の公式ウェブサイト。部員紹介、活動報告、最新情報をお届けします。",
+    "近畿大学体育会ボクシング部の公式ウェブサイト。選手紹介、試合日程、活動報告、最新情報をお届けします。ボクシング部は、関西学生リーグ戦優勝、全日本大学王座決定戦制覇を目指して日々練習に励んでいます。",
+  openGraph: {
+    title: "近畿大学体育会ボクシング部 | Kindai University Boxing Club",
+    description:
+      "近畿大学体育会ボクシング部の公式ウェブサイト。選手紹介、試合日程、活動報告、最新情報をお届けします。",
+    url: "https://kindai-boxing.com",
+    siteName: "近畿大学体育会ボクシング部",
+    locale: "ja_JP",
+    type: "website",
+    images: [
+      {
+        url: "/images/bg_hero.png",
+        width: 1200,
+        height: 630,
+        alt: "近畿大学体育会ボクシング部",
+      },
+    ],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "近畿大学体育会ボクシング部",
+    description:
+      "近畿大学体育会ボクシング部の公式ウェブサイト。選手紹介、試合日程、活動報告、最新情報をお届けします。",
+    images: ["/images/bg_hero.png"],
+  },
+  icons: {
+    icon: "/favicon.ico",
+  },
 };
 
 export const viewport: Viewport = {
@@ -29,7 +59,9 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="ja">
-      <body className={`${notoSansJP.variable} ${shipporiMincho.variable} ${zenAntique.variable} antialiased`}>
+      <body
+        className={`${notoSansJP.variable} ${shipporiMincho.variable} ${zenAntique.variable} antialiased`}
+      >
         <Navigation />
         <main className="min-h-screen">{children}</main>
         <Footer />
