@@ -29,8 +29,8 @@ const features = [
   {
     id: "03",
     icon: FaTrophy,
-    title: "勝利",
-    subtitle: "勝利への執念",
+    title: "挑戦",
+    subtitle: "挑戦への執念",
     description:
       "目指すは頂点のみ。妥協なき挑戦の連続が、我々を勝利へと導く。敗北を恐れず、ただ前へ。",
     delay: 0.6,

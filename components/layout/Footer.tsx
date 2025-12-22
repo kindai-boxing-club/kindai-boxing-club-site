@@ -24,7 +24,7 @@ export default function Footer() {
               />
             </div>
             <p className="text-sm leading-relaxed max-w-md">
-              近畿大学体育会ボクシング部は、歴史と伝統を重んじながら、常に新しい挑戦を続けています。
+              近畿大学体育会ボクシング部は、常に新しい挑戦を続けています。
               応援よろしくお願いいたします。
             </p>
           </div>
