@@ -2,7 +2,6 @@
  * コーチデータ定義
  */
 import { Person } from "@/types";
-import { getPath } from "@/lib/utils/path";
 
 /**
  * コーチデータ定義

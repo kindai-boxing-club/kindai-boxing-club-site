@@ -44,25 +44,3 @@ export async function getMembers(): Promise<Person[]> {
 }
 
 // Mapper
-function getPath(path: string) {
-  if (process.env.NEXT_PUBLIC_R2_BASE_URL) {
-    return `${process.env.NEXT_PUBLIC_R2_BASE_URL}${path}`;
-  }
-  return path;
-}
-
-export function mapD1MemberToAppMember(member: any): Person {
-  return {
-    id: member.id,
-    name: member.name,
-    grade: member.grade, // DBのカラム名をそのまま使用
-    position: member.position || "",
-    is_manager: member.is_manager,
-    weight_class: member.weight_class || "",
-    faculty: member.faculty,
-    image_url: member.image_url
-      ? getPath(`/members/${member.image_url}`)
-      : null,
-    bio: member.bio || "",
-  };
-}
