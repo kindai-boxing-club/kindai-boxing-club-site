@@ -1,7 +1,4 @@
 /**
- * クラブ紹介セクション (OUR SPIRIT)
- */
-/**
  * クラブ紹介セクションコンポーネント
  */
 "use client";
@@ -43,14 +40,6 @@ const features = [
 export default function ClubIntro() {
   return (
     <section className="py-32 px-4 bg-black relative overflow-hidden">
-      {/* Background Elements */}
-      <div className="absolute inset-0 opacity-20">
-        <div className="absolute top-0 left-0 w-full h-px bg-linear-to-r from-transparent via-red-600 to-transparent" />
-        <div className="absolute bottom-0 left-0 w-full h-px bg-linear-to-r from-transparent via-red-600 to-transparent" />
-        <div className="absolute top-0 left-1/4 w-px h-full bg-linear-to-b from-transparent via-gray-800 to-transparent" />
-        <div className="absolute top-0 right-1/4 w-px h-full bg-linear-to-b from-transparent via-gray-800 to-transparent" />
-      </div>
-
       <div className="max-w-7xl mx-auto relative z-10">
         {/* セクションヘッダー */}
         <SectionHeading
