@@ -13,8 +13,7 @@
  * 部員一覧グリッド表示コンポーネント
  */
 import { Person } from "@/types";
-import MemberCard from "./MemberCard";
-import CoachCard from "./CoachCard";
+import PersonCard from "./PersonCard";
 
 type Props = {
   members: Person[];
@@ -31,17 +30,11 @@ export default function Grid({ members, onMemberClick }: Props) {
           key={member.id}
           className="transform hover:-translate-y-1 transition-transform duration-300"
         >
-          {member.grade === "コーチ" ? (
-            <CoachCard
-              member={member}
-              onClick={onMemberClick ? () => onMemberClick(member) : undefined}
-            />
-          ) : (
-            <MemberCard
-              member={member}
-              onClick={onMemberClick ? () => onMemberClick(member) : undefined}
-            />
-          )}
+          <PersonCard
+            member={member}
+            variant={member.grade === "コーチ" ? "coach" : "member"}
+            onClick={onMemberClick ? () => onMemberClick(member) : undefined}
+          />
         </div>
       ))}
     </div>
