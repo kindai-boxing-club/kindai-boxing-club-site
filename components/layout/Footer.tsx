@@ -86,7 +86,7 @@ export default function Footer() {
             rights reserved.
           </p>
           <p className="text-gray-700 font-medium opacity-80">
-            Created by Keishin Suzuki
+            Web Management & Development: Keishin Suzuki
           </p>
         </div>
       </div>
