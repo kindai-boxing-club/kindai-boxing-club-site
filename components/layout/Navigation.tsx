@@ -67,7 +67,7 @@ export default function Navigation() {
               <Link
                 key={link.name}
                 href={link.href}
-                className="text-white hover:text-red-500 transition-colors font-medium tracking-wide"
+                className="text-white hover:text-red-500 active:text-red-600 transition-colors font-medium tracking-wide"
               >
                 {link.name}
               </Link>
@@ -76,7 +76,7 @@ export default function Navigation() {
               href="https://www.instagram.com/kindaiboxing/"
               target="_blank"
               rel="noopener noreferrer"
-              className="px-6 py-2 bg-linear-to-r from-[#833ab4] via-[#fd1d1d] to-[#fcb045] text-white rounded-full font-bold hover:shadow-lg hover:scale-105 transition-all flex items-center gap-2"
+              className="px-6 py-2 bg-linear-to-r from-[#833ab4] via-[#fd1d1d] to-[#fcb045] text-white rounded-full font-bold hover:shadow-lg hover:scale-105 active:scale-95 transition-all flex items-center gap-2"
             >
               <FaInstagram /> Instagram
             </a>

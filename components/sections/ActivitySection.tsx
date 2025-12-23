@@ -65,7 +65,7 @@ export default function ActivitySection() {
               {schedule.map((item, index) => (
                 <div
                   key={index}
-                  className="group border-b border-gray-200 py-8 hover:bg-gray-50 transition-colors px-4"
+                  className="group border-b border-gray-200 py-8 hover:bg-gray-50 active:bg-gray-100 transition-colors px-4"
                 >
                   <div className="flex flex-col md:flex-row md:items-baseline justify-between gap-2">
                     <div className="flex items-center gap-3">
@@ -103,7 +103,7 @@ export default function ActivitySection() {
               {events.map((event, index) => (
                 <div
                   key={index}
-                  className="bg-black p-8 text-white relative overflow-hidden group hover:-translate-y-1 transition-transform duration-300"
+                  className="bg-black p-8 text-white relative overflow-hidden group hover:-translate-y-1 active:scale-[0.98] transition-transform duration-300"
                 >
                   <div className="absolute top-0 right-0 w-16 h-16 bg-red-600 transform rotate-45 translate-x-8 -translate-y-8" />
 

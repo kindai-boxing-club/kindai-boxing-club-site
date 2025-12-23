@@ -38,7 +38,7 @@ export default function KiyotakiFumi() {
       transition={{ duration: 0.8, ease: "easeOut" }}
       className="group relative max-w-md mx-auto md:max-w-none"
     >
-      <div className="relative h-full bg-white rounded-xl overflow-hidden shadow-xl hover:shadow-2xl transition-all duration-500 border border-slate-100 flex flex-col md:flex-row">
+      <div className="relative h-full bg-white rounded-xl overflow-hidden shadow-xl hover:shadow-2xl active:shadow-2xl transition-all duration-500 border border-slate-100 flex flex-col md:flex-row">
         {/* 装飾的な背景要素 */}
         <div className="absolute top-0 right-0 w-32 h-32 bg-linear-to-bl from-pink-50 to-transparent opacity-50 rounded-bl-full" />
         <div className="absolute bottom-0 left-0 w-24 h-24 bg-linear-to-tr from-yellow-50 to-transparent opacity-50 rounded-tr-full" />
@@ -50,7 +50,7 @@ export default function KiyotakiFumi() {
             alt={person.name}
             width="800"
             height="1000"
-            className="w-full h-full object-cover object-top transition-transform duration-700 group-hover:scale-105"
+            className="w-full h-full object-cover object-top transition-transform duration-700 group-hover:scale-105 group-active:scale-105"
             initial={{ filter: "grayscale(100%)" }}
             whileInView={{ filter: "grayscale(0%)" }}
             viewport={{ once: true, amount: 0.3 }}
@@ -70,13 +70,13 @@ export default function KiyotakiFumi() {
         {/* コンテンツ */}
         <div className="p-6 md:p-8 flex-1 flex flex-col justify-center relative bg-white">
           <h3
-            className={`text-4xl ${shipporiMincho.className} font-bold font-weight-bold mb-4 tracking-wide text-slate-800 drop-shadow-sm group-hover:text-pink-600 transition-colors`}
+            className={`text-4xl ${shipporiMincho.className} font-bold font-weight-bold mb-4 tracking-wide text-slate-800 drop-shadow-sm group-hover:text-pink-600 group-active:text-pink-600 transition-colors`}
           >
             {person.name}
           </h3>
 
           <div
-            className={`h-0.5 w-16 bg-linear-to-r ${borderGradient} mb-6 transform origin-left group-hover:scale-x-150 transition-transform duration-500`}
+            className={`h-0.5 w-16 bg-linear-to-r ${borderGradient} mb-6 transform origin-left group-hover:scale-x-150 group-active:scale-x-150 transition-transform duration-500`}
           />
 
           <p className="text-slate-600 text-sm leading-loose font-shippori whitespace-pre-wrap tracking-wide">

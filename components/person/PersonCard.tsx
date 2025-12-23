@@ -40,7 +40,7 @@ export default function PersonCard({
 
   const nameStyles = isCoach
     ? "text-2xl text-transparent bg-clip-text bg-linear-to-b from-[#b8860b] via-[#ffd700] to-[#b8860b] drop-shadow-[0_2px_2px_rgba(0,0,0,0.8)]"
-    : "text-lg text-gray-900 italic group-hover:text-red-600";
+    : "text-lg text-gray-900 italic group-hover:text-red-600 group-active:text-red-600";
 
   const badgeStyles = isCoach
     ? "bg-black/80 backdrop-blur-sm text-yellow-500 border border-yellow-900/50"
@@ -50,7 +50,7 @@ export default function PersonCard({
     <div
       onClick={onClick}
       className={cn(
-        "group relative h-full rounded-none overflow-hidden border transition-all duration-500 transform hover:-translate-y-1",
+        "group relative h-full rounded-none overflow-hidden border transition-all duration-500 transform hover:-translate-y-1 active:scale-[0.98] active:brightness-95",
         containerStyles,
         onClick && "cursor-pointer"
       )}
@@ -60,7 +60,7 @@ export default function PersonCard({
         <PersonImage
           person={member}
           fill
-          className="object-cover transition-transform duration-700 group-hover:scale-110"
+          className="object-cover transition-transform duration-700 group-hover:scale-110 group-active:scale-110"
           sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
         />
 

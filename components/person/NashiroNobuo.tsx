@@ -36,7 +36,7 @@ export default function NashiroNobuo() {
       {/* <div className="absolute -inset-8 bg-gradient-to-r from-red-700 to-black opacity-0 group-hover:opacity-30 blur-3xl transition-opacity duration-500 rounded-none animate-pulse" /> */}
 
       {/* カードコンテナ -  平行四辺形 */}
-      <div className="relative rounded-none shadow-[0_0_30px_rgba(153,27,27,0.2)] group-hover:shadow-[0_0_60px_rgba(220,38,38,0.6)] transform -skew-x-6 mx-1 md:mx-0 p-2 mb-8">
+      <div className="relative rounded-none shadow-[0_0_30px_rgba(153,27,27,0.2)] group-hover:shadow-[0_0_60px_rgba(220,38,38,0.6)] group-active:shadow-[0_0_60px_rgba(220,38,38,0.6)] transform -skew-x-6 mx-1 md:mx-0 p-2 mb-8">
         {/* アニメーションボーダー背景 */}
         <div className="absolute inset-0 bg-linear-to-br from-red-950 via-red-500 to-red-950 bg-size-[400%_400%] animate-gradient-xy" />
 
@@ -49,7 +49,7 @@ export default function NashiroNobuo() {
               alt={person.name}
               width="1200"
               height="800"
-              className="w-full h-full object-cover object-top filter contrast-110 brightness-100 transition-transform duration-700 group-hover:scale-105"
+              className="w-full h-full object-cover object-top filter contrast-110 brightness-100 transition-transform duration-700 group-hover:scale-105 group-active:scale-105"
               initial={{ scale: 1 }}
               whileInView={{ scale: 1 }}
               transition={{ duration: 0.5 }}

@@ -34,7 +34,7 @@ export default function AkaiHidekazu() {
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true }}
       transition={{ delay: 0.2 }}
-      className="group relative max-w-md mx-auto md:max-w-none"
+      className="group relative max-w-md mx-auto md:max-w-none active:scale-[0.99] transition-transform duration-200"
     >
       <div className="absolute -inset-1 bg-linear-to-r from-red-600 via-orange-500 to-red-600 rounded-none blur opacity-75 group-hover:opacity-100 transition duration-1000 group-hover:duration-200 animate-gradient-xy"></div>
 
@@ -46,7 +46,7 @@ export default function AkaiHidekazu() {
             alt={person.name}
             width="800"
             height="1000"
-            className="w-full h-full object-cover object-top filter contrast-125 brightness-90 group-hover:brightness-110 transition-all duration-500"
+            className="w-full h-full object-cover object-top filter contrast-125 brightness-90 group-hover:brightness-110 group-active:brightness-110 transition-all duration-500"
             initial={{ scale: 1.1 }}
             whileInView={{ scale: 1 }}
             transition={{ duration: 0.5 }}
