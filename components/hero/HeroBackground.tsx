@@ -8,9 +8,9 @@ export default function HeroBackground() {
     <>
       {/* Noise Overlay */}
       <div
-        className="fixed inset-0 z-50 pointer-events-none opacity-[0.05] mix-blend-overlay"
+        className="fixed inset-0 z-50 pointer-events-none opacity-[0.1] mix-blend-overlay"
         style={{
-          backgroundImage: 'url("https://grainy-gradients.vercel.app/noise.svg")',
+          backgroundImage: 'url("/images/noise.svg")',
         }}
       />
 
