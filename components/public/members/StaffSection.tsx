@@ -11,14 +11,14 @@ import {
   MemberCollection,
   STAFF_GRADE_ORDER,
 } from "@/lib/domain/MemberCollection";
-import CategoryHeading from "@/components/ui/CategoryHeading";
-import Grid from "@/components/person/Grid";
-import TeamMemberModal from "@/components/person/TeamMemberModal";
-import KiyotakiFumi from "@/components/person/KiyotakiFumi";
-import AkaiHidekazu from "@/components/person/AkaiHidekazu";
-import NashiroNobuo from "@/components/person/NashiroNobuo";
+import CategoryHeading from "@/components/public/ui/CategoryHeading";
+import Grid from "@/components/public/members/Grid";
+import TeamMemberModal from "@/components/public/members/TeamMemberModal";
+import KiyotakiFumi from "@/components/public/members/KiyotakiFumi";
+import AkaiHidekazu from "@/components/public/members/AkaiHidekazu";
+import NashiroNobuo from "@/components/public/members/NashiroNobuo";
 import { COACHES_DATA } from "@/public/person/coaches";
-import SectionHeading from "../ui/SectionHeading";
+import SectionHeading from "@/components/public/ui/SectionHeading";
 
 export default function StaffSection({
   coaches = COACHES_DATA, // デフォルトで静的データを使用

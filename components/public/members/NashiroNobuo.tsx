@@ -7,7 +7,7 @@ import { useState } from "react";
 import { motion } from "framer-motion";
 import { Person } from "@/types";
 import { getPath } from "@/lib/utils/path";
-import PositionBadge from "../ui/PositionBadge";
+import PositionBadge from "@/components/public/ui/PositionBadge";
 export default function NashiroNobuo() {
   const person: Person = {
     id: 9903,

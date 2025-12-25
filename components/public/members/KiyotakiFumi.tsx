@@ -7,7 +7,7 @@ import { motion } from "framer-motion";
 import { getPath } from "@/lib/utils/path";
 import { Person } from "@/types";
 import { useState } from "react";
-import PositionBadge from "../ui/PositionBadge";
+import PositionBadge from "@/components/public/ui/PositionBadge";
 import { shipporiMincho } from "@/lib/fonts";
 
 export default function KiyotakiFumi() {

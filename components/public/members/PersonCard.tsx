@@ -1,8 +1,8 @@
 "use client";
 
 import type { Person } from "@/types";
-import PersonImage from "../ui/PersonImage";
-import PositionBadge from "../ui/PositionBadge";
+import PersonImage from "@/components/public/ui/PersonImage";
+import PositionBadge from "@/components/public/ui/PositionBadge";
 import { twMerge } from "tailwind-merge";
 import { clsx, type ClassValue } from "clsx";
 

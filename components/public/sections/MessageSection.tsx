@@ -11,7 +11,7 @@
 import { motion } from "framer-motion";
 import Link from "next/link";
 import { FaInstagram } from "react-icons/fa";
-import SectionHeading from "../ui/SectionHeading";
+import SectionHeading from "@/components/public/ui/SectionHeading";
 
 export default function MessageSection() {
   return (

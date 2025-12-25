@@ -5,8 +5,8 @@ import type { Metadata, Viewport } from "next";
 
 import { inter, notoSansJP, shipporiMincho, zenAntique } from "@/lib/fonts";
 import "./globals.css";
-import Navigation from "@/components/layout/Navigation";
-import Footer from "@/components/layout/Footer";
+import Navigation from "@/components/public/layout/Navigation";
+import Footer from "@/components/public/layout/Footer";
 
 export const metadata: Metadata = {
   metadataBase: new URL("https://kindai-boxing.com"),

@@ -5,7 +5,7 @@
 
 import { motion } from "framer-motion";
 import { FaDumbbell, FaHandshake, FaTrophy } from "react-icons/fa";
-import SectionHeading from "../ui/SectionHeading";
+import SectionHeading from "@/components/public/ui/SectionHeading";
 
 const features = [
   {

@@ -4,9 +4,9 @@
 "use client";
 
 import type { Person } from "@/types";
-import Grid from "../person/Grid";
-import SectionHeading from "../ui/SectionHeading";
-import CategoryHeading from "../ui/CategoryHeading";
+import Grid from "./Grid";
+import SectionHeading from "@/components/public/ui/SectionHeading";
+import CategoryHeading from "@/components/public/ui/CategoryHeading";
 
 type Props = {
   groups: Record<string, Person[]>;

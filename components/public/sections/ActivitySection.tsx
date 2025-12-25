@@ -9,7 +9,7 @@
 "use client";
 
 import { motion } from "framer-motion";
-import SectionHeading from "../ui/SectionHeading";
+import SectionHeading from "@/components/public/ui/SectionHeading";
 
 const schedule = [
   {

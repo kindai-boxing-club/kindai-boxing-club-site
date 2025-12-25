@@ -11,7 +11,7 @@
 import { motion } from "framer-motion";
 import { FaTimes } from "react-icons/fa";
 import { Person } from "@/types";
-import PersonImage from "../ui/PersonImage";
+import PersonImage from "@/components/public/ui/PersonImage";
 
 type Props = {
   member: Person;

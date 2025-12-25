@@ -7,7 +7,7 @@ import { motion } from "framer-motion";
 import { useState } from "react";
 import { Person } from "@/types";
 import { getPath } from "@/lib/utils/path";
-import PositionBadge from "../ui/PositionBadge";
+import PositionBadge from "@/components/public/ui/PositionBadge";
 
 export default function AkaiHidekazu() {
   const person: Person = {
