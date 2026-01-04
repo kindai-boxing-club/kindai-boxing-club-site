@@ -9,6 +9,7 @@
 
 import { motion } from "framer-motion";
 import { FaInstagram } from "react-icons/fa";
+import Image from "next/image";
 
 export default function InstagramSection() {
   return (
@@ -57,12 +58,21 @@ export default function InstagramSection() {
               </a>
             </div>
 
-            {/* Mockup or Placeholder for Feed */}
-            <div className="grid grid-cols-2 gap-4 opacity-80">
-              <div className="aspect-square bg-gray-200 rounded-xl animate-pulse" />
-              <div className="aspect-square bg-gray-200 rounded-xl animate-pulse" />
-              <div className="aspect-square bg-gray-200 rounded-xl animate-pulse" />
-              <div className="aspect-square bg-gray-200 rounded-xl animate-pulse" />
+            {/* Feed Images */}
+            <div className="grid grid-cols-2 gap-4">
+              {[1, 2, 3, 4].map((i) => (
+                <div
+                  key={i}
+                  className="relative aspect-square overflow-hidden rounded-xl bg-gray-100 shadow-sm hover:shadow-md transition-shadow"
+                >
+                  <Image
+                    src={`/images/instaTmp${i}.png`}
+                    alt={`Instagram Post ${i}`}
+                    fill
+                    className="object-cover"
+                  />
+                </div>
+              ))}
             </div>
           </div>
         </motion.div>
