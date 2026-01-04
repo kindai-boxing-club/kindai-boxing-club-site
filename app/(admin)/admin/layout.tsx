@@ -1,5 +1,7 @@
 import type { Metadata } from "next";
 import Link from "next/link";
+import { notoSansJP } from "@/lib/fonts";
+import "@/app/(public)/globals.css";
 
 export const metadata: Metadata = {
   title: "管理者画面 | 近畿大学ボクシング部",
@@ -13,35 +15,23 @@ export default function AdminLayout({
 }) {
   return (
     <html lang="ja">
-      <body className="bg-slate-50 text-slate-900">
-        <div className="flex min-h-screen">
-          <aside className="w-64 bg-slate-800 text-white p-6 hidden md:block">
-            <h1 className="text-xl font-bold mb-8">Admin Console</h1>
-            <nav>
-              <ul className="space-y-4">
-                <li>
-                  <Link href="/admin" className="hover:text-blue-400">
-                    ダッシュボード
-                  </Link>
-                </li>
-                <li>
-                  <Link href="/admin/members" className="hover:text-blue-400">
-                    メンバー管理
-                  </Link>
-                </li>
-                <li>
-                  <Link
-                    href="/"
-                    className="hover:text-blue-400 text-sm opacity-50"
-                  >
-                    ← サイトを確認
-                  </Link>
-                </li>
-              </ul>
-            </nav>
-          </aside>
-          <main className="flex-1 p-8">{children}</main>
-        </div>
+      <body
+        className={`${notoSansJP.variable}  bg-slate-50 text-slate-900 min-h-screen antialiased`}
+      >
+        <header className="bg-slate-900 border-b-2 border-red-500 py-2 px-6 mb-8 text-white">
+          <div className="flex justify-between items-center max-w-6xl mx-auto w-full">
+            <h2 className="text-3xl font-black tracking-tight text-white">
+              ADMINISTRATION
+            </h2>
+            <Link
+              href="/admin"
+              className="text-sm font-bold hover:text-slate-400 transition-colors"
+            >
+              ← 管理画面トップへ戻る
+            </Link>
+          </div>
+        </header>
+        <main className="max-w-6xl mx-auto px-6 pb-12">{children}</main>
       </body>
     </html>
   );

@@ -1,31 +1,21 @@
+import Link from "next/link";
+import { FaUsers } from "react-icons/fa";
+
 export default function AdminPage() {
   return (
-    <div>
-      <h2 className="text-2xl font-bold mb-6">ダッシュボード</h2>
-      <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-        <div className="bg-white p-6 rounded-xl shadow-sm border border-slate-200">
-          <h3 className="text-sm font-medium text-slate-500 mb-2">
-            総メンバー数
-          </h3>
-          <p className="text-3xl font-bold">52名</p>
-        </div>
-        <div className="bg-white p-6 rounded-xl shadow-sm border border-slate-200">
-          <h3 className="text-sm font-medium text-slate-500 mb-2">
-            未更新プロフィール
-          </h3>
-          <p className="text-3xl font-bold text-orange-500">5件</p>
-        </div>
-        <div className="bg-white p-6 rounded-xl shadow-sm border border-slate-200">
-          <h3 className="text-sm font-medium text-slate-500 mb-2">
-            今月のブログ更新
-          </h3>
-          <p className="text-3xl font-bold">12件</p>
-        </div>
-      </div>
-
-      <div className="mt-8 bg-white p-6 rounded-xl shadow-sm border border-slate-200">
-        <h3 className="text-lg font-bold mb-4">最近の更新</h3>
-        <p className="text-slate-500 text-sm italic">準備中...</p>
+    <div className="max-w-4xl mx-auto">
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+        <Link
+          href="/admin/members"
+          className="p-4 bg-white rounded-2xl border border-slate-200 hover:border-slate-900 transition-all flex items-center gap-6"
+        >
+          <div className="p-4 bg-slate-100 rounded-xl transition-colors">
+            <FaUsers size={32} />
+          </div>
+          <div>
+            <h3 className="text-xl font-bold text-slate-900">メンバー管理</h3>
+          </div>
+        </Link>
       </div>
     </div>
   );
