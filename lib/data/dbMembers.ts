@@ -1,9 +1,12 @@
-import type { D1Database } from "@cloudflare/workers-types";
+import type {
+  D1Database,
+  D1PreparedStatement,
+} from "@cloudflare/workers-types";
 import { getRequestContext } from "@cloudflare/next-on-pages";
 import { Person } from "@/types";
 import { MOCK_MEMBERS } from "./mockMembers";
 
-// DB Accessor
+// DBアクセサ
 export async function getMembersFromD1(db: D1Database): Promise<Person[]> {
   try {
     const { results } = await db
@@ -43,4 +46,17 @@ export async function getMembers(): Promise<Person[]> {
   }
 }
 
-// Mapper
+/**
+ * SQL命令をまとめて実行する
+ */
+export async function executeBatch(statements: D1PreparedStatement[]) {
+  const { env } = getRequestContext();
+  if (!env?.DB) throw new Error("Database binding not found");
+
+  try {
+    return await env.DB.batch(statements);
+  } catch (e) {
+    console.error("Failed to execute batch:");
+    throw e;
+  }
+}
