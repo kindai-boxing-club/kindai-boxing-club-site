@@ -18,7 +18,7 @@ export const MOCK_MEMBERS: Person[] = [
     id: 2310001,
     name: "佐藤 砂糖太郎",
     grade: "3年",
-    position: "副主将",
+    position: "副将",
     weight_class: "ミニマム級",
     faculty: "経済学部",
     image_url: getPath("/members/sato-satotaro.webp"),

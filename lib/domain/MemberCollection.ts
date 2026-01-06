@@ -51,7 +51,7 @@ export class MemberCollection {
       // 1. 役職の優先順位
       const priority = (p: string | null) => {
         if (p === "主将") return 1;
-        if (p === "副主将") return 2;
+        if (p === "副将") return 2;
         if (p === "主務") return 3;
         if (p === "会計") return 4;
         return 5;
