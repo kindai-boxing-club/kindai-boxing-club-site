@@ -48,14 +48,14 @@ export default function RecruitmentCTA() {
               <div className="absolute inset-0 bg-white opacity-0 group-hover:opacity-20 transition-opacity duration-300" />
             </a>
 
-            <Link
+            {/* <Link
               href="/blog"
               className="group relative px-8 py-4 bg-white/10 backdrop-blur-sm border border-white/20 text-white rounded-full font-bold overflow-hidden transition-all hover:scale-105 hover:bg-white/20 active:scale-95 w-full sm:w-auto"
             >
               <span className="relative z-10 flex items-center justify-center gap-2">
                 <FaPenNib size={18} /> 活動記録を見る
               </span>
-            </Link>
+            </Link> */}
           </div>
         </motion.div>
       </div>
