@@ -44,7 +44,7 @@ export default function Navigation() {
   const links = [
     { name: "ホーム", href: "/" },
     { name: "部員紹介", href: "#members" },
-    { name: "ブログ", href: "/blog" },
+    // { name: "ブログ", href: "/blog" },
   ];
 
   return (
