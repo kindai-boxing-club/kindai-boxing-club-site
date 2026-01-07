@@ -8,8 +8,7 @@
 "use client";
 
 import { motion } from "framer-motion";
-import Link from "next/link";
-import { FaInstagram, FaPenNib } from "react-icons/fa";
+import { FaInstagram } from "react-icons/fa";
 
 export default function RecruitmentCTA() {
   return (
