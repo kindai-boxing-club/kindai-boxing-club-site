@@ -4,7 +4,6 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { useState } from "react";
 import { Person } from "@/types";
 import { getPath } from "@/lib/utils/path";
 import PositionBadge from "@/components/public/ui/PositionBadge";
@@ -14,19 +13,13 @@ export default function AkaiHidekazu() {
     id: 9902,
     name: "赤井 英和",
     grade: "総監督",
-    position: "総監督",
-    is_manager: 0,
+    position: "総監督", // カードに表示
+    is_manager: false,
     weight_class: null,
-    faculty: null,
-    image_url: getPath("/members/akai-hidekazu.webp"),
-    bio: "",
+    faculty: "総監督", // 仮の値（後で適切な学部名に変更）
   };
-  // Fallback for bio if empty
-  const displayBio = person.bio || "";
 
-  const [imgSrc, setImgSrc] = useState(
-    person.image_url || "/images/default.png"
-  );
+  const imgSrc = getPath("/members/akai-hidekazu.webp");
 
   return (
     <motion.div
@@ -50,7 +43,6 @@ export default function AkaiHidekazu() {
             initial={{ scale: 1.1 }}
             whileInView={{ scale: 1 }}
             transition={{ duration: 0.5 }}
-            onError={() => setImgSrc("/images/default.png")}
           />
 
           {/* オーバーレイグラデーション */}
@@ -84,10 +76,6 @@ export default function AkaiHidekazu() {
             <div className="h-1 mb-1 bg-[linear-gradient(90deg,var(--color-yellow-500)_0%,var(--color-red-500)_30%,transparent_60%)]" />
             <div className="h-2 mb-1 bg-[linear-gradient(90deg,var(--color-yellow-500)_0%,var(--color-red-500)_50%,transparent_80%)]" />
             <div className="h-3 mb-1 bg-[linear-gradient(90deg,var(--color-yellow-500)_0%,var(--color-red-500)_70%,transparent_100%)]" />
-
-            <p className="text-red-100 text-sm font-bold leading-relaxed drop-shadow-md whitespace-pre-wrap">
-              {displayBio}
-            </p>
           </div>
         </div>
       </div>

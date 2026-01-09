@@ -6,7 +6,6 @@
 import { motion } from "framer-motion";
 import { getPath } from "@/lib/utils/path";
 import { Person } from "@/types";
-import { useState } from "react";
 import PositionBadge from "@/components/public/ui/PositionBadge";
 import { shipporiMincho } from "@/lib/fonts";
 
@@ -16,19 +15,14 @@ export default function KiyotakiFumi() {
     name: "清滝 ふみ",
     grade: "部長",
     position: "部長",
-    is_manager: 0,
+    is_manager: false,
     weight_class: null,
-    faculty: null,
-    image_url: getPath("/members/kiyotaki-fumi.webp"),
-    bio: null,
+    faculty: "部長",
   };
 
+  const imgSrc = getPath("/members/kiyotaki-fumi.webp");
   const badgeColor = "bg-linear-to-r from-pink-500 to-rose-500";
   const borderGradient = "from-yellow-400 via-pink-300 to-yellow-400";
-
-  const [imgSrc, setImgSrc] = useState(
-    person.image_url || "/images/default.png"
-  );
 
   return (
     <motion.div
@@ -55,7 +49,6 @@ export default function KiyotakiFumi() {
             whileInView={{ filter: "grayscale(0%)" }}
             viewport={{ once: true, amount: 0.3 }}
             transition={{ duration: 1.5, ease: "easeOut" }}
-            onError={() => setImgSrc("/images/default.png")}
           />
 
           {/* 役職バッジ */}
@@ -78,10 +71,6 @@ export default function KiyotakiFumi() {
           <div
             className={`h-0.5 w-16 bg-linear-to-r ${borderGradient} mb-6 transform origin-left group-hover:scale-x-150 group-active:scale-x-150 transition-transform duration-500`}
           />
-
-          <p className="text-slate-600 text-sm leading-loose font-shippori whitespace-pre-wrap tracking-wide">
-            {person.bio}
-          </p>
         </div>
       </div>
     </motion.div>

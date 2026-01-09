@@ -31,14 +31,18 @@ export class MemberCollection {
    * マネージャーのみを抽出
    */
   filterManagers(): MemberCollection {
-    return new MemberCollection(this.members.filter((m) => m.is_manager === 1));
+    return new MemberCollection(
+      this.members.filter((m) => m.is_manager === true)
+    );
   }
 
   /**
    * マネージャーを除外
    */
   excludeManagers(): MemberCollection {
-    return new MemberCollection(this.members.filter((m) => m.is_manager !== 1));
+    return new MemberCollection(
+      this.members.filter((m) => m.is_manager !== true)
+    );
   }
 
   /**
@@ -83,7 +87,7 @@ export class MemberCollection {
         // ロジック: マネージャーなら "マネージャー" グループへ強制移動
         let key = "未分類";
 
-        if (person.is_manager === 1) {
+        if (person.is_manager === true) {
           key = "マネージャー";
         } else {
           key = person.grade?.trim() || "未分類";

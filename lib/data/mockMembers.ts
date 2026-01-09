@@ -1,5 +1,4 @@
 import { Person } from "@/types";
-import { getPath } from "@/lib/utils/path";
 
 // ローカル開発用ダミーデータ
 export const MOCK_MEMBERS: Person[] = [
@@ -10,9 +9,7 @@ export const MOCK_MEMBERS: Person[] = [
     position: "主将",
     weight_class: "ミドル級",
     faculty: "情報学部",
-    image_url: getPath("/members/yamada-yamanosuke.webp"),
-    bio: "2025年 世界選手権 審査委員特別賞",
-    is_manager: 0,
+    is_manager: false,
   },
   {
     id: 2310001,
@@ -21,9 +18,7 @@ export const MOCK_MEMBERS: Person[] = [
     position: "副将",
     weight_class: "ミニマム級",
     faculty: "経済学部",
-    image_url: getPath("/members/sato-satotaro.webp"),
-    bio: "",
-    is_manager: 0,
+    is_manager: false,
   },
   {
     id: 2310002,
@@ -32,9 +27,7 @@ export const MOCK_MEMBERS: Person[] = [
     position: null,
     weight_class: "ミニマム級",
     faculty: "経営学部",
-    image_url: getPath("/members/sato-shiotaro.webp"),
-    bio: "",
-    is_manager: 0,
+    is_manager: false,
   },
   {
     id: 2310003,
@@ -43,9 +36,7 @@ export const MOCK_MEMBERS: Person[] = [
     position: null,
     weight_class: "ヘビー級",
     faculty: "グローバルシステムイマジネーションデザイン学部",
-    image_url: getPath("/members/sato-shoyutaro.webp"),
-    bio: "",
-    is_manager: 0,
+    is_manager: false,
   },
   {
     id: 2410001,
@@ -54,19 +45,15 @@ export const MOCK_MEMBERS: Person[] = [
     position: null,
     weight_class: "バンタム級",
     faculty: "文学部",
-    image_url: getPath("/members/suzuki-suzuo.webp"),
-    bio: "",
-    is_manager: 0,
+    is_manager: false,
   },
   {
     id: 2510001,
     name: "佐々木 笹子",
     grade: "1年",
     position: "主務",
-    is_manager: 1,
-    weight_class: "マネージャー",
+    is_manager: true,
+    weight_class: null,
     faculty: "法学部",
-    image_url: getPath("/members/sasaki-sasako.webp"),
-    bio: "",
   },
 ];

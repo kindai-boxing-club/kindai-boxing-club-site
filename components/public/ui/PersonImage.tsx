@@ -12,8 +12,7 @@ type Props = Omit<ImageProps, "src" | "alt" | "onError"> & {
 
 /**
  * 人物画像を表示するコンポーネント
- * - image_urlがあればそれを使用 (Staff/Coach用)
- * - なければIDから生成 (Member用)
+ * - IDから画像パスを生成 ({id}.webp)
  * - 読み込みエラー時はデフォルト画像を表示
  */
 export default function PersonImage({
@@ -22,12 +21,12 @@ export default function PersonImage({
   className,
   ...props
 }: Props) {
-  const [src, setSrc] = useState(person.image_url || getMemberImage(person.id));
+  const [src, setSrc] = useState(getMemberImage(person.id));
 
   // personが変わったときにソースをリセット (モーダルなどで重要)
   useEffect(() => {
-    setSrc(person.image_url || getMemberImage(person.id));
-  }, [person.id, person.image_url]);
+    setSrc(getMemberImage(person.id));
+  }, [person.id]);
 
   return (
     <Image

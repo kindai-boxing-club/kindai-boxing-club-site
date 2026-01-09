@@ -80,16 +80,7 @@ export default function TeamMemberModal({ member, onClose }: Props) {
               )}
 
               <div className="space-y-6">
-                <div>
-                  <h3 className="text-sm font-bold text-gray-400 uppercase tracking-widest mb-2">
-                    BIOGRAPHY
-                  </h3>
-                  <p className="text-gray-600 leading-relaxed text-lg">
-                    {member.bio || "No biography available."}
-                  </p>
-                </div>
-
-                {/* Additional details can be added here if available in the Member type */}
+                {/* 将来的に追加情報を表示する場合はここに追加 */}
               </div>
             </motion.div>
           </div>

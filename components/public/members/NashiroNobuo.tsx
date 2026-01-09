@@ -3,7 +3,6 @@
  */
 "use client";
 
-import { useState } from "react";
 import { motion } from "framer-motion";
 import { Person } from "@/types";
 import { getPath } from "@/lib/utils/path";
@@ -14,16 +13,12 @@ export default function NashiroNobuo() {
     name: "名城 信男",
     grade: "監督",
     position: "監督",
-    is_manager: 0,
+    is_manager: false,
     weight_class: null,
-    faculty: null,
-    image_url: getPath("/members/nashiro-nobuo.webp"),
-    bio: "第16代 第18代 WBA世界スーパーフライ級チャンピオン",
+    faculty: "監督",
   };
 
-  const [imgSrc, setImgSrc] = useState(
-    person.image_url || "/images/default.png"
-  );
+  const imgSrc = getPath("/members/nashiro-nobuo.webp");
 
   return (
     <motion.div
@@ -53,7 +48,6 @@ export default function NashiroNobuo() {
               initial={{ scale: 1 }}
               whileInView={{ scale: 1 }}
               transition={{ duration: 0.5 }}
-              onError={() => setImgSrc("/images/default.png")}
             />
 
             {/* グラデーションオーバーレイ */}

@@ -3,6 +3,11 @@ import type { D1Database } from "@cloudflare/workers-types";
 import { getRequestContext } from "@cloudflare/next-on-pages";
 
 /**
+ * SQLクエリのパラメータとして使用できる型
+ */
+type QueryParam = string | number | boolean | null;
+
+/**
  * D1データベースのインスタンスを取得する
  *
  * @returns D1Database または null（接続できない場合）
@@ -26,7 +31,10 @@ export function getDB(): D1Database | null {
  * @param params - バインドするパラメータ（例: ["太郎", 3]）
  * @returns クエリ結果の配列
  */
-export async function query<T>(sql: string, params: any[] = []): Promise<T[]> {
+export async function query<T>(
+  sql: string,
+  params: QueryParam[] = []
+): Promise<T[]> {
   const db = getDB();
   if (!db) return [];
 
@@ -51,7 +59,7 @@ export async function query<T>(sql: string, params: any[] = []): Promise<T[]> {
  */
 export async function execute(
   sql: string,
-  params: any[] = []
+  params: QueryParam[] = []
 ): Promise<boolean> {
   const db = getDB();
   if (!db) return false;
