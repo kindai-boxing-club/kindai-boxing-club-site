@@ -7,27 +7,21 @@ import { createSession, deleteSession } from "@/lib/auth/session";
 /**
  * ログイン処理
  *
+ * @param prevState - 前回の状態（useActionState用）
  * @param formData - フォームから送信されたデータ
  */
 export async function login(
   prevState: { error?: string; username?: string } | null,
   formData: FormData
 ) {
-  // ========================
-  // デバッグログ（問題解決後に削除）
-  // ========================
   console.log("🚀 [Server Action] login() が呼び出されました");
-  console.log("🔍 [Debug] FormData entries:", [...formData.entries()]);
 
   // フォームからユーザー名とパスワードを取得
   const username = formData.get("username") as string;
   const password = formData.get("password") as string;
 
-  console.log("🔍 [Debug] username:", username);
-  console.log("🔍 [Debug] password length:", password?.length);
-
+  // 入力値のバリデーション
   if (!username || !password) {
-    console.log("❌ [Debug] 入力値が空");
     return {
       error: "ユーザー名とパスワードを入力してください",
       username: username,
@@ -35,31 +29,32 @@ export async function login(
   }
 
   // 認証処理
+  let isValid = false;
   try {
-    console.log("🔍 [Debug] verifyCredentials 呼び出し中...");
-    const isValid = await verifyCredentials(username, password);
-    console.log("🔍 [Debug] verifyCredentials 結果:", isValid);
-
-    if (!isValid) {
-      console.log("❌ [Debug] 認証失敗");
-      return {
-        error: "ユーザー名またはパスワードが間違っています",
-        username: username,
-      };
-    }
+    isValid = await verifyCredentials(username, password);
   } catch (error) {
-    console.error("❌ [Debug] 認証エラー:", error);
+    console.error("❌ 認証エラー:", error);
     return {
       error: "認証処理中にエラーが発生しました",
       username: username,
     };
   }
 
+  // 認証失敗
+  if (!isValid) {
+    return {
+      error: "ユーザー名またはパスワードが間違っています",
+      username: username,
+    };
+  }
+
   // セッションを作成
-  console.log("✅ [Debug] 認証成功、セッション作成中...");
+  console.log("✅ 認証成功、セッション作成中...");
   await createSession(username);
 
-  console.log("🚀 [Debug] リダイレクト: /admin");
+  // 管理画面にリダイレクト
+  // 注意: redirect() は try-catch の外で呼び出す必要がある
+  console.log("🚀 リダイレクト: /admin");
   redirect("/admin");
 }
 
