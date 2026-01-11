@@ -23,12 +23,20 @@ export async function login(
     };
 
   // 認証処理
-  const isValid = await verifyCredentials(username, password);
-  if (!isValid)
+  try {
+    const isValid = await verifyCredentials(username, password);
+    if (!isValid)
+      return {
+        error: "ユーザー名またはパスワードが間違っています",
+        username: username,
+      };
+  } catch (error) {
+    console.error("認証エラー:", error);
     return {
-      error: "ユーザー名またはパスワードが間違っています",
+      error: "認証処理中にエラーが発生しました",
       username: username,
     };
+  }
 
   // セッションを作成
   await createSession(username);

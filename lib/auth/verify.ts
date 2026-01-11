@@ -15,12 +15,29 @@ export async function verifyCredentials(
   const envUsername = process.env.ADMIN_USER_1_USERNAME;
   const envPasswordHash = process.env.ADMIN_USER_1_PASSWORD_HASH;
 
-  if (!envUsername || !envPasswordHash)
-    throw new Error("Admin credentials not configured");
+  // デバッグ用（本番では削除）
+  console.log("ENV Check:", {
+    hasUsername: !!envUsername,
+    hasHash: !!envPasswordHash,
+    hashLength: envPasswordHash?.length,
+  });
+
+  if (!envUsername || !envPasswordHash) {
+    console.error("Admin credentials not configured", {
+      envUsername: envUsername ? "set" : "missing",
+      envPasswordHash: envPasswordHash ? "set" : "missing",
+    });
+    return false; // throw ではなく false を返す
+  }
 
   // ユーザー名が一致するかチェック
   if (username !== envUsername) return false;
 
   // パスワードをハッシュと比較
-  return await bcrypt.compare(password, envPasswordHash);
+  try {
+    return await bcrypt.compare(password, envPasswordHash);
+  } catch (error) {
+    console.error("bcrypt compare error:", error);
+    return false;
+  }
 }
