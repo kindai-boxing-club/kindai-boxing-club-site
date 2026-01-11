@@ -13,7 +13,7 @@ export default function NashiroNobuo() {
     name: "名城 信男",
     grade: "監督",
     position: "監督",
-    is_manager: false,
+    is_manager: 0,
     weight_class: null,
     faculty: "監督",
   };

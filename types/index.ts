@@ -37,7 +37,7 @@ export interface Person {
   name: string; // 名前
   grade: Grade; // 学年・役職（グループ分け用）
   position: Position | null; // 役職（学生のみ）
-  is_manager: boolean; // マネージャーかどうか
+  is_manager: 0 | 1; // マネージャーかどうか（0: 選手, 1: マネージャー）
   faculty: string; // 学部
   weight_class: string | null; // 階級
 }

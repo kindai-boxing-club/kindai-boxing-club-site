@@ -14,7 +14,7 @@ export default function AkaiHidekazu() {
     name: "赤井 英和",
     grade: "総監督",
     position: "総監督", // カードに表示
-    is_manager: false,
+    is_manager: 0,
     weight_class: null,
     faculty: "総監督", // 仮の値（後で適切な学部名に変更）
   };

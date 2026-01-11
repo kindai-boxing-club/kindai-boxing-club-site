@@ -15,7 +15,7 @@ export default function KiyotakiFumi() {
     name: "清滝 ふみ",
     grade: "部長",
     position: "部長",
-    is_manager: false,
+    is_manager: 0,
     weight_class: null,
     faculty: "部長",
   };
