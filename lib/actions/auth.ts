@@ -63,5 +63,5 @@ export async function login(
  */
 export async function logout() {
   await deleteSession();
-  redirect("/admin/login");
+  // redirect("/admin/login");
 }
