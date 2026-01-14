@@ -1,6 +1,6 @@
 "use server";
 
-import { redirect } from "next/navigation";
+// import { redirect } from "next/navigation";
 import { verifyCredentials } from "@/lib/auth/verify";
 import { createSession, deleteSession } from "@/lib/auth/session";
 
