@@ -56,6 +56,7 @@ export async function login(
   // 注意: redirect() は try-catch の外で呼び出す必要がある
   console.log("🚀 リダイレクト: /admin");
   // redirect("/admin");
+  return null;
 }
 
 /**
@@ -64,4 +65,5 @@ export async function login(
 export async function logout() {
   await deleteSession();
   // redirect("/admin/login");
+  return null;
 }
