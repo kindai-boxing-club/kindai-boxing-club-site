@@ -1,7 +1,7 @@
 "use server";
 
 // import { redirect } from "next/navigation";
-import { verifyCredentials } from "@/lib/auth/verify";
+// import { verifyCredentials } from "@/lib/auth/verify";
 import { createSession, deleteSession } from "@/lib/auth/session";
 
 /**
@@ -30,8 +30,10 @@ export async function login(
 
   // 認証処理
   let isValid = false;
+  isValid = true;
+  isValid = false;
   try {
-    isValid = await verifyCredentials(username, password);
+    // isValid = await verifyCredentials(username, password);
   } catch (error) {
     console.error("❌ 認証エラー:", error);
     return {
