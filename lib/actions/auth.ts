@@ -55,7 +55,7 @@ export async function login(
   // 管理画面にリダイレクト
   // 注意: redirect() は try-catch の外で呼び出す必要がある
   console.log("🚀 リダイレクト: /admin");
-  redirect("/admin");
+  // redirect("/admin");
 }
 
 /**
