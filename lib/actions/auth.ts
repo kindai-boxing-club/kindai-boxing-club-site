@@ -32,15 +32,15 @@ export async function login(
   let isValid = false;
   isValid = true;
   isValid = false;
-  try {
-    // isValid = await verifyCredentials(username, password);
-  } catch (error) {
-    console.error("❌ 認証エラー:", error);
-    return {
-      error: "認証処理中にエラーが発生しました",
-      username: username,
-    };
-  }
+  // try {
+  //   isValid = await verifyCredentials(username, password);
+  // } catch (error) {
+  //   console.error("❌ 認証エラー:", error);
+  //   return {
+  //     error: "認証処理中にエラーが発生しました",
+  //     username: username,
+  //   };
+  // }
 
   // 認証失敗
   if (!isValid) {
