@@ -1,16 +1,35 @@
 "use client";
-
-import { login } from "@/lib/actions/auth";
-import { useActionState } from "react";
-
+import { useState } from "react";
+import { useRouter } from "next/navigation";
 export default function LoginPage() {
-  const [state, formAction] = useActionState(login, null);
+  const [error, setError] = useState<string | null>(null);
+  const router = useRouter();
+
+  // フォーム送信ハンドラを作成
+  async function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
+    // デフォルトの送信を防ぐ
+    e.preventDefault();
+    //フォームデータを取得
+    const formData = new FormData(e.currentTarget);
+    const username = formData.get("username") as string;
+    const password = formData.get("password") as string;
+    //  API を呼び出す
+    const res = await fetch("/api/auth/login", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ username, password }),
+    });
+    // レスポンスを処理
+    const data = (await res.json()) as { success?: boolean; error?: string };
+    if (data.success) router.push("/admin");
+    else if (data.error) setError(data.error);
+  }
   return (
     <div className="flex items-center justify-center">
       <div className="bg-white p-8 rounded-lg shadow-md w-full max-w-md">
         <h1 className="text-2xl font-bold mb-6 text-center">管理者ログイン</h1>
 
-        <form action={formAction}>
+        <form onSubmit={handleSubmit}>
           <div className="flex flex-col space-y-4">
             <input
               className="border border-gray-300 rounded p-2"
@@ -18,7 +37,6 @@ export default function LoginPage() {
               type="text"
               placeholder="username"
               required
-              defaultValue={state?.username}
             />
             <input
               className="border border-gray-300 rounded p-2"
@@ -33,7 +51,7 @@ export default function LoginPage() {
             >
               ログイン
             </button>
-            {state?.error && <p className="text-red-500">{state?.error}</p>}
+            {error && <p className="text-red-500">{error}</p>}
           </div>
         </form>
       </div>
