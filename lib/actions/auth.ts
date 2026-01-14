@@ -1,7 +1,7 @@
 "use server";
 
-// import { redirect } from "next/navigation";
-// import { verifyCredentials } from "@/lib/auth/verify";
+import { redirect } from "next/navigation";
+import { verifyCredentials } from "@/lib/auth/verify";
 import { createSession, deleteSession } from "@/lib/auth/session";
 
 /**
@@ -14,13 +14,9 @@ export async function login(
   prevState: { error?: string; username?: string } | null,
   formData: FormData
 ) {
-  console.log("🚀 [Server Action] login() が呼び出されました");
-
-  // フォームからユーザー名とパスワードを取得
   const username = formData.get("username") as string;
   const password = formData.get("password") as string;
 
-  // 入力値のバリデーション
   if (!username || !password) {
     return {
       error: "ユーザー名とパスワードを入力してください",
@@ -28,21 +24,7 @@ export async function login(
     };
   }
 
-  // 認証処理
-  let isValid = false;
-  isValid = true;
-  isValid = false;
-  // try {
-  //   isValid = await verifyCredentials(username, password);
-  // } catch (error) {
-  //   console.error("❌ 認証エラー:", error);
-  //   return {
-  //     error: "認証処理中にエラーが発生しました",
-  //     username: username,
-  //   };
-  // }
-
-  // 認証失敗
+  const isValid = await verifyCredentials(username, password);
   if (!isValid) {
     return {
       error: "ユーザー名またはパスワードが間違っています",
@@ -50,15 +32,8 @@ export async function login(
     };
   }
 
-  // セッションを作成
-  console.log("✅ 認証成功、セッション作成中...");
   await createSession(username);
-
-  // 管理画面にリダイレクト
-  // 注意: redirect() は try-catch の外で呼び出す必要がある
-  console.log("🚀 リダイレクト: /admin");
-  // redirect("/admin");
-  return null;
+  redirect("/admin");
 }
 
 /**
@@ -66,6 +41,5 @@ export async function login(
  */
 export async function logout() {
   await deleteSession();
-  // redirect("/admin/login");
-  return null;
+  redirect("/admin/login");
 }
