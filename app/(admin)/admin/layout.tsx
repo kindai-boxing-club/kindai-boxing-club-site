@@ -20,15 +20,23 @@ export default function AdminLayout({
       >
         <header className="bg-slate-900 border-b-2 border-red-500 py-2 px-6 mb-8 text-white">
           <div className="flex justify-between items-center max-w-6xl mx-auto w-full">
-            <h2 className="text-3xl font-black tracking-tight text-white">
+            <h2 className="text-2xl font-black tracking-tight text-white">
               ADMINISTRATION
             </h2>
-            <Link
-              href="/admin"
-              className="text-sm font-bold hover:text-slate-400 transition-colors"
-            >
-              ← 管理画面トップへ戻る
-            </Link>
+            <nav className="flex gap-4 text-sm font-bold">
+              <Link
+                href="/admin"
+                className="hover:text-slate-400 transition-colors"
+              >
+                ← 管理画面トップ
+              </Link>
+              <a
+                href="/cdn-cgi/access/logout"
+                className="hover:text-slate-400 transition-colors"
+              >
+                ログアウト
+              </a>
+            </nav>
           </div>
         </header>
         <main className="max-w-6xl mx-auto px-6 pb-12">{children}</main>
