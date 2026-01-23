@@ -31,7 +31,7 @@ export default function AdminLayout({
                 ← 管理画面トップ
               </Link>
               <a
-                href="/cdn-cgi/access/logout"
+                href="https://kindai-boxing-club-site-pages.cloudflareaccess.com/cdn-cgi/access/logout"
                 className="hover:text-slate-400 transition-colors"
               >
                 ログアウト
