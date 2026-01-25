@@ -1,5 +1,6 @@
 /**
- * ヒーローセクションのタイトルアニメーションコンポーネント
+ * @file components/public/hero/HeroTitle.tsx
+ * @description Heroセクションのタイトル（KINDAI BOXING）
  */
 "use client";
 

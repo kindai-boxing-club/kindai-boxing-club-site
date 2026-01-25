@@ -1,9 +1,6 @@
 /**
- * 入部募集セクション
- * 新入部員勧誘のためのCall To Actionを表示する。
- */
-/**
- * 入部募集CTAセクションコンポーネント
+ * @file components/public/sections/RecruitmentCTA.tsx
+ * @description 入部募集 CTA セクション
  */
 "use client";
 

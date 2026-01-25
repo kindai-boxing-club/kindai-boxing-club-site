@@ -1,3 +1,14 @@
+/**
+ * @file lib/db/members.ts
+ * @description メンバー（部員）データの CRUD 操作を提供するドメイン層
+ *
+ * このファイルの役割:
+ * - メンバー一覧の取得 (Read)
+ * - メンバーの追加 (Create)
+ * - メンバーの更新 (Update) ※未実装
+ * - メンバーの削除 (Delete)
+ */
+
 import { execute, query } from "./client";
 import { Person, PersonInput } from "@/types";
 
@@ -9,7 +20,7 @@ import { Person, PersonInput } from "@/types";
 export async function getMembers(): Promise<Person[]> {
   return await query<Person>(
     "SELECT * FROM members ORDER BY grade, id ASC",
-    []
+    [],
   );
 }
 
@@ -43,7 +54,7 @@ export async function createMember(data: PersonInput): Promise<boolean> {
       data.is_manager,
       data.faculty,
       data.weight_class,
-    ]
+    ],
   );
 }
 

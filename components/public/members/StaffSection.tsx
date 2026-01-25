@@ -1,6 +1,6 @@
 /**
- * スタッフ紹介セクション
- * グループ化されたスタッフ情報をセクションごとに表示する。
+ * @file components/public/members/StaffSection.tsx
+ * @description スタッフ（指導者）紹介セクション
  */
 "use client";
 
@@ -32,7 +32,7 @@ export default function StaffSection({
   const groups = collection.groupByGrade();
   const groupKeys = MemberCollection.getSortedGroupKeys(
     groups,
-    STAFF_GRADE_ORDER
+    STAFF_GRADE_ORDER,
   );
 
   return (

@@ -1,10 +1,6 @@
 /**
- * メッセージセクション
- * 勧誘用のメッセージを表示するセクション。
- * ActivityとOur Spiritの間に配置される。
- */
-/**
- * メッセージセクションコンポーネント
+ * @file components/public/sections/MessageSection.tsx
+ * @description 部員募集（RECRUIT）セクション
  */
 "use client";
 

@@ -1,5 +1,6 @@
 /**
- * 名城信男カードコンポーネント
+ * @file components/public/members/NashiroNobuo.tsx
+ * @description 名城信男（監督）専用カードコンポーネント
  */
 "use client";
 

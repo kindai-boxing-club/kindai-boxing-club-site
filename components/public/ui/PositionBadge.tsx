@@ -1,3 +1,7 @@
+/**
+ * @file components/public/ui/PositionBadge.tsx
+ * @description 役職バッジコンポーネント
+ */
 "use client";
 
 import React from "react";

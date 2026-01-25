@@ -1,3 +1,16 @@
+/**
+ * @file lib/utils/path.ts
+ * @description リソースパスの解決ユーティリティ
+ *
+ * このファイルの役割:
+ * - R2 ストレージ上の画像パスを正しい URL に変換
+ * - ローカルリソースのパスを正規化
+ *
+ * 使用箇所:
+ *   - PersonCard: 部員画像の表示
+ *   - StaffSection: スタッフ画像の表示
+ */
+
 // R2 Bucket Public Access URL
 // .env (production) または .env.local (development) を参照
 const R2_BASE_URL = process.env.NEXT_PUBLIC_R2_BASE_URL || "";

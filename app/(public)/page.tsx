@@ -1,5 +1,22 @@
 /**
- * トップページコンポーネント
+ * @file app/(public)/page.tsx
+ * @description 公開サイトのトップページ
+ *
+ * 役割:
+ * - トップページの各セクションを順番に配置
+ * - Edge Runtime で実行（Cloudflare D1 アクセスのため）
+ *
+ * セクション構成:
+ *   1. HeroSection: ファーストビュー
+ *   2. ClubIntro: 部の紹介
+ *   3. MessageSection: 主将挨拶
+ *   4. ActivitySection: 活動内容
+ *   5. MemberSection: 部員紹介
+ *   6. StaffSection: スタッフ紹介
+ *   7. RecruitmentCTA: 入部案内
+ *   8. InstagramSection: SNS 連携
+ *
+ * URL: /
  */
 
 import HeroSection from "@/components/public/hero/HeroSection";

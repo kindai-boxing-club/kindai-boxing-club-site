@@ -1,10 +1,6 @@
 /**
- * 活動内容セクション (ACTIVITY)
- * 週間スケジュールと年間行事を表示する。
- * メンバーセクションと統一されたヘッダーデザインを持つ。
- */
-/**
- * 活動内容セクションコンポーネント
+ * @file components/public/sections/ActivitySection.tsx
+ * @description 活動内容（ACTIVITY）セクション
  */
 "use client";
 

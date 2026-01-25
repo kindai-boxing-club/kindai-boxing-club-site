@@ -1,9 +1,6 @@
 /**
- * Instagramセクション
- * 公式Instagramへのリンクと、フィードのモックアップを表示する。
- */
-/**
- * Instagramセクションコンポーネント
+ * @file components/public/sections/InstagramSection.tsx
+ * @description Instagram 連携セクション
  */
 "use client";
 

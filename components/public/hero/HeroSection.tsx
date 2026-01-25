@@ -1,5 +1,6 @@
 /**
- * ヒーローセクション
+ * @file components/public/hero/HeroSection.tsx
+ * @description ファーストビュー（Hero）セクションのメインコンポーネント
  */
 "use client";
 

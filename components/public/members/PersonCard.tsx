@@ -1,3 +1,7 @@
+/**
+ * @file components/public/members/PersonCard.tsx
+ * @description 部員/コーチを表示するカードコンポーネント
+ */
 "use client";
 
 import type { Person } from "@/types";
@@ -52,7 +56,7 @@ export default function PersonCard({
       className={cn(
         "group relative h-full rounded-none overflow-hidden border transition-all duration-500 transform hover:-translate-y-1 active:scale-[0.98] active:brightness-95",
         containerStyles,
-        onClick && "cursor-pointer"
+        onClick && "cursor-pointer",
       )}
     >
       {/* 1. 画像エリア */}
@@ -85,7 +89,7 @@ export default function PersonCard({
         <h3
           className={cn(
             "font-black tracking-tighter mb-1 transition-colors relative z-10",
-            nameStyles
+            nameStyles,
           )}
         >
           {member.name}

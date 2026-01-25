@@ -1,3 +1,20 @@
+/**
+ * @file lib/data/dbMembers.ts
+ * @description D1 データベースからメンバーを取得する（公開サイト用・読み取り専用）
+ *
+ * このファイルの役割:
+ * - D1 からメンバー一覧を取得する
+ * - D1 に接続できない場合はモックデータにフォールバックする
+ *
+ * 注意:
+ *   - このファイルは主に公開サイト（トップページ）用です
+ *   - 管理画面の CRUD には lib/db/members.ts を使用してください
+ *
+ * 依存関係:
+ *   - types/index.ts: Person 型定義
+ *   - lib/data/mockMembers.ts: フォールバック用モックデータ
+ */
+
 import type {
   D1Database,
   D1PreparedStatement,

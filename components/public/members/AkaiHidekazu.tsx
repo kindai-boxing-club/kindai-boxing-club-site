@@ -1,5 +1,6 @@
 /**
- * 赤井英和カードコンポーネント
+ * @file components/public/members/AkaiHidekazu.tsx
+ * @description 赤井英和（総監督）専用カードコンポーネント
  */
 "use client";
 

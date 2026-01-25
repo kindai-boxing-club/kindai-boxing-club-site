@@ -1,17 +1,13 @@
 /**
- * 部員グリッドコンポーネント
+ * @file components/public/members/Grid.tsx
+ * @description メンバーカードをグリッド状に配置するコンポーネント
  *
- * 役割: メンバーカードをグリッド状に配置して表示する
  * 機能:
- * - 通常のメンバー（コーチ含む）はグリッド表示
- * - 幹部（部長、総監督、監督）は特別なコンポーネントとしてリスト表示
- * - クリック時のモーダル表示ハンドリング
+ * - 2〜3列のレスポンシブグリッド
+ * - 部員/コーチを PersonCard で表示
+ * - クリック時のコールバック対応
  */
 "use client";
-
-/**
- * グリッド表示コンポーネント
- */
 import { Person } from "@/types";
 import PersonCard from "./PersonCard";
 

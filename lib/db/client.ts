@@ -1,4 +1,17 @@
-// lib/db/client.ts
+/**
+ * @file lib/db/client.ts
+ * @description D1 データベースへの低レベルアクセスを提供するクライアント層
+ *
+ * このファイルの役割:
+ * - Cloudflare D1 への接続を確立する
+ * - SQL クエリ（SELECT）を実行して結果を返す
+ * - SQL コマンド（INSERT/UPDATE/DELETE）を実行する
+ *
+ * 使用例:
+ *   import { query } from "@/lib/db/client";
+ *   const users = await query<User>("SELECT * FROM users");
+ */
+
 import type { D1Database } from "@cloudflare/workers-types";
 import { getRequestContext } from "@cloudflare/next-on-pages";
 
@@ -33,7 +46,7 @@ export function getDB(): D1Database | null {
  */
 export async function query<T>(
   sql: string,
-  params: QueryParam[] = []
+  params: QueryParam[] = [],
 ): Promise<T[]> {
   const db = getDB();
   if (!db) return [];
@@ -59,7 +72,7 @@ export async function query<T>(
  */
 export async function execute(
   sql: string,
-  params: QueryParam[] = []
+  params: QueryParam[] = [],
 ): Promise<boolean> {
   const db = getDB();
   if (!db) return false;

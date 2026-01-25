@@ -1,5 +1,12 @@
 /**
- * ルートレイアウト
+ * @file app/(public)/layout.tsx
+ * @description 公開サイトのルートレイアウト
+ *
+ * 役割:
+ * - サイト全体の HTML 構造を定義
+ * - 共通のナビゲーション・フッターを配置
+ * - Google Fonts の読み込み
+ * - SEO メタデータ（OGP、Twitter Card）の設定
  */
 import type { Metadata, Viewport } from "next";
 

@@ -1,5 +1,6 @@
 /**
- * ヒーローセクションの背景コンポーネント
+ * @file components/public/hero/HeroBackground.tsx
+ * @description Heroセクションの背景（画像 + オーバーレイ）
  */
 import Image from "next/image";
 

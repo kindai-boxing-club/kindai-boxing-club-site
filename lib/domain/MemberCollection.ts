@@ -1,3 +1,15 @@
+/**
+ * @file lib/domain/MemberCollection.ts
+ * @description メンバーデータに対するビジネスロジック（ドメイン層）
+ *
+ * このファイルの役割:
+ * - メンバーのフィルタリング（学年別、マネージャー別）
+ * - メンバーのソート（役職順、学年順）
+ * - メンバーのグループ化（表示用）
+ *
+ * データを持つクラスが、そのデータに関するロジックも持つ。
+ */
+
 import { Person } from "@/types";
 
 /**
@@ -93,7 +105,7 @@ export class MemberCollection {
         acc[key].push(person);
         return acc;
       },
-      {}
+      {},
     );
 
     return groups;
@@ -104,13 +116,13 @@ export class MemberCollection {
    */
   static getSortedGroupKeys(
     groups: Record<string, Person[]>,
-    preferredOrder: string[]
+    preferredOrder: string[],
   ): string[] {
     return [
       ...preferredOrder.filter((grade) => groups[grade]?.length),
       ...Object.keys(groups)
         .filter(
-          (grade) => !preferredOrder.includes(grade) && groups[grade]?.length
+          (grade) => !preferredOrder.includes(grade) && groups[grade]?.length,
         )
         .sort((a, b) => a.localeCompare(b, "ja")),
     ];

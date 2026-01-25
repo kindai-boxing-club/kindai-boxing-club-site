@@ -1,5 +1,6 @@
 /**
- * ヒーローセクションのアクションボタンコンポーネント
+ * @file components/public/hero/HeroActions.tsx
+ * @description Heroセクションの CTA ボタン群
  */
 "use client";
 

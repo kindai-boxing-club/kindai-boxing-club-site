@@ -1,5 +1,10 @@
 /**
- * 部員紹介セクション（クライアントコンポーネント）
+ * @file components/public/members/MemberSectionClient.tsx
+ * @description 部員紹介セクション（Client Component）
+ *
+ * 役割:
+ * - サーバーから受け取ったデータを表示
+ * - 学年ごとにグループ化された部員をグリッド表示
  */
 "use client";
 

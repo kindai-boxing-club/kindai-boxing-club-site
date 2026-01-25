@@ -1,3 +1,13 @@
+/**
+ * @file components/public/members/MemberSection.tsx
+ * @description 部員紹介セクション（Server Component）
+ *
+ * 役割:
+ * - D1 から部員データを取得
+ * - 学年ごとにグループ化
+ * - クライアントコンポーネント（MemberSectionClient）に渡す
+ */
+
 import { getMembers } from "@/lib/data/dbMembers";
 import {
   MemberCollection,
@@ -14,7 +24,7 @@ export default async function MemberSection() {
   const membersByGrade = collection.groupByGrade();
   const memberGroupKeys = MemberCollection.getSortedGroupKeys(
     membersByGrade,
-    MEMBER_GRADE_ORDER
+    MEMBER_GRADE_ORDER,
   );
 
   return (

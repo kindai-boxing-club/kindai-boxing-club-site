@@ -1,3 +1,8 @@
+/**
+ * @file components/public/ui/SectionHeading.tsx
+ * @description セクションの見出しコンポーネント
+ */
+
 type Props = {
   title: string;
   subtitle: string;

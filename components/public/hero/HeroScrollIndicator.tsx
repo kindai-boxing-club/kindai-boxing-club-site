@@ -1,5 +1,6 @@
 /**
- * ヒーローセクションのスクロールインジケーターコンポーネント
+ * @file components/public/hero/HeroScrollIndicator.tsx
+ * @description Heroセクションのスクロール促進UI
  */
 "use client";
 

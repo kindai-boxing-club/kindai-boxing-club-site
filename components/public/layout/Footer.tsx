@@ -1,9 +1,6 @@
 /**
- * サイトフッターコンポーネント
- * ロゴ、ナビゲーションリンク、SNS情報、コピーライトを表示する
- */
-/**
- * フッターコンポーネント
+ * @file components/public/layout/Footer.tsx
+ * @description サイトのフッター
  */
 import Link from "next/link";
 import Image from "next/image";

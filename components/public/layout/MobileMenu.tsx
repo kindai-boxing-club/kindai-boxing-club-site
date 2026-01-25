@@ -1,5 +1,6 @@
 /**
- * モバイル用メニューコンポーネント
+ * @file components/public/layout/MobileMenu.tsx
+ * @description モバイル用の全画面メニュー
  */
 "use client";
 
@@ -22,8 +23,8 @@ const menuVariants = {
       stiffness: 400,
       damping: 40,
       staggerChildren: 0.05,
-      staggerDirection: -1
-    }
+      staggerDirection: -1,
+    },
   },
   open: {
     opacity: 1,
@@ -33,14 +34,14 @@ const menuVariants = {
       stiffness: 400,
       damping: 40,
       staggerChildren: 0.07,
-      delayChildren: 0.2
-    }
-  }
+      delayChildren: 0.2,
+    },
+  },
 } as const;
 
 const itemVariants = {
   closed: { opacity: 0, x: 50 },
-  open: { opacity: 1, x: 0 }
+  open: { opacity: 1, x: 0 },
 };
 
 export default function MobileMenu({ isOpen, onClose, links }: Props) {
@@ -61,7 +62,7 @@ export default function MobileMenu({ isOpen, onClose, links }: Props) {
             <div className="absolute bottom-1/4 right-1/4 w-96 h-96 bg-blue-900/20 rounded-full blur-3xl" />
           </div>
 
-          <div 
+          <div
             className="flex flex-col gap-8 text-center relative z-10"
             onClick={(e) => e.stopPropagation()}
           >
@@ -76,7 +77,7 @@ export default function MobileMenu({ isOpen, onClose, links }: Props) {
                 </Link>
               </motion.div>
             ))}
-            
+
             <motion.div variants={itemVariants} className="mt-8">
               <a
                 href="https://www.instagram.com/kindaiboxing/"

@@ -1,5 +1,6 @@
 /**
- * クラブ紹介セクションコンポーネント
+ * @file components/public/sections/ClubIntro.tsx
+ * @description 部の精神（OUR SPIRIT）セクション
  */
 "use client";
 
