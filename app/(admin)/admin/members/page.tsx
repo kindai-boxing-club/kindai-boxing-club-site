@@ -42,7 +42,11 @@ export default async function MembersListPage() {
             <tr key={member.id} className="border-t">
               {columns.map((col) => (
                 <td key={col.key} className="px-4 py-2 text-sm">
-                  {String(member[col.key] ?? "-")}
+                  {col.key === "is_manager"
+                    ? member[col.key]
+                      ? "◯"
+                      : ""
+                    : String(member[col.key] ?? "-")}
                 </td>
               ))}
             </tr>
