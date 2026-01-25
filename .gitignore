@@ -38,3 +38,6 @@ lib/membersConfig.ts
 config/sheets.ts
 
 .agent
+
+# Wrangler
+.wrangler/
