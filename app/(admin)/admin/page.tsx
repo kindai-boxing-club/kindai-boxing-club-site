@@ -40,6 +40,11 @@ export default function AdminPage() {
     <div className="max-w-4xl mx-auto">
       <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
         <CardButton
+          name="メンバー一覧"
+          icon={<FaUserPen size={32} />}
+          href="/admin/members"
+        />
+        <CardButton
           name="メンバー編集"
           icon={<FaUserPen size={32} />}
           href="/admin/members/edit"
