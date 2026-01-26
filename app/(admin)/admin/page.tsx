@@ -8,7 +8,7 @@
  */
 
 import Link from "next/link";
-import { FaUserPlus } from "react-icons/fa";
+import { FaUserPlus, FaUserFriends } from "react-icons/fa";
 import { FaUserPen, FaUserXmark } from "react-icons/fa6";
 
 function CardButton({
@@ -41,7 +41,7 @@ export default function AdminPage() {
       <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
         <CardButton
           name="メンバー一覧"
-          icon={<FaUserPen size={32} />}
+          icon={<FaUserFriends size={32} />}
           href="/admin/members"
         />
         <CardButton
