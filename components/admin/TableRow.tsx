@@ -7,7 +7,7 @@ import { Person } from "@/types";
 
 type Props = {
   member: Person;
-  columns: string[];
+  columns: (keyof Person)[];
 };
 
 export default function TableRow({ member, columns }: Props) {
@@ -16,10 +16,10 @@ export default function TableRow({ member, columns }: Props) {
       {columns.map((key) => (
         <td key={key} className="px-4 py-3 text-sm">
           {key === "is_manager"
-            ? member[key as keyof Person]
+            ? member[key]
               ? "◯"
               : ""
-            : (member[key as keyof Person] ?? "-")}
+            : (member[key] ?? "-")}
         </td>
       ))}
     </tr>

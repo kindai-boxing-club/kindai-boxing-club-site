@@ -17,6 +17,8 @@ const columns = [
   { key: "is_manager", label: "マネ" },
 ] as const;
 
+const columnKey = columns.map((col) => col.key);
+
 export default async function MembersTable() {
   const members = await getMembers();
 
@@ -26,11 +28,7 @@ export default async function MembersTable() {
 
       <tbody>
         {members.map((m) => (
-          <TableRow
-            key={m.id}
-            member={m}
-            columns={columns.map((col) => col.key)}
-          />
+          <TableRow key={m.id} member={m} columns={columnKey} />
         ))}
       </tbody>
     </table>

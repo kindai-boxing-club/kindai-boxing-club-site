@@ -3,7 +3,11 @@
  * @description テーブルのヘッダー行
  */
 
-export default function TableHeader({ columns }: { columns: string[] }) {
+type Props = {
+  columns: string[];
+};
+
+export default function TableHeader({ columns }: Props) {
   return (
     <thead className="bg-slate-100">
       <tr>
