@@ -19,16 +19,20 @@ const columns = [
 
 const columnKey = columns.map((col) => col.key);
 
-export default async function MembersTable() {
+export default async function MembersTable({
+  mode,
+}: {
+  mode: "view" | "edit" | "delete";
+}) {
   const members = await getMembers();
 
   return (
     <table className="min-w-full bg-white rounded shadow table-auto">
-      <TableHeader columns={columns.map((col) => col.label)} />
+      <TableHeader columns={columns.map((col) => col.label)} mode={mode} />
 
       <tbody>
         {members.map((m) => (
-          <TableRow key={m.id} member={m} columns={columnKey} />
+          <TableRow key={m.id} member={m} columns={columnKey} mode={mode} />
         ))}
       </tbody>
     </table>
