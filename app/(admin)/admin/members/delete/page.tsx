@@ -7,10 +7,12 @@
  * - D1 データベースから DELETE する
  */
 
+import MembersTable from "@/components/admin/MembersTable";
+
 export default function MemberDeletePage() {
   return (
     <div className="space-y-4">
-      <div>a</div>
+      <MembersTable mode="delete" />
     </div>
   );
 }
