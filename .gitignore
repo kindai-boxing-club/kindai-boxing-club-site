@@ -41,3 +41,10 @@ config/sheets.ts
 
 # Wrangler
 .wrangler/
+wrangler.json
+
+# Build artifacts
+tsconfig.tsbuildinfo
+
+# Personal notes
+note
