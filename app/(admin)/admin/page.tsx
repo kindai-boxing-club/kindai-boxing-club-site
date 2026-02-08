@@ -42,7 +42,7 @@ export default function AdminPage() {
         <CardButton
           name="メンバー一覧"
           icon={<FaUserFriends size={32} />}
-          href="/admin/members"
+          href="/admin/members/view"
         />
         <CardButton
           name="メンバー編集"
