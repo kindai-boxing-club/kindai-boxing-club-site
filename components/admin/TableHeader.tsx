@@ -4,8 +4,8 @@
  */
 
 type Props = {
-  columns: string[];
-  mode: "view" | "edit" | "delete";
+  columns: string[] | readonly string[];
+  mode: "view" | "edit" | "delete" | "add";
 };
 
 function HeaderCell({ text }: { text: string }) {
@@ -25,6 +25,7 @@ export default function TableHeader({ columns, mode }: Props) {
         ))}
         {mode === "delete" && <HeaderCell text="削除" />}
         {mode === "edit" && <HeaderCell text="編集" />}
+        {mode === "add" && <HeaderCell text="削除" />}
       </tr>
     </thead>
   );

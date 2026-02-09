@@ -57,3 +57,17 @@ export interface Person {
  * 新規メンバー追加用（IDなし）
  */
 export type PersonInput = Omit<Person, "id">;
+
+/**
+ * フォーム入力用（姓名分離）
+ * DBへの追加時に姓名を結合してnameフィールドに変換する
+ */
+export interface PersonFormInput {
+  lastName: string; // 姓
+  firstName: string; // 名
+  grade: Grade;
+  position: Position | null;
+  is_manager: 0 | 1;
+  faculty: string;
+  weight_class: string | null;
+}
