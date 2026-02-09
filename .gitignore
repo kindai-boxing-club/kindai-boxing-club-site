@@ -1,50 +1,43 @@
-# dependencies
+# Dependencies
 /node_modules
 /.pnp
 .pnp.js
 
-# testing
-/coverage
-
-# next.js
+# Next.js
 /.next/
 /out/
 
-# production
+# Vercel / Cloudflare build output
+.vercel
 /build
 
-# misc
-.DS_Store
-*.pem
+# Testing
+/coverage
 
-# debug
+# Environment variables (機密情報)
+.env
+.env*.local
+
+# Debug logs
 npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
 
-# local env files
-.env*.local
-.env
-
-# vercel
-.vercel
-
-# typescript
+# TypeScript
 *.tsbuildinfo
-next-env.d.ts
 
-# config files with sensitive data
-lib/membersConfig.ts
-config/sheets.ts
-
-.agent
-
-# Wrangler
+# Wrangler (ローカルD1データなど)
 .wrangler/
-wrangler.json
 
-# Build artifacts
-tsconfig.tsbuildinfo
+# macOS
+.DS_Store
 
-# Personal notes
-note
+# Editor / IDE
+.vscode/
+.idea/
+
+# Gemini / Agent
+.agent/
+
+# Certificates
+*.pem

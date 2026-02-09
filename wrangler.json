@@ -1,0 +1,11 @@
+{
+	"compatibility_flags": ["nodejs_compat"],
+  "d1_databases": [
+    {
+      "binding": "DB",
+      "database_name": "boxing-club-test",
+      "database_id": "d966f18a-2116-4338-9e51-d3f24cdbb0d5",
+      "remote": true
+    }
+  ]
+}
