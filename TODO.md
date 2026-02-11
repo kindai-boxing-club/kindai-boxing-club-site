@@ -29,8 +29,20 @@ lib/domain/
   person.actions.ts    # addPersonAction, deletePersonAction
 ```
 
+## DB接続経路の統一
+
+現在、D1 への接続経路が2系統ある：
+
+| ファイル                | 用途               | 接続方法                                                |
+| ----------------------- | ------------------ | ------------------------------------------------------- |
+| `lib/db/client.ts`      | 管理画面の CRUD    | `getRequestContext()` → `env.DB`                        |
+| `lib/data/dbMembers.ts` | 公開サイト（読取） | `getRequestContext()` → `env.DB` + モックフォールバック |
+
+→ `lib/db/client.ts` に統一し、`lib/data/dbMembers.ts` は廃止を検討する
+
 ## 優先度
 
 - [ ] add 機能の完成
 - [ ] 命名体系の統一（大規模リファクタリング）
 - [ ] ファイル構成の整理
+- [ ] DB接続経路の統一（`lib/data/dbMembers.ts` → `lib/db/members.ts`）
