@@ -3,7 +3,7 @@
  * @description メンバー一覧テーブル（Server Component）
  */
 
-import { getMembers } from "@/lib/data/dbMembers";
+import { getMembers } from "@/lib/db/members";
 import TableHeader from "./TableHeader";
 import TableRow from "./TableRow";
 
