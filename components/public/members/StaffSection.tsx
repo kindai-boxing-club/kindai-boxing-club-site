@@ -4,13 +4,10 @@
  */
 "use client";
 
-import { useState } from "react";
-import { AnimatePresence } from "framer-motion";
 import type { Person } from "@/types";
 import { TeamCollection, STAFF_GRADE_ORDER } from "@/lib/domain/TeamCollection";
 import CategoryHeading from "@/components/public/ui/CategoryHeading";
 import Grid from "@/components/public/members/Grid";
-import TeamMemberModal from "@/components/public/members/TeamMemberModal";
 import KiyotakiFumi from "@/components/public/members/KiyotakiFumi";
 import AkaiHidekazu from "@/components/public/members/AkaiHidekazu";
 import NashiroNobuo from "@/components/public/members/NashiroNobuo";
@@ -22,8 +19,6 @@ export default function StaffSection({
 }: {
   coaches?: Person[];
 }) {
-  const [selectedPerson, setSelectedPerson] = useState<Person | null>(null);
-
   // コーチデータのみをグルーピング
   const collection = new TeamCollection(coaches);
   const groups = collection.groupByGrade();
@@ -79,15 +74,6 @@ export default function StaffSection({
           );
         })}
       </div>
-
-      <AnimatePresence>
-        {selectedPerson && (
-          <TeamMemberModal
-            person={selectedPerson}
-            onClose={() => setSelectedPerson(null)}
-          />
-        )}
-      </AnimatePresence>
     </section>
   );
 }
