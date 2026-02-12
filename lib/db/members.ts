@@ -11,6 +11,7 @@
 
 import { execute, query } from "./client";
 import { Person, PersonInput } from "@/types";
+import { MOCK_MEMBERS } from "@/lib/data/mockMembers";
 
 /**
  * メンバー一覧を取得
@@ -18,10 +19,14 @@ import { Person, PersonInput } from "@/types";
  * @returns Person型のデータの配列
  */
 export async function getMembers(): Promise<Person[]> {
-  return await query<Person>(
+  const result = await query<Person>(
     "SELECT * FROM members ORDER BY grade, id ASC",
     [],
   );
+  if (result.length === 0) {
+    return MOCK_MEMBERS;
+  }
+  return result;
 }
 
 /**
