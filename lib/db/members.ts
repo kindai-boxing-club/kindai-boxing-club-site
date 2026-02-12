@@ -11,7 +11,7 @@
 
 import { execute, query } from "./client";
 import { Person, PersonInput } from "@/types";
-import { MOCK_MEMBERS } from "@/lib/data/mockMembers";
+import { MOCK_MEMBERS } from "@/lib/db/members.mock";
 
 /**
  * メンバー一覧を取得
