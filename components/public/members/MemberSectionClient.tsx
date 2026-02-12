@@ -39,13 +39,13 @@ export default function MemberSectionClient({
         />
         <div className="container mx-auto px-4">
           {groupKeys.map((grade) => {
-            const members = groups[grade];
-            if (!members || members.length === 0) return null;
+            const persons = groups[grade];
+            if (!persons || persons.length === 0) return null;
             return (
               <div key={grade} className="mb-24">
                 <CategoryHeading title={grade} />
                 <div className="mt-8">
-                  <Grid members={members} />
+                  <Grid persons={persons} />
                 </div>
               </div>
             );

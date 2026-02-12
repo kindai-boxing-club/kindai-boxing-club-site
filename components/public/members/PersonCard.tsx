@@ -18,7 +18,7 @@ function cn(...inputs: ClassValue[]) {
 type Variant = "member" | "coach";
 
 type PersonCardProps = {
-  member: Person;
+  person: Person;
   variant?: Variant;
   onClick?: () => void;
 };
@@ -31,7 +31,7 @@ type PersonCardProps = {
  * DRY原則を遵守しています。
  */
 export default function PersonCard({
-  member,
+  person,
   variant = "member",
   onClick,
 }: PersonCardProps) {
@@ -62,7 +62,7 @@ export default function PersonCard({
       {/* 1. 画像エリア */}
       <div className="relative aspect-3/4 overflow-hidden bg-gray-100">
         <PersonImage
-          person={member}
+          person={person}
           fill
           className="object-cover transition-transform duration-700 group-hover:scale-110 group-active:scale-110"
           sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
@@ -74,10 +74,10 @@ export default function PersonCard({
         )}
 
         {/* 役職バッジ (存在する場合のみ) */}
-        {(member.position || isCoach) && (
+        {(person.position || isCoach) && (
           <div className="absolute top-2 left-2 md:top-3 md:left-3">
             <PositionBadge
-              label={member.position || (isCoach ? "COACH" : "")}
+              label={person.position || (isCoach ? "COACH" : "")}
               className={badgeStyles}
             />
           </div>
@@ -92,16 +92,16 @@ export default function PersonCard({
             nameStyles,
           )}
         >
-          {member.name}
+          {person.name}
         </h3>
 
         {/* サブ情報: 学部 (Member) or 装飾ライン (Coach) */}
         {isCoach ? (
           <div className="w-16 h-px bg-linear-to-r from-transparent via-yellow-600 to-transparent mx-auto transform origin-center group-hover:scale-x-150 transition-transform duration-300 mt-2" />
         ) : (
-          member.faculty && (
+          person.faculty && (
             <p className="text-xs text-gray-500 font-medium relative z-10 line-clamp-1">
-              {member.faculty}
+              {person.faculty}
             </p>
           )
         )}

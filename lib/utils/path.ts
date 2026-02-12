@@ -43,7 +43,7 @@ export function getPath(path: string): string {
  * 部員IDから画像URLを生成する
  * 全て /members/{id}.webp に統一
  */
-export function getMemberImage(id: number): string {
+export function getPersonImage(id: number): string {
   if (!id) return "/images/default.png";
   return `${R2_BASE_URL}/members/${id}.webp`;
 }

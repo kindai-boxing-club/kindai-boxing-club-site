@@ -1,5 +1,5 @@
 /**
- * @file lib/domain/MemberCollection.ts
+ * @file lib/domain/TeamCollection.ts
  * @description メンバーデータに対するビジネスロジック（ドメイン層）
  *
  * このファイルの役割:
@@ -13,12 +13,12 @@
 import { Person } from "@/types";
 
 /**
- * MemberCollection
+ * TeamCollection
  *
  * 部員データのコレクションに対する操作をカプセル化するクラス。
  * データに近い場所でロジックを管理する「情報の専門家（Information Expert）」パターンを実装しています。
  */
-export class MemberCollection {
+export class TeamCollection {
   private members: Person[];
 
   constructor(members: Person[]) {
@@ -35,22 +35,22 @@ export class MemberCollection {
   /**
    * 特定の学年で部員をフィルタリング
    */
-  filterByGrade(grade: string): MemberCollection {
-    return new MemberCollection(this.members.filter((m) => m.grade === grade));
+  filterByGrade(grade: string): TeamCollection {
+    return new TeamCollection(this.members.filter((m) => m.grade === grade));
   }
 
   /**
    * マネージャーのみを抽出
    */
-  filterManagers(): MemberCollection {
-    return new MemberCollection(this.members.filter((m) => m.is_manager === 1));
+  filterManagers(): TeamCollection {
+    return new TeamCollection(this.members.filter((m) => m.is_manager === 1));
   }
 
   /**
    * マネージャーを除外
    */
-  excludeManagers(): MemberCollection {
-    return new MemberCollection(this.members.filter((m) => m.is_manager !== 1));
+  excludeManagers(): TeamCollection {
+    return new TeamCollection(this.members.filter((m) => m.is_manager !== 1));
   }
 
   /**
@@ -58,7 +58,7 @@ export class MemberCollection {
    * デフォルト：役職順 ＞ 学年順（降順） ＞ ID順（昇順）
    * （DBのソート順を模倣しており、クライアント側での再ソートが必要な場合に便利です）
    */
-  sortDefault(): MemberCollection {
+  sortDefault(): TeamCollection {
     const sorted = [...this.members].sort((a, b) => {
       // 1. 役職の優先順位
       const priority = (p: string | null) => {
@@ -81,7 +81,7 @@ export class MemberCollection {
       // 3. IDの昇順
       return a.id - b.id;
     });
-    return new MemberCollection(sorted);
+    return new TeamCollection(sorted);
   }
 
   /**

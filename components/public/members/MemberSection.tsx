@@ -10,9 +10,9 @@
 
 import { getMembers } from "@/lib/db/members";
 import {
-  MemberCollection,
+  TeamCollection,
   MEMBER_GRADE_ORDER,
-} from "@/lib/domain/MemberCollection";
+} from "@/lib/domain/TeamCollection";
 import MemberSectionClient from "./MemberSectionClient";
 
 export default async function MemberSection() {
@@ -20,9 +20,9 @@ export default async function MemberSection() {
   const members = await getMembers();
 
   // 並び替え処理
-  const collection = new MemberCollection(members).sortDefault();
+  const collection = new TeamCollection(members).sortDefault();
   const membersByGrade = collection.groupByGrade();
-  const memberGroupKeys = MemberCollection.getSortedGroupKeys(
+  const memberGroupKeys = TeamCollection.getSortedGroupKeys(
     membersByGrade,
     MEMBER_GRADE_ORDER,
   );

@@ -7,10 +7,7 @@
 import { useState } from "react";
 import { AnimatePresence } from "framer-motion";
 import type { Person } from "@/types";
-import {
-  MemberCollection,
-  STAFF_GRADE_ORDER,
-} from "@/lib/domain/MemberCollection";
+import { TeamCollection, STAFF_GRADE_ORDER } from "@/lib/domain/TeamCollection";
 import CategoryHeading from "@/components/public/ui/CategoryHeading";
 import Grid from "@/components/public/members/Grid";
 import TeamMemberModal from "@/components/public/members/TeamMemberModal";
@@ -25,12 +22,12 @@ export default function StaffSection({
 }: {
   coaches?: Person[];
 }) {
-  const [selectedMember, setSelectedMember] = useState<Person | null>(null);
+  const [selectedPerson, setSelectedPerson] = useState<Person | null>(null);
 
   // コーチデータのみをグルーピング
-  const collection = new MemberCollection(coaches);
+  const collection = new TeamCollection(coaches);
   const groups = collection.groupByGrade();
-  const groupKeys = MemberCollection.getSortedGroupKeys(
+  const groupKeys = TeamCollection.getSortedGroupKeys(
     groups,
     STAFF_GRADE_ORDER,
   );
@@ -76,7 +73,7 @@ export default function StaffSection({
             <div key={grade} className="mb-24">
               <CategoryHeading title={grade} />
               <div className="mt-8 ">
-                <Grid members={coaches} />
+                <Grid persons={coaches} />
               </div>
             </div>
           );
@@ -84,10 +81,10 @@ export default function StaffSection({
       </div>
 
       <AnimatePresence>
-        {selectedMember && (
+        {selectedPerson && (
           <TeamMemberModal
-            member={selectedMember}
-            onClose={() => setSelectedMember(null)}
+            person={selectedPerson}
+            onClose={() => setSelectedPerson(null)}
           />
         )}
       </AnimatePresence>

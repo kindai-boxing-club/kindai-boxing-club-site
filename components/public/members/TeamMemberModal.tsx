@@ -15,11 +15,11 @@ import { Person } from "@/types";
 import PersonImage from "@/components/public/ui/PersonImage";
 
 type Props = {
-  member: Person;
+  person: Person;
   onClose: () => void;
 };
 
-export default function TeamMemberModal({ member, onClose }: Props) {
+export default function TeamMemberModal({ person, onClose }: Props) {
   return (
     <>
       {/* Backdrop */}
@@ -43,15 +43,15 @@ export default function TeamMemberModal({ member, onClose }: Props) {
           {/* Image Section */}
           <div className="relative w-full md:w-1/2 aspect-square md:aspect-auto md:h-[600px]">
             <PersonImage
-              person={member}
+              person={person}
               fill
               className="object-cover"
               sizes="(max-width: 768px) 100vw, 50vw"
             />
-            {member.position && (
+            {person.position && (
               <div className="absolute top-6 left-6 z-20">
                 <span className="px-4 py-2 bg-white/90 backdrop-blur-md text-gray-900 text-sm font-bold tracking-widest uppercase rounded-full shadow-lg">
-                  {member.position}
+                  {person.position}
                 </span>
               </div>
             )}
@@ -72,11 +72,11 @@ export default function TeamMemberModal({ member, onClose }: Props) {
               transition={{ delay: 0.2 }}
             >
               <h2 className="text-4xl md:text-5xl font-black text-gray-900 mb-2 tracking-tight">
-                {member.name}
+                {person.name}
               </h2>
-              {member.weight_class && (
+              {person.weight_class && (
                 <p className="text-red-600 font-bold text-lg tracking-wider uppercase mb-8">
-                  {member.weight_class}
+                  {person.weight_class}
                 </p>
               )}
 
