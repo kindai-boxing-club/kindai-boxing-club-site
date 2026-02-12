@@ -8,7 +8,7 @@
  * - クライアントコンポーネント（MemberSectionClient）に渡す
  */
 
-import { getMembers } from "@/lib/data/dbMembers";
+import { getMembers } from "@/lib/db/members";
 import {
   MemberCollection,
   MEMBER_GRADE_ORDER,

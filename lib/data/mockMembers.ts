@@ -23,7 +23,7 @@ export const MOCK_MEMBERS: Person[] = [
   },
   {
     id: 2210002,
-    name: "テスト用データです",
+    name: "テスト用 データです",
     grade: "3年",
     position: "副将",
     weight_class: "ミドル級",
