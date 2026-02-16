@@ -22,7 +22,7 @@ export async function getMembersByGrade(): Promise<{
   groups: Record<string, Person[]>;
   groupKeys: string[];
 }> {
-  let members = await personRepository.findAll();
+  let members = await personRepository.getAll();
   if (members.length === 0) members = MOCK_MEMBERS;
   const collection = new TeamCollection(members).sortDefault();
   const groups = collection.groupByGrade();

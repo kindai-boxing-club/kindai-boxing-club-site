@@ -13,7 +13,7 @@ import { Person, PersonInput } from "@/types";
  *
  * @returns Person型のデータの配列
  */
-export async function findAll(): Promise<Person[]> {
+export async function getAll(): Promise<Person[]> {
   const results = await query<Person>(
     "SELECT * FROM members ORDER BY grade, id ASC",
     [],
@@ -27,7 +27,7 @@ export async function findAll(): Promise<Person[]> {
  * @param id - 取得するメンバーのID
  * @returns メンバーのデータ、存在しない場合はnull
  */
-export async function findById(id: number): Promise<Person | null> {
+export async function getById(id: number): Promise<Person | null> {
   const result = await query<Person>("SELECT * FROM members WHERE id = ?", [
     id,
   ]);
