@@ -1,9 +1,4 @@
-/**
- * @file lib/service/person.service.ts
- * @description メンバーに関するビジネスロジック
- *
- * Service層: ドメインロジックとデータアクセスを仲介する
- */
+/** メンバーに関するビジネスロジック */
 
 import * as personRepository from "@/lib/db/person.repository";
 import { MOCK_MEMBERS } from "@/lib/db/person.mock";

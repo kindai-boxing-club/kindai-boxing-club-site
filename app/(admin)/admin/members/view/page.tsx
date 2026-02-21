@@ -1,7 +1,4 @@
-/**
- * @file app/(admin)/admin/members/view/page.tsx
- * @description メンバー一覧ページ
- */
+/** メンバー一覧ページ */
 
 import MembersTable from "@/components/admin/MembersTable";
 

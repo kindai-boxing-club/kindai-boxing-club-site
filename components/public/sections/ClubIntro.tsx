@@ -1,7 +1,4 @@
-/**
- * @file components/public/sections/ClubIntro.tsx
- * @description 部の精神（OUR SPIRIT）セクション
- */
+/** 部の精神（OUR SPIRIT）セクション */
 "use client";
 
 import { motion } from "framer-motion";

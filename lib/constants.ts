@@ -1,7 +1,4 @@
-/**
- * @file lib/constants.ts
- * @description アプリケーション全体で使用する定数
- */
+/** 管理画面用の定数 */
 
 import { Grade, Position, PersonFormInput } from "@/types";
 

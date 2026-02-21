@@ -1,7 +1,4 @@
-/**
- * @file components/admin/TableHeader.tsx
- * @description テーブルのヘッダー行
- */
+/** テーブルのヘッダー行 */
 
 type Props = {
   columns: string[] | readonly string[];

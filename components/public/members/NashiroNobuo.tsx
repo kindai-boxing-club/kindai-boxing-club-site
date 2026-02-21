@@ -1,7 +1,4 @@
-/**
- * @file components/public/members/NashiroNobuo.tsx
- * @description 名城信男（監督）専用カードコンポーネント
- */
+/** 名城信男（監督）専用カード */
 "use client";
 
 import { motion } from "framer-motion";

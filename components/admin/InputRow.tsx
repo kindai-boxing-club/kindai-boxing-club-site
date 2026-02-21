@@ -1,7 +1,4 @@
-/**
- * @file components/admin/InputRow.tsx
- * @description メンバー追加用の入力行コンポーネント
- */
+/** メンバー追加フォームの入力行 */
 
 import { Grade, PersonFormInput, Position } from "@/types";
 import { GRADES, POSITIONS, WEIGHT_CLASSES } from "@/lib/constants";

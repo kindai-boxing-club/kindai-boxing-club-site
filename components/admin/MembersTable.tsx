@@ -1,7 +1,4 @@
-/**
- * @file components/admin/MembersTable.tsx
- * @description メンバー一覧テーブル（Server Component）
- */
+/** メンバー一覧テーブル（Server Component） */
 
 import * as personRepository from "@/lib/db/person.repository";
 import TableHeader from "./TableHeader";

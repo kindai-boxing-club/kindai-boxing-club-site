@@ -1,7 +1,4 @@
-/**
- * @file components/public/hero/HeroSection.tsx
- * @description ファーストビュー（Hero）セクションのメインコンポーネント
- */
+/** ファーストビュー（Hero）セクション */
 "use client";
 
 import { useRef } from "react";

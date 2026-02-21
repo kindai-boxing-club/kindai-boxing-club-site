@@ -1,7 +1,4 @@
-/**
- * @file components/public/hero/HeroActions.tsx
- * @description Heroセクションの CTA ボタン群
- */
+/** HeroセクションのCTAボタン */
 "use client";
 
 import Link from "next/link";

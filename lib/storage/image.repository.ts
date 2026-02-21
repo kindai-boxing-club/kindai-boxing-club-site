@@ -1,7 +1,4 @@
-/**
- * @file lib/storage/image.repository.ts
- * @description 画像パス解決ユーティリティ
- */
+/** 画像パス解決ユーティリティ */
 
 import { getPublicUrl } from "./client";
 

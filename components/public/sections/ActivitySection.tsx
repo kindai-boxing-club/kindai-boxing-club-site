@@ -1,7 +1,4 @@
-/**
- * @file components/public/sections/ActivitySection.tsx
- * @description 活動内容（ACTIVITY）セクション
- */
+/** 活動内容（ACTIVITY）セクション */
 "use client";
 
 import { motion } from "framer-motion";

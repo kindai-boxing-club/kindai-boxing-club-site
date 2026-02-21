@@ -1,11 +1,4 @@
-/**
- * @file components/public/ui/PersonImage.tsx
- * @description 人物画像を表示するコンポーネント
- *
- * 機能:
- * - ID から画像パスを自動生成（R2 ストレージ）
- * - 画像読み込みエラー時にデフォルト画像を表示
- */
+/** 人物画像コンポーネント */
 "use client";
 
 import { useState, useEffect } from "react";

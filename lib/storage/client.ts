@@ -1,10 +1,4 @@
-/**
- * @file lib/storage/client.ts
- * @description R2 オブジェクトストレージへのアクセスを提供するクライアント層
- *
- * 現在は Public URL の生成のみ。
- * 将来的に R2 バインディング経由でのアップロード・削除を追加予定。
- */
+/** R2オブジェクトストレージのクライアント */
 
 // R2 Bucket の公開URL
 // .env.local: NEXT_PUBLIC_R2_BASE_URL=https://xxx.r2.dev

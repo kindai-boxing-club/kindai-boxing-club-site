@@ -1,11 +1,4 @@
-/**
- * @file app/(admin)/admin/page.tsx
- * @description 管理画面ダッシュボード
- *
- * 役割:
- * - 管理画面のトップページを表示
- * - 各機能（メンバー編集・追加・削除）へのナビゲーションカードを提供
- */
+/** 管理画面ダッシュボード */
 
 import Link from "next/link";
 import { FaUserPlus, FaUserFriends } from "react-icons/fa";

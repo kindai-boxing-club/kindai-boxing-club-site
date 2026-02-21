@@ -1,14 +1,4 @@
-/**
- * @file app/(admin)/admin/layout.tsx
- * @description 管理画面の共通レイアウト
- *
- * 役割:
- * - 管理画面全ページに共通のヘッダーを提供
- * - Cloudflare Access 経由のログアウトリンクを配置
- *
- * 認証:
- *   Cloudflare Access により /admin 以下は保護されています。
- */
+/** 管理画面の共通レイアウト */
 
 import type { Metadata } from "next";
 import Link from "next/link";

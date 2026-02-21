@@ -1,7 +1,4 @@
-/**
- * @file components/public/layout/MobileMenu.tsx
- * @description モバイル用の全画面メニュー
- */
+/** モバイル用の全画面メニュー */
 "use client";
 
 import Link from "next/link";

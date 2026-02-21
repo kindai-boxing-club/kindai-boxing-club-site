@@ -1,7 +1,4 @@
-/**
- * @file components/public/ui/PositionBadge.tsx
- * @description 役職バッジコンポーネント
- */
+/** 役職バッジ */
 "use client";
 
 type Props = {

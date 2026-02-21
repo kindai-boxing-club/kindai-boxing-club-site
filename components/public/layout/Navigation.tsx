@@ -1,7 +1,4 @@
-/**
- * @file components/public/layout/Navigation.tsx
- * @description サイトのヘッダーナビゲーション
- */
+/** ヘッダーナビゲーション */
 "use client";
 
 import Link from "next/link";

@@ -1,7 +1,4 @@
-/**
- * @file components/public/sections/RecruitmentCTA.tsx
- * @description 入部募集 CTA セクション
- */
+/** 入部募集CTAセクション */
 "use client";
 
 import { motion } from "framer-motion";

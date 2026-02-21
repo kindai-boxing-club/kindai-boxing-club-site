@@ -1,11 +1,4 @@
-/**
- * @file app/(admin)/admin/members/delete/page.tsx
- * @description メンバー削除ページ
- *
- * 役割:
- * - 部員を削除する（確認ダイアログ付き）
- * - D1 データベースから DELETE する
- */
+/** メンバー削除ページ */
 
 import MembersTable from "@/components/admin/MembersTable";
 

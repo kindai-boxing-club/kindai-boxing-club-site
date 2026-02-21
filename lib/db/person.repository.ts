@@ -1,9 +1,4 @@
-/**
- * @file lib/db/person.repository.ts
- * @description persons テーブルへのデータアクセス
- *
- * Repository層: SQL実行のみ。ビジネスロジックは含めない。
- */
+/** personsテーブルへのデータアクセス */
 
 import { query, execute } from "./client";
 import { Person, PersonInput } from "@/types";

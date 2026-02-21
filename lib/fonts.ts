@@ -1,13 +1,4 @@
-/**
- * @file lib/fonts.ts
- * @description Google Fonts を使用したフォント設定
- *
- * 使用フォント:
- *   - Inter: 英字見出し用（Hero タイトルなど）
- *   - Noto Sans JP: 日本語本文用
- *   - Shippori Mincho: 日本語見出し・引用用
- *   - Zen Antique: 装飾的な日本語用
- */
+/** Google Fontsの設定 */
 import {
   Inter,
   Noto_Sans_JP,

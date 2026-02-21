@@ -1,7 +1,4 @@
-/**
- * @file components/public/members/AkaiHidekazu.tsx
- * @description 赤井英和（総監督）専用カードコンポーネント
- */
+/** 赤井英和（総監督）専用カード */
 "use client";
 
 import { motion } from "framer-motion";

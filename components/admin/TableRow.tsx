@@ -1,7 +1,4 @@
-/**
- * @file components/admin/TableRow.tsx
- * @description テーブルの1行（データ表示）
- */
+/** テーブルのデータ行 */
 
 "use client";
 

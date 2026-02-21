@@ -1,16 +1,4 @@
-/**
- * @file lib/db/client.ts
- * @description D1 データベースへの低レベルアクセスを提供するクライアント層
- *
- * このファイルの役割:
- * - Cloudflare D1 への接続を確立する
- * - SQL クエリ（SELECT）を実行して結果を返す
- * - SQL コマンド（INSERT/UPDATE/DELETE）を実行する
- *
- * 使用例:
- *   import { query } from "@/lib/db/client";
- *   const users = await query<User>("SELECT * FROM users");
- */
+/** D1データベースへのアクセスクライアント */
 
 import type { D1Database } from "@cloudflare/workers-types";
 import { getRequestContext } from "@cloudflare/next-on-pages";

@@ -1,11 +1,4 @@
-/**
- * @file app/(admin)/admin/members/edit/page.tsx
- * @description メンバー編集ページ
- *
- * 役割:
- * - 既存部員の情報を編集する
- * - D1 データベースを UPDATE する
- */
+/** メンバー編集ページ（未実装） */
 
 export default function MemberEditPage() {
   return (

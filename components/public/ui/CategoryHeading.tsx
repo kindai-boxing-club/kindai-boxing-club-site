@@ -1,11 +1,4 @@
-/**
- * @file components/public/ui/CategoryHeading.tsx
- * @description カテゴリの見出しコンポーネント
- *
- * 使用箇所:
- * - MemberSection: 学年ごとの見出し（"4年"、"3年"など）
- * - StaffSection: 役職ごとの見出し（"部長"、"コーチ"など）
- */
+/** カテゴリの見出し */
 
 type Props = {
   title: string;

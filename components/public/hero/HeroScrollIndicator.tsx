@@ -1,7 +1,4 @@
-/**
- * @file components/public/hero/HeroScrollIndicator.tsx
- * @description Heroセクションのスクロール促進UI
- */
+/** Heroセクションのスクロール促進UI */
 "use client";
 
 import { motion, MotionValue } from "framer-motion";

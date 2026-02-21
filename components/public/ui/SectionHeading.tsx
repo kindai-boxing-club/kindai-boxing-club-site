@@ -1,7 +1,4 @@
-/**
- * @file components/public/ui/SectionHeading.tsx
- * @description セクションの見出しコンポーネント
- */
+/** セクションの見出し */
 
 type Props = {
   title: string;

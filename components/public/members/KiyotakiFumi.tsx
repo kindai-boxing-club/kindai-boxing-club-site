@@ -1,7 +1,4 @@
-/**
- * @file components/public/members/KiyotakiFumi.tsx
- * @description 清滝ふみ（部長）専用カードコンポーネント
- */
+/** 清滝ふみ（部長）専用カード */
 "use client";
 
 import { motion } from "framer-motion";

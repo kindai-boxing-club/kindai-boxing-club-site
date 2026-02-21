@@ -1,7 +1,4 @@
-/**
- * @file components/public/members/PersonCard.tsx
- * @description 部員/コーチを表示するカードコンポーネント
- */
+/** 部員/コーチの表示カード */
 "use client";
 
 import type { Person } from "@/types";

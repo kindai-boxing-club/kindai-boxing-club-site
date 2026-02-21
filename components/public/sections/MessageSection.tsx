@@ -1,7 +1,4 @@
-/**
- * @file components/public/sections/MessageSection.tsx
- * @description 部員募集（RECRUIT）セクション
- */
+/** 部員募集（RECRUIT）セクション */
 "use client";
 
 import { motion } from "framer-motion";

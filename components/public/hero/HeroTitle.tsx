@@ -1,7 +1,4 @@
-/**
- * @file components/public/hero/HeroTitle.tsx
- * @description Heroセクションのタイトル（KINDAI BOXING）
- */
+/** Heroセクションのタイトル（KINDAI BOXING） */
 "use client";
 
 import { motion } from "framer-motion";

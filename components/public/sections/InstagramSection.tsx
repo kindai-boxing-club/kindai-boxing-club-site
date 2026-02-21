@@ -1,7 +1,4 @@
-/**
- * @file components/public/sections/InstagramSection.tsx
- * @description Instagram 連携セクション
- */
+/** Instagram連携セクション */
 "use client";
 
 import { motion } from "framer-motion";

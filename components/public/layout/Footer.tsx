@@ -1,7 +1,4 @@
-/**
- * @file components/public/layout/Footer.tsx
- * @description サイトのフッター
- */
+/** フッター */
 import Link from "next/link";
 import Image from "next/image";
 

@@ -1,12 +1,4 @@
-/**
- * @file components/public/members/Grid.tsx
- * @description メンバーカードをグリッド状に配置するコンポーネント
- *
- * 機能:
- * - 2〜3列のレスポンシブグリッド
- * - 部員/コーチを PersonCard で表示
- * - クリック時のコールバック対応
- */
+/** メンバーカードのグリッドレイアウト */
 "use client";
 import { Person } from "@/types";
 import PersonCard from "./PersonCard";

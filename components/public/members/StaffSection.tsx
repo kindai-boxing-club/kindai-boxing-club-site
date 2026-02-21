@@ -1,7 +1,4 @@
-/**
- * @file components/public/members/StaffSection.tsx
- * @description スタッフ（指導者）紹介セクション
- */
+/** スタッフ（指導者）紹介セクション */
 "use client";
 
 import CategoryHeading from "@/components/public/ui/CategoryHeading";
