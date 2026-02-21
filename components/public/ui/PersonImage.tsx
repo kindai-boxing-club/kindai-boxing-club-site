@@ -11,7 +11,7 @@
 import { useState, useEffect } from "react";
 import Image, { ImageProps } from "next/image";
 import { Person } from "@/types";
-import { getPersonImage } from "@/lib/utils/path";
+import { getImageUrl } from "@/lib/service/image.service";
 
 type Props = Omit<ImageProps, "src" | "alt" | "onError"> & {
   person: Person;
@@ -29,11 +29,11 @@ export default function PersonImage({
   className,
   ...props
 }: Props) {
-  const [src, setSrc] = useState(getPersonImage(person.id));
+  const [src, setSrc] = useState(getImageUrl(person.id));
 
   // personが変わったときにソースをリセット (モーダルなどで重要)
   useEffect(() => {
-    setSrc(getPersonImage(person.id));
+    setSrc(getImageUrl(person.id));
   }, [person.id]);
 
   return (

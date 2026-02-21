@@ -6,7 +6,7 @@
 
 import { motion } from "framer-motion";
 import { Person } from "@/types";
-import { getPath } from "@/lib/utils/path";
+import { getImagePath } from "@/lib/service/image.service";
 import PositionBadge from "@/components/public/ui/PositionBadge";
 export default function NashiroNobuo() {
   const person: Person = {
@@ -19,7 +19,7 @@ export default function NashiroNobuo() {
     faculty: "監督",
   };
 
-  const imgSrc = getPath("/members/nashiro-nobuo.webp");
+  const imgSrc = getImagePath("/members/nashiro-nobuo.webp");
 
   return (
     <motion.div

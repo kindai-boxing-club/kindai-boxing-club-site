@@ -6,8 +6,8 @@
 
 import { motion } from "framer-motion";
 import { Person } from "@/types";
-import { getPath } from "@/lib/utils/path";
 import PositionBadge from "@/components/public/ui/PositionBadge";
+import { getImagePath } from "@/lib/service/image.service";
 
 export default function AkaiHidekazu() {
   const person: Person = {
@@ -20,7 +20,7 @@ export default function AkaiHidekazu() {
     faculty: "総監督", // 仮の値（後で適切な学部名に変更）
   };
 
-  const imgSrc = getPath("/members/akai-hidekazu.webp");
+  const imgSrc = getImagePath("/members/akai-hidekazu.webp");
 
   return (
     <motion.div

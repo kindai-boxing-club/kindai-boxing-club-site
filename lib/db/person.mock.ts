@@ -30,4 +30,22 @@ export const MOCK_MEMBERS: Person[] = [
     faculty: "情報学部",
     is_manager: 0,
   },
+  {
+    id: 2210003,
+    name: "テスト用 データくん",
+    grade: "3年",
+    position: "副将",
+    weight_class: "ミドル級",
+    faculty: "情報学部",
+    is_manager: 0,
+  },
+  {
+    id: 2210004,
+    name: "テスト用 データちゃん",
+    grade: "2年",
+    position: "副将",
+    weight_class: "ミドル級",
+    faculty: "情報学部",
+    is_manager: 0,
+  },
 ];

@@ -8,29 +8,16 @@
  * - クライアントコンポーネント（MemberSectionClient）に渡す
  */
 
-import { getMembers } from "@/lib/db/members";
-import {
-  TeamCollection,
-  MEMBER_GRADE_ORDER,
-} from "@/lib/domain/TeamCollection";
 import MemberSectionClient from "./MemberSectionClient";
+import { getMembersByGrade } from "@/lib/service/person.service";
 
 export default async function MemberSection() {
-  // サーバーサイドでデータを取得
-  const members = await getMembers();
-
-  // 並び替え処理
-  const collection = new TeamCollection(members).sortDefault();
-  const membersByGrade = collection.groupByGrade();
-  const memberGroupKeys = TeamCollection.getSortedGroupKeys(
-    membersByGrade,
-    MEMBER_GRADE_ORDER,
-  );
+  const { groups, groupKeys } = await getMembersByGrade();
 
   return (
     <MemberSectionClient
-      groups={membersByGrade}
-      groupKeys={memberGroupKeys}
+      groups={groups}
+      groupKeys={groupKeys}
       bgColor={"bg-gray-50"}
     />
   );

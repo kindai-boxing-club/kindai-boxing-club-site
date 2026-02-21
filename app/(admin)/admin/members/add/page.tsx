@@ -11,7 +11,7 @@
 
 import { useState } from "react";
 import { PersonFormInput, PersonInput } from "@/types";
-import { addMembersAction } from "@/lib/actions/members";
+import { addMembersAction } from "@/lib/actions/person.action";
 import TableHeader from "@/components/admin/TableHeader";
 import InputRow from "@/components/admin/InputRow";
 import { useRouter } from "next/navigation";

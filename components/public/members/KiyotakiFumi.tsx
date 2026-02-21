@@ -5,7 +5,7 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { getPath } from "@/lib/utils/path";
+import { getImagePath } from "@/lib/service/image.service";
 import { Person } from "@/types";
 import PositionBadge from "@/components/public/ui/PositionBadge";
 import { shipporiMincho } from "@/lib/fonts";
@@ -21,7 +21,7 @@ export default function KiyotakiFumi() {
     faculty: "部長",
   };
 
-  const imgSrc = getPath("/members/kiyotaki-fumi.webp");
+  const imgSrc = getImagePath("/members/kiyotaki-fumi.webp");
   const badgeColor = "bg-linear-to-r from-pink-500 to-rose-500";
   const borderGradient = "from-yellow-400 via-pink-300 to-yellow-400";
 

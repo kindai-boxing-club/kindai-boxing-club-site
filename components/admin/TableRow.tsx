@@ -7,7 +7,7 @@
 
 import { ReactNode } from "react";
 import { Person } from "@/types";
-import { deleteMemberAction } from "@/lib/actions/members";
+import { deleteMemberAction } from "@/lib/actions/person.action";
 import { MdDelete } from "react-icons/md";
 import { MdEdit } from "react-icons/md";
 
