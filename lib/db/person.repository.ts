@@ -15,23 +15,26 @@ import { Person, PersonInput } from "@/types";
  */
 export async function getAll(): Promise<Person[]> {
   const results = await query<Person>(
-    "SELECT * FROM members ORDER BY grade, id ASC",
+    `SELECT * FROM members ORDER BY
+      CASE grade
+        WHEN '4年' THEN 1
+        WHEN '3年' THEN 2
+        WHEN '2年' THEN 3
+        WHEN '1年' THEN 4
+        WHEN '院生' THEN 5
+        ELSE 99
+      END,
+      CASE position
+        WHEN '主将' THEN 1
+        WHEN '副将' THEN 2
+        WHEN '主務' THEN 3
+        WHEN '会計' THEN 4
+        ELSE 99
+      END,
+      id ASC`,
     [],
   );
   return results;
-}
-
-/**
- * IDでメンバーを取得
- *
- * @param id - 取得するメンバーのID
- * @returns メンバーのデータ、存在しない場合はnull
- */
-export async function getById(id: number): Promise<Person | null> {
-  const result = await query<Person>("SELECT * FROM members WHERE id = ?", [
-    id,
-  ]);
-  return result[0] ?? null;
 }
 
 /**

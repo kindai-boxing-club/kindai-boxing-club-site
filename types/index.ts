@@ -14,31 +14,23 @@
  * 学生: 1年〜院生
  * 指導者: 総監督、監督、コーチ、部長
  */
-export type Grade =
-  | "1年"
-  | "2年"
-  | "3年"
-  | "4年"
-  | "院生"
-  | "総監督"
-  | "監督"
-  | "コーチ"
-  | "部長";
 
-/**
- * 役職（カードに表示するタグ）
- * 学生: 主将、副将、主務、会計
- * 指導者: 総監督、監督、コーチ、部長
- */
-export type Position =
-  | "主将"
-  | "副将"
-  | "主務"
-  | "会計"
-  | "総監督"
-  | "監督"
-  | "コーチ"
-  | "部長";
+export type MemberGrade = "1年" | "2年" | "3年" | "4年" | "院生";
+
+export type StaffGrade = "総監督" | "監督" | "コーチ" | "部長";
+
+export type Grade = MemberGrade | StaffGrade;
+
+export type MemberPosition = "主将" | "副将" | "主務" | "会計";
+
+export type StaffPosition = "総監督" | "監督" | "コーチ" | "部長";
+
+export type Position = MemberPosition | StaffPosition;
+
+export type GroupedPerson = {
+  label: string;
+  persons: Person[];
+};
 
 /**
  * 部員の型定義

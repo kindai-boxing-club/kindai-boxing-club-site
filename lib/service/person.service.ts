@@ -7,30 +7,45 @@
 
 import * as personRepository from "@/lib/db/person.repository";
 import { MOCK_MEMBERS } from "@/lib/db/person.mock";
-import {
-  MEMBER_GRADE_ORDER,
-  TeamCollection,
-} from "@/lib/domain/TeamCollection";
-import { Person, PersonInput } from "@/types";
+
+import { Person, PersonInput, GroupedPerson } from "@/types";
+
+const MEMBER_GRADE_ORDER = ["マネージャー", "4年", "3年", "2年", "1年", "院生"];
+
+// const STAFF_GRADE_ORDER = ["部長", "総監督", "監督", "コーチ"];
 
 /**
- * 学年別にメンバーを取得
+ * 全メンバーを取得 (役職順、学年順、ID順)
  *
- * @returns 学年別にグループ化されたメンバーのデータ
+ * @returns 全メンバーのデータ
  */
-export async function getMembersByGrade(): Promise<{
-  groups: Record<string, Person[]>;
-  groupKeys: string[];
-}> {
+export async function getMembers(): Promise<Person[]> {
   let members = await personRepository.getAll();
   if (members.length === 0) members = MOCK_MEMBERS;
-  const collection = new TeamCollection(members).sortDefault();
-  const groups = collection.groupByGrade();
-  const groupKeys = TeamCollection.getSortedGroupKeys(
-    groups,
-    MEMBER_GRADE_ORDER,
+
+  return members;
+}
+
+/**
+ * 学年順の全メンバーをグループ化して取得
+ *
+ * @returns 学年順の全メンバーのデータ
+ */
+export async function getGroupedMembers(): Promise<GroupedPerson[]> {
+  const members = await getMembers();
+
+  //グループ分けする
+  const groupMap: Record<string, Person[]> = {};
+  for (const person of members) {
+    const key = person.is_manager === 1 ? "マネージャー" : person.grade.trim();
+    if (!groupMap[key]) groupMap[key] = [];
+    groupMap[key].push(person);
+  }
+
+  // keyを並び替える
+  return MEMBER_GRADE_ORDER.filter((key) => groupMap[key]?.length).map(
+    (key) => ({ label: key, persons: groupMap[key] }),
   );
-  return { groups, groupKeys };
 }
 
 /**

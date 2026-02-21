@@ -9,16 +9,12 @@
  */
 
 import MemberSectionClient from "./MemberSectionClient";
-import { getMembersByGrade } from "@/lib/service/person.service";
+import { getGroupedMembers } from "@/lib/service/person.service";
 
 export default async function MemberSection() {
-  const { groups, groupKeys } = await getMembersByGrade();
+  const groupedPerson = await getGroupedMembers();
 
   return (
-    <MemberSectionClient
-      groups={groups}
-      groupKeys={groupKeys}
-      bgColor={"bg-gray-50"}
-    />
+    <MemberSectionClient groupedPerson={groupedPerson} bgColor={"bg-gray-50"} />
   );
 }
