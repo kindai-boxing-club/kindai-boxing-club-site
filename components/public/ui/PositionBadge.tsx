@@ -4,11 +4,9 @@
  */
 "use client";
 
-import React from "react";
-
 type Props = {
   label: string;
-  className?: string; // For colors and overrides
+  className?: string;
 };
 
 /**
