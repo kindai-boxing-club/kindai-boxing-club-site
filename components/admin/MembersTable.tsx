@@ -3,7 +3,7 @@
  * @description メンバー一覧テーブル（Server Component）
  */
 
-import { getAll } from "@/lib/db/person.repository";
+import * as personRepository from "@/lib/db/person.repository";
 import TableHeader from "./TableHeader";
 import TableRow from "./TableRow";
 
@@ -24,7 +24,7 @@ export default async function MembersTable({
 }: {
   mode: "view" | "edit" | "delete";
 }) {
-  const members = await getAll();
+  const members = await personRepository.getAll();
 
   return (
     <table className="min-w-full bg-white rounded shadow table-auto">
