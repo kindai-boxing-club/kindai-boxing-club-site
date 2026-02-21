@@ -94,7 +94,7 @@ export default function MessageSection() {
               </p>
 
               <Link
-                href="https://www.instagram.com/kindai_boxing/"
+                href="https://www.instagram.com/kindaiboxing/"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="inline-flex items-center gap-3 bg-linear-to-r from-purple-600 to-pink-600 text-white font-bold py-4 px-10 text-lg rounded-full hover:opacity-90 transition-opacity shadow-lg transform hover:-translate-y-1"
