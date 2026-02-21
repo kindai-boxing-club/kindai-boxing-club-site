@@ -42,14 +42,6 @@ export default function Footer() {
                   部員紹介
                 </Link>
               </li>
-              <li>
-                <Link
-                  href="/blog"
-                  className="hover:text-white transition-colors"
-                >
-                  ブログ
-                </Link>
-              </li>
             </ul>
           </div>
 
