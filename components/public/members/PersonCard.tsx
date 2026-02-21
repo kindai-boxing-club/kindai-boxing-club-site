@@ -101,7 +101,9 @@ export default function PersonCard({
         ) : (
           person.faculty && (
             <p className="text-xs text-gray-500 font-medium relative z-10 line-clamp-1">
-              {person.faculty}
+              {person.is_manager === 1
+                ? `${person.faculty} ${person.grade}`
+                : person.faculty}
             </p>
           )
         )}
