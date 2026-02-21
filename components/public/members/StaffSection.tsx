@@ -4,8 +4,6 @@
  */
 "use client";
 
-import type { Person } from "@/types";
-import { TeamCollection, STAFF_GRADE_ORDER } from "@/lib/domain/TeamCollection";
 import CategoryHeading from "@/components/public/ui/CategoryHeading";
 import Grid from "@/components/public/members/Grid";
 import KiyotakiFumi from "@/components/public/members/KiyotakiFumi";
@@ -14,19 +12,8 @@ import NashiroNobuo from "@/components/public/members/NashiroNobuo";
 import { COACHES_DATA } from "@/public/person/coaches";
 import SectionHeading from "@/components/public/ui/SectionHeading";
 
-export default function StaffSection({
-  coaches = COACHES_DATA, // デフォルトで静的データを使用
-}: {
-  coaches?: Person[];
-}) {
-  // コーチデータのみをグルーピング
-  const collection = new TeamCollection(coaches);
-  const groups = collection.groupByGrade();
-  const groupKeys = TeamCollection.getSortedGroupKeys(
-    groups,
-    STAFF_GRADE_ORDER,
-  );
-
+export default function StaffSection() {
+  const coaches = COACHES_DATA;
   return (
     <section id="staff" className="py-20">
       <div className="container mx-auto px-4">
@@ -57,22 +44,15 @@ export default function StaffSection({
               <NashiroNobuo />
             </div>
           </div>
-        </div>
 
-        {/* コーチ（動的配置） */}
-        {groupKeys.map((grade) => {
-          const coaches = groups[grade];
-          if (!coaches || coaches.length === 0) return null;
-
-          return (
-            <div key={grade} className="mb-24">
-              <CategoryHeading title={grade} />
-              <div className="mt-8 ">
-                <Grid persons={coaches} />
-              </div>
+          {/* コーチ */}
+          <div className="mb-24">
+            <CategoryHeading title="コーチ" />
+            <div className="mt-8">
+              <Grid persons={coaches} />
             </div>
-          );
-        })}
+          </div>
+        </div>
       </div>
     </section>
   );
