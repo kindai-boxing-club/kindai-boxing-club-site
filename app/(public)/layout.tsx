@@ -58,7 +58,7 @@ export default function RootLayout({
   return (
     <html lang="ja">
       <body
-        className={`${notoSansJP.className} ${inter.variable} ${notoSansJP.variable} ${shipporiMincho.variable} ${zenAntique.variable} antialiased`}
+        className={`${inter.variable} ${notoSansJP.variable} ${shipporiMincho.variable} ${zenAntique.variable} antialiased`}
       >
         <Navigation />
         <main className="min-h-screen">{children}</main>
