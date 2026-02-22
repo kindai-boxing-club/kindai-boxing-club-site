@@ -2,13 +2,12 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { inter } from "@/lib/fonts";
 
 export default function HeroTitle() {
   return (
     <div className="mb-8 relative z-20">
       <h1
-        className={`${inter.className} text-[19vw] sm:text-[17vw] md:text-[13vw] lg:text-[11vw] xl:text-[10vw] font-black leading-none uppercase mix-blend-difference flex flex-col items-center`}
+        className="font-inter text-[19vw] sm:text-[17vw] md:text-[13vw] lg:text-[11vw] xl:text-[10vw] font-black leading-none uppercase mix-blend-difference flex flex-col items-center"
         style={{ letterSpacing: "-0.05em" }}
       >
         <span className="flex overflow-hidden">

@@ -5,7 +5,6 @@ import { motion } from "framer-motion";
 import { getImagePath } from "@/lib/service/image.service";
 import { Person } from "@/types";
 import PositionBadge from "@/components/public/ui/PositionBadge";
-import { shipporiMincho } from "@/lib/fonts";
 
 export default function KiyotakiFumi() {
   const person: Person = {
@@ -60,9 +59,7 @@ export default function KiyotakiFumi() {
 
         {/* コンテンツ */}
         <div className="p-6 md:p-8 flex-1 flex flex-col justify-center relative bg-white">
-          <h3
-            className={`text-4xl ${shipporiMincho.className} font-bold font-weight-bold mb-4 tracking-wide text-slate-800 drop-shadow-sm group-hover:text-pink-600 group-active:text-pink-600 transition-colors`}
-          >
+          <h3 className="text-4xl font-shippori font-bold mb-4 tracking-wide text-slate-800 drop-shadow-sm group-hover:text-pink-600 group-active:text-pink-600 transition-colors">
             {person.name}
           </h3>
 
