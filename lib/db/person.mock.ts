@@ -5,7 +5,7 @@ import { Person } from "@/types";
 // ローカル開発用ダミーデータ
 export const MOCK_MEMBERS: Person[] = [
   {
-    id: 2210001,
+    id: 1,
     name: "鬼山田 山之助",
     grade: "4年",
     position: "主将",
@@ -14,7 +14,7 @@ export const MOCK_MEMBERS: Person[] = [
     is_manager: 0,
   },
   {
-    id: 2210002,
+    id: 2,
     name: "テスト用 データです",
     grade: "3年",
     position: "副将",
@@ -23,7 +23,7 @@ export const MOCK_MEMBERS: Person[] = [
     is_manager: 0,
   },
   {
-    id: 2210003,
+    id: 3,
     name: "テスト用 データくん",
     grade: "3年",
     position: "副将",
@@ -32,12 +32,39 @@ export const MOCK_MEMBERS: Person[] = [
     is_manager: 0,
   },
   {
-    id: 2210004,
+    id: 4,
     name: "テスト用 データちゃん",
+    grade: "1年",
+    position: "副将",
+    weight_class: "ミドル級",
+    faculty: "総合社会学部",
+    is_manager: 0,
+  },
+  {
+    id: 5,
+    name: "テスト用 データさん",
+    grade: "1年",
+    position: "副将",
+    weight_class: "ミドル級",
+    faculty: "経営学部",
+    is_manager: 0,
+  },
+  {
+    id: 6,
+    name: "テスト用 データニキ",
     grade: "2年",
     position: "副将",
     weight_class: "ミドル級",
-    faculty: "情報学部",
+    faculty: "経営学部",
+    is_manager: 0,
+  },
+  {
+    id: 7,
+    name: "テスト用 データ様",
+    grade: "3年",
+    position: "副将",
+    weight_class: "ミドル級",
+    faculty: "経済学部",
     is_manager: 0,
   },
 ];
