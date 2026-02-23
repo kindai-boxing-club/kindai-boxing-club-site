@@ -40,9 +40,9 @@ function StatCard({
 }) {
   return (
     <div
-      className={`bg-white rounded-2xl shadow-sm border border-gray-100 p-8 ${className}`}
+      className={`bg-white rounded-xl shadow-sm border border-gray-100 p-6 ${className}`}
     >
-      <h3 className="text-lg font-bold text-gray-800 mb-6">{title}</h3>
+      <h3 className="text-lg font-bold text-gray-800 mb-4">{title}</h3>
       {children}
     </div>
   );
@@ -94,6 +94,11 @@ function GradeChart({
   const segments: string[] = [];
   const legend: { grade: string; count: number; color: string; pct: number }[] =
     [];
+  /** セグメントラベルの位置情報 */
+  const labels: { grade: string; count: number; x: number; y: number }[] = [];
+
+  const CHART_SIZE = 144; // w-36 = 9rem = 144px
+  const LABEL_RADIUS = (CHART_SIZE / 2) * 0.75; // ドーナツの色部分の中央
 
   for (const grade of GRADE_ORDER) {
     const count = gradeCounts[grade] || 0;
@@ -102,6 +107,17 @@ function GradeChart({
     const color = GRADE_COLORS[grade] || "#9ca3af";
     segments.push(`${color} ${cumulative}% ${cumulative + pct}%`);
     legend.push({ grade, count, color, pct: Math.round(pct) });
+
+    // セグメント中間角度（12時起点、時計回り）→ ラベル座標を計算
+    const midPct = cumulative + pct / 2;
+    const midAngle = (midPct / 100) * 2 * Math.PI - Math.PI / 2;
+    labels.push({
+      grade,
+      count,
+      x: Math.cos(midAngle) * LABEL_RADIUS,
+      y: Math.sin(midAngle) * LABEL_RADIUS,
+    });
+
     cumulative += pct;
   }
 
@@ -110,19 +126,39 @@ function GradeChart({
   return (
     <StatCard title="学年の割合">
       <div className="flex flex-col items-center py-4">
+        {/* 円グラフ（セグメント上にラベル） */}
         <div
-          className="w-36 h-36 rounded-full mb-6 shadow-inner"
+          className="relative w-36 h-36 rounded-full shadow-inner mb-4"
           style={{ background: gradient }}
-        />
-        <div className="flex flex-wrap justify-center gap-x-5 gap-y-2">
+        >
+          {/* 中央の白い穴 */}
+          <div className="absolute inset-0 flex items-center justify-center">
+            <div className="w-16 h-16 rounded-full bg-white" />
+          </div>
+          {/* セグメントラベル */}
+          {labels.map((label) => (
+            <span
+              key={label.grade}
+              className="absolute text-[11px] font-bold text-white drop-shadow-md"
+              style={{
+                left: `calc(50% + ${label.x}px)`,
+                top: `calc(50% + ${label.y}px)`,
+                transform: "translate(-50%, -50%)",
+              }}
+            >
+              {label.count}
+            </span>
+          ))}
+        </div>
+        {/* 凡例 */}
+        <div className="flex gap-4 text-sm mt-2">
           {legend.map((item) => (
-            <div key={item.grade} className="flex items-center gap-1.5 text-sm">
+            <div key={item.grade} className="flex items-center gap-1.5">
               <span
                 className="w-3 h-3 rounded-full inline-block"
                 style={{ backgroundColor: item.color }}
               />
-              <span className="font-medium text-gray-700">{item.grade}</span>
-              <span className="text-gray-400">{item.count}人</span>
+              <span className="text-gray-700">{item.grade}</span>
             </div>
           ))}
         </div>
@@ -142,24 +178,22 @@ function FacultyChart({
 
   return (
     <StatCard title="所属学部">
-      <div className="space-y-4">
+      <div className="space-y-2.5">
         {sorted.map(([faculty, count]) => {
           const widthPct = (count / maxCount) * 100;
           return (
-            <div key={faculty}>
-              <div className="flex justify-between items-center mb-1">
-                <span className="text-sm font-medium text-gray-700">
-                  {faculty}
-                </span>
-                <span className="text-sm font-bold text-red-600">
-                  {count}人
-                </span>
-              </div>
-              <div className="w-full h-4 bg-gray-100 rounded-full overflow-hidden">
+            <div key={faculty} className="flex items-center gap-3">
+              <span className="text-sm font-medium text-gray-700 w-24 shrink-0 text-right">
+                {faculty}
+              </span>
+              <div className="flex-1 flex items-center">
                 <div
-                  className="h-full bg-red-600 rounded-full"
+                  className="h-6 bg-red-600 rounded-sm"
                   style={{ width: `${widthPct}%` }}
                 />
+                <span className="text-sm font-bold text-gray-700 ml-2">
+                  {count}
+                </span>
               </div>
             </div>
           );
@@ -169,7 +203,7 @@ function FacultyChart({
   );
 }
 
-export default async function ClubStatsSection() {
+export default async function DataSection() {
   const members = await getMembers();
 
   const studentGrades = ["1年", "2年", "3年", "4年", "院生"];
@@ -182,13 +216,13 @@ export default async function ClubStatsSection() {
   const facultyCounts = countByField(students, "faculty");
 
   return (
-    <section className="py-24 px-4 bg-gray-50">
+    <section className="py-16 px-4 bg-gray-50">
       <SectionHeading title="DATA" subtitle="部員データ" />
-      <div className="max-w-4xl mx-auto flex flex-col gap-6">
+      <div className="max-w-4xl mx-auto flex flex-col gap-4">
         {/* 上段: 学部（全幅） */}
         <FacultyChart facultyCounts={facultyCounts} />
         {/* 下段: 経験者率 + 学年の割合（横並び） */}
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
           <ExperienceRate total={23} />
           <GradeChart gradeCounts={gradeCounts} total={total} />
         </div>
