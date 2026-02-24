@@ -1,4 +1,4 @@
-/** 部員紹介セクション（Server Component） */
+/** 部員紹介セクション */
 "use client";
 
 import type { GroupedPerson } from "@/types";
