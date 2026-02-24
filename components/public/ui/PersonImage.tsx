@@ -18,7 +18,7 @@ type Props = Omit<ImageProps, "src" | "alt" | "onError"> & {
  */
 export default function PersonImage({
   person,
-  defaultImage = "/images/default.png",
+  defaultImage = "/images/default.webp",
   className,
   ...props
 }: Props) {

@@ -60,7 +60,7 @@ export default function InstagramSection() {
                   className="relative aspect-square overflow-hidden rounded-xl bg-gray-100 shadow-sm hover:shadow-md transition-shadow"
                 >
                   <Image
-                    src={`/images/instaTmp${i}.png`}
+                    src={`/images/instaTmp${i}.webp`}
                     alt={`Instagram Post ${i}`}
                     fill
                     className="object-cover"

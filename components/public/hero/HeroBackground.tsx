@@ -15,7 +15,7 @@ export default function HeroBackground() {
       {/* Background Image */}
       <div className="absolute inset-0 z-0 w-full h-full">
         <Image
-          src="/images/bg_hero.png"
+          src="/images/bg_hero.webp"
           alt="Boxing Club Background"
           fill
           className="object-cover object-center opacity-60"
