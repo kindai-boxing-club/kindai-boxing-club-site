@@ -1,12 +1,17 @@
 /** 部員紹介セクション（Server Component） */
 
 import MemberSectionClient from "./MemberSectionClient";
-import { getGroupedMembers } from "@/lib/service/person.service";
+import type { GroupedPerson } from "@/types";
 
-export default async function MemberSection() {
-  const groupedPerson = await getGroupedMembers();
-
+export default function MemberSection({
+  groupedMembers,
+}: {
+  groupedMembers: GroupedPerson[];
+}) {
   return (
-    <MemberSectionClient groupedPerson={groupedPerson} bgColor={"bg-gray-50"} />
+    <MemberSectionClient
+      groupedPerson={groupedMembers}
+      bgColor={"bg-gray-50"}
+    />
   );
 }

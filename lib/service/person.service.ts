@@ -22,13 +22,12 @@ export async function getMembers(): Promise<Person[]> {
 }
 
 /**
- * 学年順の全メンバーをグループ化して取得
+ * メンバーをグループ化する
  *
- * @returns 学年順の全メンバーのデータ
+ * @param members - メンバーのデータ
+ * @returns グループ化されたメンバーのデータ
  */
-export async function getGroupedMembers(): Promise<GroupedPerson[]> {
-  const members = await getMembers();
-
+export function groupMembers(members: Person[]): GroupedPerson[] {
   //グループ分けする
   const groupMap: Record<string, Person[]> = {};
   for (const person of members) {
@@ -36,11 +35,20 @@ export async function getGroupedMembers(): Promise<GroupedPerson[]> {
     if (!groupMap[key]) groupMap[key] = [];
     groupMap[key].push(person);
   }
-
   // keyを並び替える
   return MEMBER_GRADE_ORDER.filter((key) => groupMap[key]?.length).map(
     (key) => ({ label: key, persons: groupMap[key] }),
   );
+}
+
+/**
+ * 学年順の全メンバーをグループ化して取得
+ *
+ * @returns 学年順の全メンバーのデータ
+ */
+export async function getGroupedMembers(): Promise<GroupedPerson[]> {
+  const members = await getMembers();
+  return groupMembers(members);
 }
 
 /**

@@ -1,6 +1,5 @@
 /** 部活統計セクション（Server Component） */
 
-import { getMembers } from "@/lib/service/person.service";
 import type { Person, MemberGrade } from "@/types";
 import SectionHeading from "@/components/public/ui/SectionHeading";
 
@@ -203,9 +202,7 @@ function FacultyChart({
   );
 }
 
-export default async function DataSection() {
-  const members = await getMembers();
-
+export default function DataSection({ members }: { members: Person[] }) {
   const studentGrades = ["1年", "2年", "3年", "4年", "院生"];
   const students = members.filter((m) => studentGrades.includes(m.grade));
   const total = students.length;

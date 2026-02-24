@@ -6,21 +6,26 @@ import MessageSection from "@/components/public/sections/MessageSection";
 import ActivitySection from "@/components/public/sections/ActivitySection";
 import StaffSection from "@/components/public/members/StaffSection";
 import MemberSection from "@/components/public/members/MemberSection";
-import ClubStatsSection from "@/components/public/recruit/DataSection";
+import DataSection from "@/components/public/recruit/DataSection";
 import RecruitmentCTA from "@/components/public/recruit/RecruitmentCTA";
 import InstagramSection from "@/components/public/sections/InstagramSection";
+
+import { getMembers, groupMembers } from "@/lib/service/person.service";
 
 export const runtime = "edge";
 
 export default async function Home() {
+  const members = await getMembers();
+  const groupedMembers = groupMembers(members);
+
   return (
     <div className="bg-white">
       <HeroSection />
       <ClubIntro />
       <MessageSection />
-      <ClubStatsSection />
+      <DataSection members={members} />
       <ActivitySection />
-      <MemberSection />
+      <MemberSection groupedMembers={groupedMembers} />
       <StaffSection />
       <RecruitmentCTA />
       <InstagramSection />
