@@ -59,6 +59,7 @@ export type StaffInput = Omit<
  * DBへの追加時に姓名を結合してnameフィールドに変換する
  */
 export interface PersonFormInput {
+  has_experience: boolean | null;
   lastName: string; // 姓
   firstName: string; // 名
   grade: Grade;

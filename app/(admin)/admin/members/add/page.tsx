@@ -3,7 +3,7 @@
 "use client";
 
 import { useState } from "react";
-import { PersonFormInput, PersonInput } from "@/types";
+import { PersonFormInput, MemberInput } from "@/types";
 import { addMembersAction } from "@/lib/actions/person.action";
 import TableHeader from "@/components/admin/TableHeader";
 import InputRow from "@/components/admin/InputRow";
@@ -39,13 +39,14 @@ export default function MemberAddPage() {
   };
 
   // フォーム入力をDB用の形式に変換（姓名を結合）
-  const convertToPersonInput = (formInput: PersonFormInput): PersonInput => ({
+  const convertToMemberInput = (formInput: PersonFormInput): MemberInput => ({
     name: `${formInput.lastName} ${formInput.firstName}`,
     grade: formInput.grade,
     position: formInput.position,
     is_manager: formInput.is_manager,
     faculty: formInput.faculty,
     weight_class: formInput.weight_class,
+    has_experience: formInput.has_experience,
   });
 
   // 送信処理
@@ -60,7 +61,7 @@ export default function MemberAddPage() {
     setIsSubmitting(true);
     try {
       // PersonFormInput を PersonInput に変換して送信
-      const membersToAdd = rows.map(convertToPersonInput);
+      const membersToAdd = rows.map(convertToMemberInput);
       await addMembersAction(membersToAdd);
       alert("メンバーを追加しました。");
       setRows([]);
