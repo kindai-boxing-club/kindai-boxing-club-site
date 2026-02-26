@@ -1,9 +1,9 @@
 // lib/db/staff.repository.ts
 import { query } from "./client";
-import { Staff } from "@/types";
+import { Person } from "@/types";
 
-export async function getAll(): Promise<Staff[]> {
-  return query<Staff>(
+export async function getAll(): Promise<Person[]> {
+  return query<Person>(
     "SELECT * FROM staff WHERE state = 'active' ORDER BY id ASC",
     [],
   );

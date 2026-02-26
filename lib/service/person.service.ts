@@ -1,9 +1,9 @@
 /** メンバーに関するビジネスロジック */
 
-import * as personRepository from "@/lib/db/person.repository";
+import * as memberRepository from "@/lib/db/member.repository";
 import { MOCK_MEMBERS } from "@/lib/db/person.mock";
 
-import { Person, PersonInput, GroupedPerson } from "@/types";
+import { Person, MemberInput, GroupedPerson } from "@/types";
 
 const MEMBER_GRADE_ORDER = ["マネージャー", "4年", "3年", "2年", "1年", "院生"];
 
@@ -15,7 +15,7 @@ const MEMBER_GRADE_ORDER = ["マネージャー", "4年", "3年", "2年", "1年"
  * @returns 全メンバーのデータ
  */
 export async function getMembers(): Promise<Person[]> {
-  let members = await personRepository.getAll();
+  let members = await memberRepository.getAllActive();
   if (members.length === 0) members = MOCK_MEMBERS;
 
   return members;
@@ -57,8 +57,8 @@ export async function getGroupedMembers(): Promise<GroupedPerson[]> {
  * @param data - 追加するメンバーのデータ
  * @returns 追加に成功したかどうか
  */
-export async function addMember(data: PersonInput): Promise<boolean> {
-  return personRepository.create(data);
+export async function addMember(data: MemberInput): Promise<boolean> {
+  return memberRepository.create(data);
 }
 
 /**
@@ -68,5 +68,5 @@ export async function addMember(data: PersonInput): Promise<boolean> {
  * @returns 削除に成功したかどうか
  */
 export async function deleteMember(id: number): Promise<boolean> {
-  return personRepository.remove(id);
+  return memberRepository.remove(id);
 }

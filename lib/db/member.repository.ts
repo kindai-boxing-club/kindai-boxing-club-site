@@ -1,7 +1,7 @@
 /** メンバーテーブルへのデータアクセス */
 
 import { query, execute } from "./client";
-import { Person, PersonInput } from "@/types";
+import { Person, MemberInput } from "@/types";
 
 /**
  * activeなメンバー一覧を取得
@@ -37,7 +37,7 @@ export async function getAllActive(): Promise<Person[]> {
  * @param data - 追加するメンバーのデータ（IDなし）
  * @returns 追加に成功したかどうか
  */
-export async function create(data: PersonInput): Promise<boolean> {
+export async function create(data: MemberInput): Promise<boolean> {
   return execute(
     "INSERT INTO members (name, grade, position, is_manager, faculty, weight_class, state, has_experience) VALUES (?, ?, ?, ?, ?, ?, 'active', ?)",
     [
