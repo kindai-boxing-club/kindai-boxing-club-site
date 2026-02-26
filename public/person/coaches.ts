@@ -16,6 +16,8 @@ export const COACHES_DATA: Person[] = [
     position: "コーチ",
     weight_class: null,
     faculty: "コーチ",
+    state: "active",
+    has_experience: false,
   },
   {
     id: 9002,
@@ -25,6 +27,8 @@ export const COACHES_DATA: Person[] = [
     position: "コーチ",
     weight_class: null,
     faculty: "コーチ",
+    state: "active",
+    has_experience: false,
   },
   {
     id: 9003,
@@ -34,5 +38,7 @@ export const COACHES_DATA: Person[] = [
     position: "コーチ",
     weight_class: null,
     faculty: "コーチ",
+    state: "active",
+    has_experience: false,
   },
 ];

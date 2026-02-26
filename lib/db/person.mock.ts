@@ -12,6 +12,8 @@ export const MOCK_MEMBERS: Person[] = [
     weight_class: "ミドル級",
     faculty: "情報学部",
     is_manager: 0,
+    state: "active",
+    has_experience: false,
   },
   {
     id: 2,
@@ -21,6 +23,8 @@ export const MOCK_MEMBERS: Person[] = [
     weight_class: "ミドル級",
     faculty: "情報学部",
     is_manager: 0,
+    state: "active",
+    has_experience: false,
   },
   {
     id: 3,
@@ -30,6 +34,8 @@ export const MOCK_MEMBERS: Person[] = [
     weight_class: "ミドル級",
     faculty: "情報学部",
     is_manager: 0,
+    state: "active",
+    has_experience: false,
   },
   {
     id: 4,
@@ -39,6 +45,8 @@ export const MOCK_MEMBERS: Person[] = [
     weight_class: "ミドル級",
     faculty: "総合社会学部",
     is_manager: 0,
+    state: "active",
+    has_experience: false,
   },
   {
     id: 5,
@@ -48,6 +56,8 @@ export const MOCK_MEMBERS: Person[] = [
     weight_class: "ミドル級",
     faculty: "経営学部",
     is_manager: 0,
+    state: "active",
+    has_experience: false,
   },
   {
     id: 6,
@@ -57,6 +67,8 @@ export const MOCK_MEMBERS: Person[] = [
     weight_class: "ミドル級",
     faculty: "経営学部",
     is_manager: 0,
+    state: "active",
+    has_experience: false,
   },
   {
     id: 7,
@@ -66,5 +78,7 @@ export const MOCK_MEMBERS: Person[] = [
     weight_class: "ミドル級",
     faculty: "経済学部",
     is_manager: 0,
+    state: "active",
+    has_experience: false,
   },
 ];

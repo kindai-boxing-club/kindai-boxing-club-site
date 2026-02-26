@@ -46,4 +46,5 @@ export const DEFAULT_MEMBER_VALUES: PersonFormInput = {
   is_manager: 0,
   faculty: "",
   weight_class: null,
+  has_experience: false,
 };
