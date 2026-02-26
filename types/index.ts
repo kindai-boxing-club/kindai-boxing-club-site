@@ -29,17 +29,30 @@ export type GroupedPerson = {
 export interface Person {
   id: number; // 主キー
   name: string; // 名前
-  grade: Grade; // 学年・役職（グループ分け用）
-  position: Position | null; // 役職（学生のみ）
-  is_manager: 0 | 1; // マネージャーかどうか（0: 選手, 1: マネージャー）
-  faculty: string; // 学部
-  weight_class: string | null; // 階級
+  grade: Grade; // 学年・役職 グループ分けに仕様
+  position: Position | null; // 役職（staff: gradeと同じ値を格納）
+  is_manager: 0 | 1 | null; // マネージャーかどうか(0: 選手, 1: マネージャー)(staff: null)
+  faculty: string | null; // 学部(staff: null)
+  weight_class: string | null; // 階級(staff: null)
+  state: "active" | "deleted" | "graduated"; // 状態
+  has_experience: boolean | null; // 経験の有無(staff: null)
 }
 
 /**
  * 新規メンバー追加用（IDなし）
  */
-export type PersonInput = Omit<Person, "id">;
+export type MemberInput = Omit<Person, "id" | "state">;
+
+export type StaffInput = Omit<
+  Person,
+  | "id"
+  | "position"
+  | "is_manager"
+  | "faculty"
+  | "weight_class"
+  | "state"
+  | "has_experience"
+>;
 
 /**
  * フォーム入力用（姓名分離）
