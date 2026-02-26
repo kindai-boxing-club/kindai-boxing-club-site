@@ -15,6 +15,8 @@ export default function AkaiHidekazu() {
     is_manager: 0,
     weight_class: null,
     faculty: "総監督", // 仮の値（後で適切な学部名に変更）
+    state: "active",
+    has_experience: false,
   };
 
   const imgSrc = getImagePath("/members/akai-hidekazu.webp");

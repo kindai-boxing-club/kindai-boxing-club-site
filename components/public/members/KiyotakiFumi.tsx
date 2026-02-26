@@ -15,6 +15,8 @@ export default function KiyotakiFumi() {
     is_manager: 0,
     weight_class: null,
     faculty: "部長",
+    state: "active",
+    has_experience: false,
   };
 
   const imgSrc = getImagePath("/members/kiyotaki-fumi.webp");

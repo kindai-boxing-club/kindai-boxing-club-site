@@ -14,6 +14,8 @@ export default function NashiroNobuo() {
     is_manager: 0,
     weight_class: null,
     faculty: "監督",
+    state: "active",
+    has_experience: false,
   };
 
   const imgSrc = getImagePath("/members/nashiro-nobuo.webp");
