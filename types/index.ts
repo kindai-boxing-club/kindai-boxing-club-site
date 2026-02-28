@@ -1,70 +1,73 @@
 /** アプリケーション全体の型定義 */
 
-/**
- * 学年・役職（表示時のグループ分けに使用）
- * 学生: 1年〜院生
- * 指導者: 総監督、監督、コーチ、部長
- */
+import {
+  MEMBER_GRADES,
+  STAFF_GRADES,
+  POSITIONS,
+  STATES,
+} from "@/lib/constants";
 
-export type MemberGrade = "1年" | "2年" | "3年" | "4年" | "院生";
-
-export type StaffGrade = "総監督" | "監督" | "コーチ" | "部長";
-
+// 学年・役職 (グループ分けに使用)
 export type Grade = MemberGrade | StaffGrade;
+export type MemberGrade = (typeof MEMBER_GRADES)[number];
+export type StaffGrade = (typeof STAFF_GRADES)[number];
 
-export type MemberPosition = "主将" | "副将" | "主務" | "会計";
-
-export type StaffPosition = "総監督" | "監督" | "コーチ" | "部長";
-
+// 役職 (ラベル)
 export type Position = MemberPosition | StaffPosition;
+export type MemberPosition = (typeof POSITIONS)[number] | null;
+export type StaffPosition = StaffGrade;
 
-export type GroupedPerson = {
-  label: string;
-  persons: Person[];
-};
+// 状態 active: 在籍, deleted: 退部, graduated: 卒業
+export type State = (typeof STATES)[number];
+
+/**
+ * 部員・スタッフの共通基底型
+ */
+export interface Person {
+  id: number;
+  name: string;
+  grade: Grade;
+  position: Position;
+  state: State;
+}
 
 /**
  * 部員の型定義
  */
-export interface Person {
-  id: number; // 主キー
-  name: string; // 名前
-  grade: Grade; // 学年・役職 グループ分けに仕様
-  position: Position | null; // 役職（staff: gradeと同じ値を格納）
-  is_manager: 0 | 1 | null; // マネージャーかどうか(0: 選手, 1: マネージャー)(staff: null)
-  faculty: string | null; // 学部(staff: null)
-  weight_class: string | null; // 階級(staff: null)
-  state: "active" | "deleted" | "graduated"; // 状態
-  has_experience: boolean | null; // 経験の有無(staff: null)
+export interface Member extends Person {
+  grade: MemberGrade;
+  position: MemberPosition;
+
+  is_manager: 0 | 1;
+  faculty: string;
+  weight_class: string | null;
+  has_experience: boolean | null;
 }
+
+/**
+ * スタッフの型定義
+ */
+export interface Staff extends Person {
+  grade: StaffGrade;
+  position: StaffPosition;
+
+  bio: string | null;
+}
+
+/**
+ * グループ分け用
+ */
+export type GroupedPerson = {
+  label: Grade;
+  persons: Person[];
+};
 
 /**
  * 新規メンバー追加用（IDなし）
  */
-export type MemberInput = Omit<Person, "id" | "state">;
-
-export type StaffInput = Omit<
-  Person,
-  | "id"
-  | "position"
-  | "is_manager"
-  | "faculty"
-  | "weight_class"
-  | "state"
-  | "has_experience"
->;
+export type MemberInput = Omit<Member, "id" | "state">;
 
 /**
- * フォーム入力用（姓名分離）
- * DBへの追加時に姓名を結合してnameフィールドに変換する
+ * 新規スタッフ追加用（IDなし）
  */
-export interface PersonFormInput {
-  has_experience: boolean | null;
-  lastName: string; // 姓
-  firstName: string; // 名
-  grade: Grade;
-  position: Position | null;
-  is_manager: 0 | 1;
-  faculty: string;
-  weight_class: string | null;
-}
+export type StaffInput = Omit<Staff, "id" | "state">;
