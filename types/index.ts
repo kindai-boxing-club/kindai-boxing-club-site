@@ -5,6 +5,7 @@ import {
   STAFF_GRADES,
   POSITIONS,
   STATES,
+  WEIGHT_CLASSES,
 } from "@/lib/constants";
 
 // 学年・役職 (グループ分けに使用)
@@ -19,6 +20,8 @@ export type StaffPosition = StaffGrade;
 
 // 状態 active: 在籍, deleted: 退部, graduated: 卒業
 export type State = (typeof STATES)[number];
+
+export type WeightClass = (typeof WEIGHT_CLASSES)[number];
 
 /**
  * 部員・スタッフの共通基底型
@@ -40,7 +43,7 @@ export interface Member extends Person {
 
   is_manager: 0 | 1;
   faculty: string;
-  weight_class: string | null;
+  weight_class: WeightClass | null;
   has_experience: boolean | null;
 }
 
