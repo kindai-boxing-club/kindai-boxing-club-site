@@ -1,7 +1,7 @@
 /** 部員紹介セクション */
 "use client";
 
-import type { GroupedPerson } from "@/types";
+import type { GroupedMember } from "@/types";
 import Grid from "./Grid";
 import SectionHeading from "@/components/public/ui/SectionHeading";
 import CategoryHeading from "@/components/public/ui/CategoryHeading";
@@ -9,7 +9,7 @@ import CategoryHeading from "@/components/public/ui/CategoryHeading";
 export default function MemberSection({
   groupedMembers,
 }: {
-  groupedMembers: GroupedPerson[];
+  groupedMembers: GroupedMember[];
 }) {
   return (
     <section

@@ -1,11 +1,11 @@
 /** メンバーカードのグリッドレイアウト */
 "use client";
-import { Person } from "@/types";
+import { Member, Staff } from "@/types";
 import PersonCard from "./PersonCard";
 
 type Props = {
-  persons: Person[];
-  onPersonClick?: (person: Person) => void;
+  persons: Member[] | Staff[];
+  onPersonClick?: (person: Member | Staff) => void;
 };
 
 export default function Grid({ persons, onPersonClick }: Props) {
@@ -17,7 +17,6 @@ export default function Grid({ persons, onPersonClick }: Props) {
         <PersonCard
           key={person.id}
           person={person}
-          variant={person.grade === "コーチ" ? "coach" : "member"}
           onClick={onPersonClick ? () => onPersonClick(person) : undefined}
         />
       ))}

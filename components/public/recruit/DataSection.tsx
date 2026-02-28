@@ -1,6 +1,6 @@
 /** 部活統計セクション（Server Component） */
 
-import type { Person, MemberGrade } from "@/types";
+import type { Member, MemberGrade } from "@/types";
 import SectionHeading from "@/components/public/ui/SectionHeading";
 
 /** 経験者数（DBにカラムがないためハードコード） */
@@ -18,7 +18,7 @@ const GRADE_COLORS: Record<string, string> = {
 /** 学年の順序 */
 const GRADE_ORDER: MemberGrade[] = ["4年", "3年", "2年", "1年", "院生"];
 
-function countByField(members: Person[], field: "grade" | "faculty") {
+function countByField(members: Member[], field: "grade" | "faculty") {
   const counts: Record<string, number> = {};
   for (const m of members) {
     const key = m[field] ?? "不明";
@@ -202,7 +202,7 @@ function FacultyChart({
   );
 }
 
-export default function DataSection({ members }: { members: Person[] }) {
+export default function DataSection({ members }: { members: Member[] }) {
   const studentGrades = ["1年", "2年", "3年", "4年", "院生"];
   const students = members.filter((m) => studentGrades.includes(m.grade));
   const total = students.length;

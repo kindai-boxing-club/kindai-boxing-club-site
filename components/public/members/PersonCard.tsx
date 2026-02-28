@@ -1,7 +1,7 @@
 /** 部員/コーチの表示カード */
 "use client";
 
-import type { Person } from "@/types";
+import type { Member, Staff } from "@/types";
 import PersonImage from "@/components/public/ui/PersonImage";
 import PositionBadge from "@/components/public/ui/PositionBadge";
 import { twMerge } from "tailwind-merge";
@@ -12,11 +12,8 @@ function cn(...inputs: ClassValue[]) {
   return twMerge(clsx(inputs));
 }
 
-type Variant = "member" | "coach";
-
 type PersonCardProps = {
-  person: Person;
-  variant?: Variant;
+  person: Member | Staff;
   onClick?: () => void;
 };
 
@@ -24,15 +21,9 @@ type PersonCardProps = {
  * PersonCard
  *
  * MemberCardとCoachCardの共通部分を抽出した統合コンポーネント。
- * Variantパターン適用により、構造（HTML）とスタイル（CSS）の責務を分離し、
- * DRY原則を遵守しています。
  */
-export default function PersonCard({
-  person,
-  variant = "member",
-  onClick,
-}: PersonCardProps) {
-  const isCoach = variant === "coach";
+export default function PersonCard({ person, onClick }: PersonCardProps) {
+  const isCoach = !("faculty" in person);
 
   // スタイリング定義（Variantごとの違いをここに集約）
   const containerStyles = isCoach
