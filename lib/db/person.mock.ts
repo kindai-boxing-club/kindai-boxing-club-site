@@ -1,15 +1,15 @@
 /** ローカル開発用のモックデータ */
 
-import { Person } from "@/types";
+import { Member } from "@/types";
 
 // ローカル開発用ダミーデータ
-export const MOCK_MEMBERS: Person[] = [
+export const MOCK_MEMBERS: Member[] = [
   {
     id: 1,
     name: "鬼山田 山之助",
     grade: "4年",
     position: "主将",
-    weight_class: "ミドル級",
+    weight_class: "50",
     faculty: "情報学部",
     is_manager: 0,
     state: "active",
@@ -20,7 +20,7 @@ export const MOCK_MEMBERS: Person[] = [
     name: "テスト用 データです",
     grade: "3年",
     position: "副将",
-    weight_class: "ミドル級",
+    weight_class: "55",
     faculty: "情報学部",
     is_manager: 0,
     state: "active",
@@ -31,7 +31,7 @@ export const MOCK_MEMBERS: Person[] = [
     name: "テスト用 データくん",
     grade: "3年",
     position: "副将",
-    weight_class: "ミドル級",
+    weight_class: "60",
     faculty: "情報学部",
     is_manager: 0,
     state: "active",
@@ -42,7 +42,7 @@ export const MOCK_MEMBERS: Person[] = [
     name: "テスト用 データちゃん",
     grade: "1年",
     position: "副将",
-    weight_class: "ミドル級",
+    weight_class: "65",
     faculty: "総合社会学部",
     is_manager: 0,
     state: "active",
@@ -53,7 +53,7 @@ export const MOCK_MEMBERS: Person[] = [
     name: "テスト用 データさん",
     grade: "1年",
     position: "副将",
-    weight_class: "ミドル級",
+    weight_class: "70",
     faculty: "経営学部",
     is_manager: 0,
     state: "active",
@@ -64,7 +64,7 @@ export const MOCK_MEMBERS: Person[] = [
     name: "テスト用 データニキ",
     grade: "2年",
     position: "副将",
-    weight_class: "ミドル級",
+    weight_class: "75",
     faculty: "経営学部",
     is_manager: 0,
     state: "active",
@@ -75,7 +75,7 @@ export const MOCK_MEMBERS: Person[] = [
     name: "テスト用 データ様",
     grade: "3年",
     position: "副将",
-    weight_class: "ミドル級",
+    weight_class: "50",
     faculty: "経済学部",
     is_manager: 0,
     state: "active",
