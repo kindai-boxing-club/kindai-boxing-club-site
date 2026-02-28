@@ -2,21 +2,18 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { Person } from "@/types";
+import { Staff } from "@/types";
 import PositionBadge from "@/components/public/ui/PositionBadge";
 import { getImagePath } from "@/lib/service/image.service";
 
 export default function AkaiHidekazu() {
-  const person: Person = {
+  const person: Staff = {
     id: 9902,
     name: "赤井 英和",
     grade: "総監督",
     position: "総監督", // カードに表示
-    is_manager: 0,
-    weight_class: null,
-    faculty: "総監督", // 仮の値（後で適切な学部名に変更）
     state: "active",
-    has_experience: false,
+    bio: "",
   };
 
   const imgSrc = getImagePath("/members/akai-hidekazu.webp");

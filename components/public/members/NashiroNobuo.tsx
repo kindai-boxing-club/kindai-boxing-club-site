@@ -2,20 +2,17 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { Person } from "@/types";
+import { Staff } from "@/types";
 import { getImagePath } from "@/lib/service/image.service";
 import PositionBadge from "@/components/public/ui/PositionBadge";
 export default function NashiroNobuo() {
-  const person: Person = {
+  const person: Staff = {
     id: 9903,
     name: "名城 信男",
     grade: "監督",
     position: "監督",
-    is_manager: 0,
-    weight_class: null,
-    faculty: "監督",
     state: "active",
-    has_experience: false,
+    bio: "",
   };
 
   const imgSrc = getImagePath("/members/nashiro-nobuo.webp");

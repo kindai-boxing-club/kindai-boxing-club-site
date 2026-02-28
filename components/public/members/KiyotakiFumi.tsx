@@ -3,20 +3,17 @@
 
 import { motion } from "framer-motion";
 import { getImagePath } from "@/lib/service/image.service";
-import { Person } from "@/types";
+import { Staff } from "@/types";
 import PositionBadge from "@/components/public/ui/PositionBadge";
 
 export default function KiyotakiFumi() {
-  const person: Person = {
+  const person: Staff = {
     id: 9901,
     name: "清滝 ふみ",
     grade: "部長",
     position: "部長",
-    is_manager: 0,
-    weight_class: null,
-    faculty: "部長",
     state: "active",
-    has_experience: false,
+    bio: "",
   };
 
   const imgSrc = getImagePath("/members/kiyotaki-fumi.webp");
