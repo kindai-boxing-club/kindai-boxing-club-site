@@ -1,15 +1,15 @@
 /** メンバーテーブルへのデータアクセス */
 
 import { query, execute } from "./client";
-import { Person, MemberInput } from "@/types";
+import { MemberInput, Member } from "@/types";
 
 /**
  * activeなメンバー一覧を取得
  *
- * @returns Person型のデータの配列
+ * @returns Member型のデータの配列
  */
-export async function getAllActive(): Promise<Person[]> {
-  return query<Person>(
+export async function getAllActive(): Promise<Member[]> {
+  return query<Member>(
     `SELECT * FROM members WHERE state = 'active' ORDER BY
       CASE grade
         WHEN '4年' THEN 1

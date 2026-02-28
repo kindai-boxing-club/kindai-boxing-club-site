@@ -60,9 +60,9 @@ export interface Staff extends Person {
 /**
  * グループ分け用
  */
-export type GroupedPerson = {
+export type GroupedMember = {
   label: Grade;
-  persons: Person[];
+  persons: Member[];
 };
 
 /**

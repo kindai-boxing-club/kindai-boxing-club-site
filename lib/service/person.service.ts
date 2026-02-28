@@ -3,7 +3,7 @@
 import * as memberRepository from "@/lib/db/member.repository";
 import { MOCK_MEMBERS } from "@/lib/db/person.mock";
 
-import { Person, MemberInput, GroupedPerson } from "@/types";
+import { MemberInput, GroupedMember, Member, Grade } from "@/types";
 
 const MEMBER_GRADE_ORDER = ["マネージャー", "4年", "3年", "2年", "1年", "院生"];
 
@@ -14,7 +14,7 @@ const MEMBER_GRADE_ORDER = ["マネージャー", "4年", "3年", "2年", "1年"
  *
  * @returns 全メンバーのデータ
  */
-export async function getMembers(): Promise<Person[]> {
+export async function getMembers(): Promise<Member[]> {
   let members = await memberRepository.getAllActive();
   if (members.length === 0) members = MOCK_MEMBERS;
 
@@ -27,9 +27,9 @@ export async function getMembers(): Promise<Person[]> {
  * @param members - メンバーのデータ
  * @returns グループ化されたメンバーのデータ
  */
-export function groupMembers(members: Person[]): GroupedPerson[] {
+export function groupMembers(members: Member[]): GroupedMember[] {
   //グループ分けする
-  const groupMap: Record<string, Person[]> = {};
+  const groupMap: Record<string, Member[]> = {};
   for (const person of members) {
     const key = person.is_manager === 1 ? "マネージャー" : person.grade.trim();
     if (!groupMap[key]) groupMap[key] = [];
@@ -37,7 +37,7 @@ export function groupMembers(members: Person[]): GroupedPerson[] {
   }
   // keyを並び替える
   return MEMBER_GRADE_ORDER.filter((key) => groupMap[key]?.length).map(
-    (key) => ({ label: key, persons: groupMap[key] }),
+    (key) => ({ label: key as Grade, persons: groupMap[key] }),
   );
 }
 
@@ -46,7 +46,7 @@ export function groupMembers(members: Person[]): GroupedPerson[] {
  *
  * @returns 学年順の全メンバーのデータ
  */
-export async function getGroupedMembers(): Promise<GroupedPerson[]> {
+export async function getGroupedMembers(): Promise<GroupedMember[]> {
   const members = await getMembers();
   return groupMembers(members);
 }
