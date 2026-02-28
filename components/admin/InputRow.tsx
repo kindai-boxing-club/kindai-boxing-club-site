@@ -1,14 +1,14 @@
 /** メンバー追加フォームの入力行 */
 
-import { Grade, PersonFormInput, Position } from "@/types";
-import { GRADES, POSITIONS, WEIGHT_CLASSES } from "@/lib/constants";
+import { MemberGrade, MemberInput, MemberPosition, WeightClass } from "@/types";
+import { MEMBER_GRADES, POSITIONS, WEIGHT_CLASSES } from "@/lib/constants";
 import { MdDelete } from "react-icons/md";
 
 type Props = {
-  member: PersonFormInput;
-  onChange: <K extends keyof PersonFormInput>(
+  member: MemberInput;
+  onChange: <K extends keyof MemberInput>(
     field: K,
-    value: PersonFormInput[K],
+    value: MemberInput[K],
   ) => void;
   onRemove: () => void;
 };
@@ -16,25 +16,13 @@ type Props = {
 export default function InputRow({ member, onChange, onRemove }: Props) {
   return (
     <tr className="border-t hover:bg-gray-50">
-      {/* 姓 */}
       <td className="px-4 py-2">
         <input
           type="text"
           className="w-full border rounded px-2 py-1"
-          placeholder="姓"
-          value={member.lastName}
-          onChange={(e) => onChange("lastName", e.target.value)}
-        />
-      </td>
-
-      {/* 名 */}
-      <td className="px-4 py-2">
-        <input
-          type="text"
-          className="w-full border rounded px-2 py-1"
-          placeholder="名"
-          value={member.firstName}
-          onChange={(e) => onChange("firstName", e.target.value)}
+          placeholder="名前"
+          value={member.name}
+          onChange={(e) => onChange("name", e.target.value)}
         />
       </td>
 
@@ -43,9 +31,9 @@ export default function InputRow({ member, onChange, onRemove }: Props) {
         <select
           className="w-full border rounded px-2 py-1"
           value={member.grade}
-          onChange={(e) => onChange("grade", e.target.value as Grade)}
+          onChange={(e) => onChange("grade", e.target.value as MemberGrade)}
         >
-          {GRADES.map((g) => (
+          {MEMBER_GRADES.map((g) => (
             <option key={g} value={g}>
               {g}
             </option>
@@ -59,7 +47,7 @@ export default function InputRow({ member, onChange, onRemove }: Props) {
           className="w-full border rounded px-2 py-1"
           value={member.position || ""}
           onChange={(e) =>
-            onChange("position", (e.target.value || null) as Position | null)
+            onChange("position", (e.target.value || null) as MemberPosition)
           }
         >
           <option value="">なし</option>
@@ -87,7 +75,12 @@ export default function InputRow({ member, onChange, onRemove }: Props) {
         <select
           className="w-full border rounded px-2 py-1"
           value={member.weight_class || ""}
-          onChange={(e) => onChange("weight_class", e.target.value || null)}
+          onChange={(e) =>
+            onChange(
+              "weight_class",
+              (e.target.value || null) as WeightClass | null,
+            )
+          }
         >
           <option value="">なし</option>
           {WEIGHT_CLASSES.map((w) => (

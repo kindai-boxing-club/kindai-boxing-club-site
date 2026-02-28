@@ -3,14 +3,14 @@
 "use client";
 
 import { ReactNode } from "react";
-import { Person } from "@/types";
+import { Member } from "@/types";
 import { deleteMemberAction } from "@/lib/actions/person.action";
 import { MdDelete } from "react-icons/md";
 import { MdEdit } from "react-icons/md";
 
 type Props = {
-  member: Person;
-  columns: (keyof Person)[];
+  member: Member;
+  columns: (keyof Member)[];
   mode: "view" | "edit" | "delete" | "add";
 };
 

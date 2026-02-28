@@ -3,23 +3,41 @@
 "use client";
 
 import { useState } from "react";
-import { PersonFormInput, MemberInput } from "@/types";
+import { MemberInput } from "@/types";
 import { addMembersAction } from "@/lib/actions/person.action";
 import TableHeader from "@/components/admin/TableHeader";
 import InputRow from "@/components/admin/InputRow";
 import { useRouter } from "next/navigation";
 import { MdAddCircleOutline } from "react-icons/md";
 
-import { MEMBER_TABLE_COLUMNS, DEFAULT_MEMBER_VALUES } from "@/lib/constants";
+const defaultValues: MemberInput = {
+  name: "",
+  grade: "1年",
+  position: null,
+  is_manager: 0,
+  faculty: "",
+  weight_class: null,
+  has_experience: false,
+};
+
+const MEMBER_TABLE_COLUMNS = [
+  "名前",
+  "学年",
+  "役職",
+  "学部",
+  "階級",
+  "マネ",
+  "操作",
+] as const;
 
 export default function MemberAddPage() {
-  const [rows, setRows] = useState<PersonFormInput[]>([]);
+  const [rows, setRows] = useState<MemberInput[]>([]);
   const [isSubmitting, setIsSubmitting] = useState(false);
   const router = useRouter();
 
   // 行を追加
   const handleAddRow = () => {
-    setRows([...rows, { ...DEFAULT_MEMBER_VALUES }]);
+    setRows([...rows, defaultValues]);
   };
 
   // 行を削除
@@ -28,31 +46,20 @@ export default function MemberAddPage() {
   };
 
   // 入力内容を変更
-  const handleChange = <K extends keyof PersonFormInput>(
+  const handleChange = <K extends keyof MemberInput>(
     index: number,
     field: K,
-    value: PersonFormInput[K],
+    value: MemberInput[K],
   ) => {
     const newRows = [...rows];
     newRows[index] = { ...newRows[index], [field]: value };
     setRows(newRows);
   };
 
-  // フォーム入力をDB用の形式に変換（姓名を結合）
-  const convertToMemberInput = (formInput: PersonFormInput): MemberInput => ({
-    name: `${formInput.lastName} ${formInput.firstName}`,
-    grade: formInput.grade,
-    position: formInput.position,
-    is_manager: formInput.is_manager,
-    faculty: formInput.faculty,
-    weight_class: formInput.weight_class,
-    has_experience: formInput.has_experience,
-  });
-
   // 送信処理
   const handleSubmit = async () => {
-    if (rows.some((row) => !row.lastName.trim() || !row.firstName.trim())) {
-      alert("すべての行に姓と名を入力してください。");
+    if (rows.some((row) => !row.name.trim())) {
+      alert("すべての行に名前を入力してください。");
       return;
     }
 
@@ -60,8 +67,7 @@ export default function MemberAddPage() {
 
     setIsSubmitting(true);
     try {
-      // PersonFormInput を PersonInput に変換して送信
-      const membersToAdd = rows.map(convertToMemberInput);
+      const membersToAdd = rows;
       await addMembersAction(membersToAdd);
       alert("メンバーを追加しました。");
       setRows([]);
