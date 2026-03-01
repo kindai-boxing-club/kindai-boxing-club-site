@@ -2,7 +2,7 @@
 
 export const MEMBER_GRADES = ["1年", "2年", "3年", "4年", "院生"] as const;
 export const STAFF_GRADES = ["総監督", "監督", "コーチ", "部長"] as const;
-export const MEMBER_POSITIONS = ["主将", "副将", "主務", "会計"] as const;
+export const MEMBER_POSITIONS = ["主将", "副将", "主務", "会計", null] as const;
 export const STAFF_POSITIONS = [...STAFF_GRADES] as const;
 export const STATES = ["active", "deleted", "graduated"] as const;
 
@@ -25,4 +25,5 @@ export const FACULTIES = [
   "産業理工学部",
   "看護学部",
   "短期大学部",
+  null,
 ] as const;
