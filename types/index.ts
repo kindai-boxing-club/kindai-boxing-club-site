@@ -3,7 +3,8 @@
 import {
   MEMBER_GRADES,
   STAFF_GRADES,
-  POSITIONS,
+  MEMBER_POSITIONS,
+  STAFF_POSITIONS,
   STATES,
   WEIGHT_CLASSES,
 } from "@/lib/constants";
@@ -15,8 +16,8 @@ export type StaffGrade = (typeof STAFF_GRADES)[number];
 
 // 役職 (ラベル)
 export type Position = MemberPosition | StaffPosition;
-export type MemberPosition = (typeof POSITIONS)[number] | null;
-export type StaffPosition = StaffGrade;
+export type MemberPosition = (typeof MEMBER_POSITIONS)[number] | null;
+export type StaffPosition = (typeof STAFF_POSITIONS)[number];
 
 // 状態 active: 在籍, deleted: 退部, graduated: 卒業
 export type State = (typeof STATES)[number];
