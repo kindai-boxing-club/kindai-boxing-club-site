@@ -1,7 +1,17 @@
 /** メンバー追加フォームの入力行 */
 
-import { MemberGrade, MemberInput, MemberPosition, WeightClass } from "@/types";
-import { MEMBER_GRADES, POSITIONS, WEIGHT_CLASSES } from "@/lib/constants";
+import {
+  Faculty,
+  MemberGrade,
+  MemberInput,
+  MemberPosition,
+  WeightClass,
+} from "@/types";
+import {
+  MEMBER_GRADES,
+  MEMBER_POSITIONS,
+  WEIGHT_CLASSES,
+} from "@/lib/constants";
 import { MdDelete } from "react-icons/md";
 
 type Props = {
@@ -51,7 +61,7 @@ export default function InputRow({ member, onChange, onRemove }: Props) {
           }
         >
           <option value="">なし</option>
-          {POSITIONS.map((p) => (
+          {MEMBER_POSITIONS.map((p) => (
             <option key={p} value={p}>
               {p}
             </option>
@@ -65,8 +75,8 @@ export default function InputRow({ member, onChange, onRemove }: Props) {
           type="text"
           className="w-full border rounded px-2 py-1"
           placeholder="学部"
-          value={member.faculty}
-          onChange={(e) => onChange("faculty", e.target.value)}
+          value={member.faculty || ""}
+          onChange={(e) => onChange("faculty", e.target.value as Faculty)}
         />
       </td>
 

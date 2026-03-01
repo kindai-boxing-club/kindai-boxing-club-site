@@ -15,7 +15,7 @@ const defaultValues: MemberInput = {
   grade: "1年",
   position: null,
   is_manager: 0,
-  faculty: "",
+  faculty: null,
   weight_class: null,
   has_experience: false,
 };
