@@ -7,6 +7,7 @@ import {
   STAFF_POSITIONS,
   STATES,
   WEIGHT_CLASSES,
+  FACULTIES,
 } from "@/lib/constants";
 
 // 学年・役職 (グループ分けに使用)
@@ -23,6 +24,7 @@ export type StaffPosition = (typeof STAFF_POSITIONS)[number];
 export type State = (typeof STATES)[number];
 
 export type WeightClass = (typeof WEIGHT_CLASSES)[number];
+export type Faculty = (typeof FACULTIES)[number];
 
 /**
  * 部員・スタッフの共通基底型
@@ -43,7 +45,7 @@ export interface Member extends Person {
   position: MemberPosition;
 
   is_manager: 0 | 1;
-  faculty: string;
+  faculty: Faculty;
   weight_class: WeightClass | null;
   has_experience: boolean | null;
 }
