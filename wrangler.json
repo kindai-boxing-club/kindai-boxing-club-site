@@ -7,5 +7,11 @@
       "database_id": "531f21f2-3d6f-4bd9-a263-f02ed5075357",
       "remote": true
     }
+  ],
+  "r2_buckets": [
+    {
+      "binding": "STORAGE",
+      "bucket_name": "kindai-boxing-storage"
+    }
   ]
 }
