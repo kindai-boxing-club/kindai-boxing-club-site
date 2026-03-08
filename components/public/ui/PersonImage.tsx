@@ -22,12 +22,12 @@ export default function PersonImage({
   className,
   ...props
 }: Props) {
-  const [src, setSrc] = useState(getImageUrl(person.id));
+  const [src, setSrc] = useState(getImageUrl(person));
 
   // personが変わったときにソースをリセット (モーダルなどで重要)
   useEffect(() => {
-    setSrc(getImageUrl(person.id));
-  }, [person.id]);
+    setSrc(getImageUrl(person));
+  }, [person]);
 
   return (
     <Image

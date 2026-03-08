@@ -2,6 +2,7 @@ import {
   getPersonImageUrl,
   resolveImagePath,
 } from "@/lib/storage/image.repository";
+import { Person } from "@/types";
 
 /**
  * メンバーの画像URLを取得
@@ -9,8 +10,8 @@ import {
  * @param id - メンバーのID
  * @returns メンバーの画像URL
  */
-export function getImageUrl(id: number): string {
-  return getPersonImageUrl(id);
+export function getImageUrl(person: Person): string {
+  return getPersonImageUrl(person);
 }
 
 /**

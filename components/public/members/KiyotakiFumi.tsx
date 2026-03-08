@@ -16,7 +16,7 @@ export default function KiyotakiFumi() {
     bio: "",
   };
 
-  const imgSrc = getImagePath("/members/kiyotaki-fumi.webp");
+  const imgSrc = getImagePath("/staff/10001.webp");
   const badgeColor = "bg-linear-to-r from-pink-500 to-rose-500";
   const borderGradient = "from-yellow-400 via-pink-300 to-yellow-400";
 

@@ -16,7 +16,7 @@ export default function AkaiHidekazu() {
     bio: "",
   };
 
-  const imgSrc = getImagePath("/members/akai-hidekazu.webp");
+  const imgSrc = getImagePath("/staff/10002.webp");
 
   return (
     <motion.div

@@ -1,6 +1,7 @@
 /** 画像パス解決ユーティリティ */
 
 import { getPublicUrl } from "./client";
+import { Person } from "@/types";
 
 /**
  * 部員IDから画像URLを生成
@@ -8,9 +9,10 @@ import { getPublicUrl } from "./client";
  * @param id - 部員ID
  * @returns 画像URL
  */
-export function getPersonImageUrl(id: number): string {
-  if (!id) return "/images/default.png";
-  return getPublicUrl(`/members/${id}.webp`);
+export function getPersonImageUrl(person: Person): string {
+  if (!person.id) return "/images/default.png";
+  const folder = "faculty" in person ? "members" : "staff";
+  return getPublicUrl(`/${folder}/${person.id}.webp`);
 }
 
 /**

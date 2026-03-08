@@ -15,7 +15,7 @@ export default function NashiroNobuo() {
     bio: "",
   };
 
-  const imgSrc = getImagePath("/members/nashiro-nobuo.webp");
+  const imgSrc = getImagePath("/staff/10003.webp");
 
   return (
     <motion.div
