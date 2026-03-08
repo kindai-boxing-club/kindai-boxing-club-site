@@ -8,7 +8,7 @@ import PositionBadge from "@/components/public/ui/PositionBadge";
 
 export default function KiyotakiFumi() {
   const person: Staff = {
-    id: 9901,
+    id: 10001,
     name: "清滝 ふみ",
     grade: "部長",
     position: "部長",

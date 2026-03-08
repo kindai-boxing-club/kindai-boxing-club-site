@@ -7,7 +7,7 @@ import { getImagePath } from "@/lib/service/image.service";
 import PositionBadge from "@/components/public/ui/PositionBadge";
 export default function NashiroNobuo() {
   const person: Staff = {
-    id: 9903,
+    id: 10003,
     name: "名城 信男",
     grade: "監督",
     position: "監督",

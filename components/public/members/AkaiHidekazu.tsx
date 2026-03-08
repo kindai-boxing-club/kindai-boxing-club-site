@@ -8,7 +8,7 @@ import { getImagePath } from "@/lib/service/image.service";
 
 export default function AkaiHidekazu() {
   const person: Staff = {
-    id: 9902,
+    id: 10002,
     name: "赤井 英和",
     grade: "総監督",
     position: "総監督", // カードに表示

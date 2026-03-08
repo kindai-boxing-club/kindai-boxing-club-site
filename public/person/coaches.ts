@@ -9,7 +9,7 @@ import { Staff } from "@/types";
  */
 export const COACHES_DATA: Staff[] = [
   {
-    id: 9001,
+    id: 10004,
     name: "倉本 亮",
     grade: "コーチ",
     position: "コーチ",
@@ -17,7 +17,7 @@ export const COACHES_DATA: Staff[] = [
     bio: "",
   },
   {
-    id: 9002,
+    id: 10005,
     name: "中島 健",
     grade: "コーチ",
     position: "コーチ",
@@ -25,7 +25,7 @@ export const COACHES_DATA: Staff[] = [
     bio: "",
   },
   {
-    id: 9003,
+    id: 10006,
     name: "國重 憲司",
     grade: "コーチ",
     position: "コーチ",
