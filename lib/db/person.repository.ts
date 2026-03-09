@@ -2,10 +2,10 @@ import { execute, query } from "./client";
 import { Table, Person } from "@/types";
 
 /**
- * IDを指定してメンバーを取得する
+ * IDを指定してPersonを取得する
  * @param table - テーブル名
  * @param id - メンバーID
- * @returns メンバーデータ、または null
+ * @returns Personデータ、または null
  */
 export async function getById(
   table: Table,
@@ -18,9 +18,9 @@ export async function getById(
 }
 
 /**
- * IDを指定してメンバーを削除扱いにする
+ * IDを指定してPersonを削除扱いにする
  * @param table - テーブル名
- * @param id - メンバーID
+ * @param id - Person ID
  * @returns 削除扱いに成功したかどうか
  */
 export async function remove(table: Table, id: number): Promise<boolean> {
@@ -31,9 +31,9 @@ export async function remove(table: Table, id: number): Promise<boolean> {
 }
 
 /**
- * IDを指定してメンバーを復元する
+ * IDを指定してPersonを復元する
  * @param table - テーブル名
- * @param id - メンバーID
+ * @param id - Person ID
  * @returns 復元に成功したかどうか
  */
 export async function restore(table: Table, id: number): Promise<boolean> {
@@ -44,14 +44,14 @@ export async function restore(table: Table, id: number): Promise<boolean> {
 }
 
 /**
- * IDを指定してメンバーを完全に削除する
+ * IDを指定してPersonを完全に削除する
  * @param table - テーブル名
- * @param id - メンバーID
+ * @param id - Person ID
  * @returns 削除に成功したかどうか
  */
-export const eliminate = async (table: Table, id: number): Promise<boolean> => {
+export async function eliminate(table: Table, id: number): Promise<boolean> {
   const person = await getById(table, id);
   if (person?.state === "deleted")
     return execute(`DELETE FROM ${table} WHERE id = ?`, [id]);
   return false;
-};
+}
