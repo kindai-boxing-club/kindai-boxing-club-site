@@ -25,9 +25,21 @@ export async function getById(
  */
 export async function remove(table: Table, id: number): Promise<boolean> {
   const person = await getById(table, id);
-  if (person?.state === "active") {
+  if (person?.state === "active")
     return execute(`UPDATE ${table} SET state = 'deleted' WHERE id = ?`, [id]);
-  }
+  return false;
+}
+
+/**
+ * IDを指定してメンバーを復元する
+ * @param table - テーブル名
+ * @param id - メンバーID
+ * @returns 復元に成功したかどうか
+ */
+export async function restore(table: Table, id: number): Promise<boolean> {
+  const person = await getById(table, id);
+  if (person?.state === "deleted")
+    return execute(`UPDATE ${table} SET state = 'active' WHERE id = ?`, [id]);
   return false;
 }
 
@@ -37,10 +49,9 @@ export async function remove(table: Table, id: number): Promise<boolean> {
  * @param id - メンバーID
  * @returns 削除に成功したかどうか
  */
-export async function restore(table: Table, id: number): Promise<boolean> {
+export const eliminate = async (table: Table, id: number): Promise<boolean> => {
   const person = await getById(table, id);
-  if (person?.state === "deleted") {
-    return execute("DELETE FROM members WHERE id = ?", [id]);
-  }
+  if (person?.state === "deleted")
+    return execute(`DELETE FROM ${table} WHERE id = ?`, [id]);
   return false;
-}
+};
