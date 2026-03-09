@@ -2,6 +2,19 @@
 
 import { query, execute } from "./client";
 import { MemberInput, Member } from "@/types";
+import {
+  restore as restorePerson,
+  remove as removePerson,
+  getById as getPersonById,
+  eliminate as eliminatePerson,
+} from "./person.repository";
+
+const TABLE = "members";
+
+export const get = (id: number) => getPersonById(TABLE, id);
+export const remove = (id: number) => removePerson(TABLE, id);
+export const restore = (id: number) => restorePerson(TABLE, id);
+export const eliminate = (id: number) => eliminatePerson(TABLE, id);
 
 /**
  * activeなメンバー一覧を取得
@@ -50,24 +63,4 @@ export async function create(data: MemberInput): Promise<boolean> {
       data.has_experience,
     ],
   );
-}
-
-/**
- * メンバーを削除
- *
- * @param id - 削除するメンバーのID
- * @returns 削除に成功したかどうか
- */
-export async function remove(id: number): Promise<boolean> {
-  return execute("UPDATE members SET state = 'deleted' WHERE id = ?", [id]);
-}
-
-/**
- * メンバーを完全に削除
- *
- * @param id - 削除するメンバーのID
- * @returns 削除に成功したかどうか
- */
-export async function eliminate(id: number): Promise<boolean> {
-  return execute("DELETE FROM members WHERE id = ?", [id]);
 }
