@@ -17,7 +17,7 @@ export const restore = (id: number) => restorePerson(TABLE, id);
 export const eliminate = (id: number) => eliminatePerson(TABLE, id);
 
 /**
- * activeなメンバー一覧を取得
+ * すべてのactiveなメンバー一覧を取得
  *
  * @returns Member型のデータの配列
  */
