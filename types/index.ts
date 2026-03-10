@@ -64,8 +64,16 @@ export interface Staff extends Person {
  * グループ分け用
  */
 export type GroupedMember = {
-  label: Grade;
+  label: MemberGrade | "マネージャー";
   persons: Member[];
+};
+
+/**
+ * グループ分け用
+ */
+export type GroupedStaff = {
+  label: StaffGrade;
+  persons: Staff[];
 };
 
 /**

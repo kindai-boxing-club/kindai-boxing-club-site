@@ -1,6 +1,6 @@
 /** ローカル開発用のモックデータ */
 
-import { Member } from "@/types";
+import { Member, Staff } from "@/types";
 
 // ローカル開発用ダミーデータ
 export const MOCK_MEMBERS: Member[] = [
@@ -80,5 +80,32 @@ export const MOCK_MEMBERS: Member[] = [
     is_manager: 0,
     state: "active",
     has_experience: false,
+  },
+];
+
+export const MOCK_STAFF: Staff[] = [
+  {
+    id: 1,
+    name: "コーチ山 コチお",
+    grade: "部長",
+    position: "部長",
+    state: "active",
+    bio: "",
+  },
+  {
+    id: 2,
+    name: "テスト用 データ監督",
+    grade: "監督",
+    position: "監督",
+    state: "active",
+    bio: "",
+  },
+  {
+    id: 3,
+    name: "テスト用 データコーチ",
+    grade: "コーチ",
+    position: "コーチ",
+    state: "active",
+    bio: "",
   },
 ];
