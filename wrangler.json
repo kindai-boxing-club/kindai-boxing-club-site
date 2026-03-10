@@ -1,9 +1,10 @@
 {
+	"account_id": "df247782a61c8a80b62a11a80489542e",
 	"compatibility_flags": ["nodejs_compat"],
   "d1_databases": [
     {
       "binding": "DB",
-      "database_name": "boxing-club-db",
+      "database_name": "kindai-boxing-db",
       "database_id": "531f21f2-3d6f-4bd9-a263-f02ed5075357",
       "remote": true
     }

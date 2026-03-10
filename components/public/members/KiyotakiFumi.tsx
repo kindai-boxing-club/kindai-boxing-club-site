@@ -2,21 +2,12 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { getImagePath } from "@/lib/service/image.service";
+import { getImageUrl } from "@/lib/service/image.service";
 import { Staff } from "@/types";
 import PositionBadge from "@/components/public/ui/PositionBadge";
 
-export default function KiyotakiFumi() {
-  const person: Staff = {
-    id: 10001,
-    name: "清滝 ふみ",
-    grade: "部長",
-    position: "部長",
-    state: "active",
-    bio: "",
-  };
-
-  const imgSrc = getImagePath("/staff/10001.webp");
+export default function KiyotakiFumi({ person }: { person: Staff }) {
+  const imgSrc = getImageUrl(person);
   const badgeColor = "bg-linear-to-r from-pink-500 to-rose-500";
   const borderGradient = "from-yellow-400 via-pink-300 to-yellow-400";
 
@@ -28,7 +19,7 @@ export default function KiyotakiFumi() {
       transition={{ duration: 0.8, ease: "easeOut" }}
       className="group relative max-w-md mx-auto md:max-w-none"
     >
-      <div className="relative h-full bg-white rounded-xl overflow-hidden shadow-xl hover:shadow-2xl active:shadow-2xl transition-all duration-500 border border-slate-100 flex flex-col md:flex-row">
+      <div className="max-w-4xl mx-auto relative h-full bg-white rounded-xl overflow-hidden shadow-xl hover:shadow-2xl active:shadow-2xl transition-all duration-500 border border-slate-100 flex flex-col md:flex-row">
         {/* 装飾的な背景要素 */}
         <div className="absolute top-0 right-0 w-32 h-32 bg-linear-to-bl from-pink-50 to-transparent opacity-50 rounded-bl-full" />
         <div className="absolute bottom-0 left-0 w-24 h-24 bg-linear-to-tr from-yellow-50 to-transparent opacity-50 rounded-tr-full" />

@@ -3,20 +3,10 @@
 
 import { motion } from "framer-motion";
 import { Staff } from "@/types";
-import { getImagePath } from "@/lib/service/image.service";
+import { getImageUrl } from "@/lib/service/image.service";
 import PositionBadge from "@/components/public/ui/PositionBadge";
-export default function NashiroNobuo() {
-  const person: Staff = {
-    id: 10003,
-    name: "名城 信男",
-    grade: "監督",
-    position: "監督",
-    state: "active",
-    bio: "",
-  };
-
-  const imgSrc = getImagePath("/staff/10003.webp");
-
+export default function NashiroNobuo({ person }: { person: Staff }) {
+  const imgSrc = getImageUrl(person);
   return (
     <motion.div
       initial={{ opacity: 0, y: 30 }}
@@ -25,10 +15,8 @@ export default function NashiroNobuo() {
       transition={{ delay: 0.2 }}
       className="group relative max-w-md mx-auto md:max-w-xl w-full"
     >
-      {/* <div className="absolute -inset-8 bg-gradient-to-r from-red-700 to-black opacity-0 group-hover:opacity-30 blur-3xl transition-opacity duration-500 rounded-none animate-pulse" /> */}
-
       {/* カードコンテナ -  平行四辺形 */}
-      <div className="relative rounded-none shadow-[0_0_30px_rgba(153,27,27,0.2)] group-hover:shadow-[0_0_60px_rgba(220,38,38,0.6)] group-active:shadow-[0_0_60px_rgba(220,38,38,0.6)] transform -skew-x-6 mx-1 md:mx-0 p-2 mb-8">
+      <div className="max-w-4xl mx-auto relative rounded-none shadow-[0_0_30px_rgba(153,27,27,0.2)] group-hover:shadow-[0_0_60px_rgba(220,38,38,0.6)] group-active:shadow-[0_0_60px_rgba(220,38,38,0.6)] transform -skew-x-6 md:mx-0 p-2 mb-8">
         {/* アニメーションボーダー背景 */}
         <div className="absolute inset-0 bg-linear-to-br from-red-950 via-red-500 to-red-950 bg-size-[400%_400%] animate-gradient-xy" />
 

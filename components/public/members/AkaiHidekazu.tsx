@@ -4,20 +4,10 @@
 import { motion } from "framer-motion";
 import { Staff } from "@/types";
 import PositionBadge from "@/components/public/ui/PositionBadge";
-import { getImagePath } from "@/lib/service/image.service";
+import { getImageUrl } from "@/lib/service/image.service";
 
-export default function AkaiHidekazu() {
-  const person: Staff = {
-    id: 10002,
-    name: "赤井 英和",
-    grade: "総監督",
-    position: "総監督", // カードに表示
-    state: "active",
-    bio: "",
-  };
-
-  const imgSrc = getImagePath("/staff/10002.webp");
-
+export default function AkaiHidekazu({ person }: { person: Staff }) {
+  const imgSrc = getImageUrl(person);
   return (
     <motion.div
       initial={{ opacity: 0, y: 30 }}
@@ -26,9 +16,9 @@ export default function AkaiHidekazu() {
       transition={{ delay: 0.2 }}
       className="group relative max-w-md mx-auto md:max-w-none active:scale-[0.99] transition-transform duration-200"
     >
-      <div className="absolute -inset-1 bg-linear-to-r from-red-600 via-orange-500 to-red-600 rounded-none blur opacity-75 group-hover:opacity-100 transition duration-1000 group-hover:duration-200 animate-gradient-xy"></div>
+      <div className="max-w-4xl mx-auto absolute -inset-1 bg-linear-to-r from-red-600 via-orange-500 to-red-600 rounded-none blur opacity-75 group-hover:opacity-100 transition duration-1000 group-hover:duration-200 animate-gradient-xy"></div>
 
-      <div className="relative h-full bg-black rounded-none overflow-hidden border border-red-900/50 flex flex-col md:flex-row shadow-2xl">
+      <div className="max-w-4xl mx-auto relative h-full bg-black rounded-none overflow-hidden border border-red-900/50 flex flex-col md:flex-row shadow-2xl">
         {/* 画像コンテナ */}
         <div className="relative w-full md:w-2/5 h-80 md:h-auto overflow-hidden">
           <motion.img
