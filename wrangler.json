@@ -5,8 +5,7 @@
     {
       "binding": "DB",
       "database_name": "kindai-boxing-db",
-      "database_id": "531f21f2-3d6f-4bd9-a263-f02ed5075357",
-      "remote": true
+      "database_id": "531f21f2-3d6f-4bd9-a263-f02ed5075357"
     }
   ],
   "r2_buckets": [
