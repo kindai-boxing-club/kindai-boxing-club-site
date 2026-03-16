@@ -64,3 +64,26 @@ export async function create(data: MemberInput): Promise<boolean> {
     ],
   );
 }
+
+/**
+ * メンバー情報を更新
+ *
+ * @param id - 更新対象のメンバーID
+ * @param data - 更新するデータ
+ * @returns 更新に成功したかどうか
+ */
+export async function update(id: number, data: MemberInput): Promise<boolean> {
+  return execute(
+    `UPDATE members SET name = ?, grade = ?, position = ?, is_manager = ?, faculty = ?, weight_class = ?, has_experience = ? WHERE id = ?`,
+    [
+      data.name,
+      data.grade,
+      data.position,
+      data.is_manager,
+      data.faculty,
+      data.weight_class,
+      data.has_experience,
+      id,
+    ],
+  );
+}

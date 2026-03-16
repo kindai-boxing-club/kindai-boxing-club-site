@@ -43,3 +43,16 @@ export async function create(data: StaffInput): Promise<boolean> {
     [data.name, data.grade, data.bio],
   );
 }
+
+/**
+ * Staffを更新する
+ * @param id - 更新対象のStaff ID
+ * @param data - Staffの更新データ
+ * @returns 成功したかどうか
+ */
+export async function update(id: number, data: StaffInput): Promise<boolean> {
+  return execute(
+    "UPDATE staff SET name = ?, grade = ?, bio = ? WHERE id = ?",
+    [data.name, data.grade, data.bio, id],
+  );
+}

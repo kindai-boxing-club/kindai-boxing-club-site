@@ -139,3 +139,31 @@ export async function deleteMember(id: number): Promise<boolean> {
 export async function deleteStaff(id: number): Promise<boolean> {
   return staffRepository.remove(id);
 }
+
+/**
+ * メンバー情報を更新
+ *
+ * @param id - 更新対象のメンバーID
+ * @param data - 更新するデータ
+ * @returns 更新に成功したかどうか
+ */
+export async function updateMember(
+  id: number,
+  data: MemberInput,
+): Promise<boolean> {
+  return memberRepository.update(id, data);
+}
+
+/**
+ * スタッフ情報を更新
+ *
+ * @param id - 更新対象のスタッフID
+ * @param data - 更新するデータ
+ * @returns 更新に成功したかどうか
+ */
+export async function updateStaff(
+  id: number,
+  data: StaffInput,
+): Promise<boolean> {
+  return staffRepository.update(id, data);
+}
