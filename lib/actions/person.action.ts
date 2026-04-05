@@ -77,3 +77,14 @@ export async function promoteMembersAction(ids: number[]): Promise<void> {
   await personService.promoteMembers(ids);
   revalidatePath("/admin/members");
 }
+
+/**
+ * メンバーの状態を一括変更
+ * @param changes 変更対象の { id, state } の配列
+ */
+export async function changeStateAction(
+  changes: { id: number; state: string }[],
+): Promise<void> {
+  await personService.changeMemberStates(changes);
+  revalidatePath("/admin/members");
+}

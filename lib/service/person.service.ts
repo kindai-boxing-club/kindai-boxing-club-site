@@ -174,3 +174,14 @@ export async function updateStaff(
 export async function promoteMembers(ids: number[]): Promise<boolean> {
   return memberRepository.promoteGrade(ids);
 }
+
+/**
+ * 複数メンバーの状態を一括変更
+ */
+export async function changeMemberStates(
+  changes: { id: number; state: string }[],
+): Promise<void> {
+  await Promise.all(
+    changes.map((c) => memberRepository.changeState(c.id, c.state)),
+  );
+}

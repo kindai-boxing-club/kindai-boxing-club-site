@@ -107,3 +107,25 @@ export async function promoteGrade(ids: number[]): Promise<boolean> {
     ids,
   );
 }
+
+/**
+ * 全メンバーを取得（状態を問わず）
+ */
+export async function getAll(): Promise<Member[]> {
+  return query<Member>(
+    `SELECT * FROM members ORDER BY
+      CASE state WHEN 'active' THEN 1 WHEN 'graduated' THEN 2 WHEN 'deleted' THEN 3 ELSE 99 END,
+      CASE grade
+        WHEN '4年' THEN 1 WHEN '3年' THEN 2 WHEN '2年' THEN 3 WHEN '1年' THEN 4 WHEN '院生' THEN 5 ELSE 99
+      END,
+      id ASC`,
+    [],
+  );
+}
+
+/**
+ * メンバーの状態を変更する
+ */
+export async function changeState(id: number, state: string): Promise<boolean> {
+  return execute(`UPDATE members SET state = ? WHERE id = ?`, [state, id]);
+}
