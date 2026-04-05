@@ -51,7 +51,7 @@ export const memberConfig: EntityConfig<Member> = {
       key: "weight_class",
       label: "階級",
       field: { type: "select", options: toOptions(WEIGHT_CLASSES) },
-      render: (v) => `${v}kg`,
+      render: (v) => (v ? `${v}kg` : ""),
     },
     {
       key: "is_manager",

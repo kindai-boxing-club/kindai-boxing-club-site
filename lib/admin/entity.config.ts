@@ -1,4 +1,8 @@
-/** エンティティ設定の型定義 */
+/** エンティティ設定の型定義
+ *
+ * 型定義をして、member.config.ts, staff.config.tsで利用
+ * PersonTable を構成するためのカラム・フィールド定義の型
+ */
 
 import { ReactNode } from "react";
 
@@ -28,6 +32,9 @@ export type ColumnDef<T> = {
 
 /**
  * エンティティ設定
+ *
+ * fieldなし→ 表示のみ
+ * renderあり→ 表示と編集値の変換
  */
 export type EntityConfig<T extends { id: number }> = {
   name: string;

@@ -34,7 +34,7 @@ function AdminCard({
   mode: "staff" | "member";
   additionalButton?: React.ReactNode;
 }) {
-  const modeText = mode == "staff" ? "staff" : "members";
+  const modeText = mode === "staff" ? "staff" : "members";
   return (
     <div className="mb-12">
       <CategoryHeading title={modeText} />
@@ -79,7 +79,7 @@ export default function AdminPage() {
           <>
             <Button
               name="状態変更"
-              href={`/admin/members/year`}
+              href={`/admin/members/state`}
               icon={<FaUserFriends size={36} />}
             />
             <Button
