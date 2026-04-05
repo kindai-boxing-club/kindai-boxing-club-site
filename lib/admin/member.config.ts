@@ -1,6 +1,6 @@
 /**Memberエンティティの設定 */
 
-import { EntityConfig } from "./entity-config";
+import { EntityConfig } from "./entity.config";
 import { Member } from "@/types";
 import {
   MEMBER_GRADES,
@@ -19,6 +19,9 @@ function toOptions<T extends string>(
 
 /**
  * memberエンティティの設定
+ *
+ * fieldなし→ 表示のみ
+ * renderあり→ 表示と編集値の変換
  */
 export const memberConfig: EntityConfig<Member> = {
   name: "members",
