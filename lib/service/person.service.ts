@@ -167,3 +167,10 @@ export async function updateStaff(
 ): Promise<boolean> {
   return staffRepository.update(id, data);
 }
+
+/**
+ * 選択されたメンバーの学年を一斉に1つ進める
+ */
+export async function promoteMembers(ids: number[]): Promise<boolean> {
+  return memberRepository.promoteGrade(ids);
+}

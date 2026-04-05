@@ -68,3 +68,12 @@ export async function updateStaffAction(
   await personService.updateStaff(id, data);
   revalidatePath("/admin/staff");
 }
+
+/**
+ * 選択されたメンバーの学年を一斉に1つ進める
+ * @param ids 進級対象のメンバーIDリスト
+ */
+export async function promoteMembersAction(ids: number[]): Promise<void> {
+  await personService.promoteMembers(ids);
+  revalidatePath("/admin/members");
+}

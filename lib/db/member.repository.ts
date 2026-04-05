@@ -87,3 +87,23 @@ export async function update(id: number, data: MemberInput): Promise<boolean> {
     ],
   );
 }
+
+/**
+ * 指定IDリストのメンバーの学年を1つ進める
+ * 1年→2年→3年→4年→院生 の順に進級。院生は対象外。
+ */
+export async function promoteGrade(ids: number[]): Promise<boolean> {
+  if (ids.length === 0) return true;
+  const placeholders = ids.map(() => "?").join(",");
+  return execute(
+    `UPDATE members SET grade = CASE grade
+       WHEN '1年' THEN '2年'
+       WHEN '2年' THEN '3年'
+       WHEN '3年' THEN '4年'
+       WHEN '4年' THEN '院生'
+       ELSE grade
+     END
+     WHERE id IN (${placeholders}) AND grade IN ('1年', '2年', '3年', '4年')`,
+    ids,
+  );
+}
