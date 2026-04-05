@@ -3,7 +3,7 @@
 import CategoryHeading from "@/components/public/ui/CategoryHeading";
 import Link from "next/link";
 import { FaUserPlus, FaUserFriends } from "react-icons/fa";
-import { FaUserPen, FaUserXmark } from "react-icons/fa6";
+import { FaUserPen } from "react-icons/fa6";
 import { MdAddAPhoto } from "react-icons/md";
 
 function Button({
@@ -53,11 +53,6 @@ function AdminCard({
           name="編集"
           href={`/admin/${modeText}/edit`}
           icon={<FaUserPen size={36} />}
-        />
-        <Button
-          name="削除"
-          href={`/admin/${modeText}/delete`}
-          icon={<FaUserXmark size={36} />}
         />
         <Button
           name="写真変更"
