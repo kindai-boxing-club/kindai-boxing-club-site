@@ -17,5 +17,8 @@
       "bucket_name": "kindai-boxing-storage",
       "remote": true
     }
-  ]
+  ],
+  "vars": {
+    "NEXT_PUBLIC_R2_BASE_URL": "https://storage.kindai-boxing.com"
+  }
 }
