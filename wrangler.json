@@ -1,5 +1,5 @@
 {
-	"account_id": "df247782a61c8a80b62a11a80489542e",
+  "name": "kindai-boxing-club-site",
 	"compatibility_flags": ["nodejs_compat"],
 	"pages_build_output_dir": ".vercel/output/static",
   "d1_databases": [
