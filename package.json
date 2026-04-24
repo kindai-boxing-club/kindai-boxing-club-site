@@ -9,6 +9,7 @@
     "lint": "eslint",
     "pages:build": "npx @cloudflare/next-on-pages",
     "pages:dev": "npx wrangler pages dev .vercel/output/static",
+    "dev:remote": "npm run pages:build && npx wrangler pages dev .vercel/output/static",
     "generate-hash": "tsx scripts/generate-password-hash.ts"
   },
   "dependencies": {

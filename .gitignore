@@ -42,3 +42,6 @@ yarn-error.log*
 
 # Certificates
 *.pem
+
+#other
+memo.md

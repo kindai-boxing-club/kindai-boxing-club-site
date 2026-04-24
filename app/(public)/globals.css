@@ -1,3 +1,4 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@900&family=Noto+Sans+JP:wght@400;500;700;900&family=Shippori+Mincho:wght@400;500;700;800&family=Zen+Antique&display=swap');
 @import "tailwindcss";
 
 @theme {
@@ -7,10 +8,10 @@
   --color-accent-red: #c00000; 
 
   /* Fonts */
-  --font-inter: var(--font-inter), sans-serif;
-  --font-sans: var(--font-noto-sans-jp), ui-sans-serif, system-ui, sans-serif;
-  --font-shippori: var(--font-shippori-mincho), "Times New Roman", serif;
-  --font-zen-antique: var(--font-zen-antique), "Times New Roman", serif;
+  --font-inter: 'Inter', sans-serif;
+  --font-sans: 'Noto Sans JP', ui-sans-serif, system-ui, sans-serif;
+  --font-shippori: 'Shippori Mincho', "Times New Roman", serif;
+  --font-zen-antique: 'Zen Antique', "Times New Roman", serif;
 }
 
 /* Custom Utilities */
@@ -31,7 +32,7 @@
 @layer base {
   body {
     @apply bg-white text-gray-900 antialiased;
-    font-family: var(--font-noto-sans-jp), sans-serif;
+    font-family: var(--font-sans), sans-serif;
   }
 }
 

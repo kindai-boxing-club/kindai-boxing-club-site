@@ -1,39 +1,7 @@
-/** Google Fontsの設定 */
-import {
-  Inter,
-  Noto_Sans_JP,
-  Shippori_Mincho,
-  Zen_Antique,
-} from "next/font/google";
+/** Google Fontsの設定 (WSLビルドエラー回避のためブラウザロードに変更) */
 
-export const inter = Inter({
-  subsets: ["latin"],
-  weight: ["900"],
-  variable: "--font-inter",
-  display: "swap",
-  preload: true,
-});
+export const inter = { variable: "", className: "" };
+export const notoSansJP = { variable: "", className: "" };
+export const shipporiMincho = { variable: "", className: "" };
+export const zenAntique = { variable: "", className: "" };
 
-export const notoSansJP = Noto_Sans_JP({
-  subsets: ["latin"],
-  weight: ["400", "500", "700", "900"],
-  variable: "--font-noto-sans-jp",
-  display: "swap",
-  preload: false,
-});
-
-export const shipporiMincho = Shippori_Mincho({
-  subsets: ["latin"],
-  weight: ["400", "500", "700", "800"],
-  variable: "--font-shippori",
-  display: "swap",
-  preload: false,
-});
-
-export const zenAntique = Zen_Antique({
-  subsets: ["latin"],
-  weight: ["400"],
-  variable: "--font-zen-antique",
-  display: "swap",
-  preload: false,
-});
