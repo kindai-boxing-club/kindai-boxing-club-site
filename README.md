@@ -2,76 +2,33 @@
 
 近畿大学体育会ボクシング部の公式ウェブサイトのソースコードです。
 
-## 技術スタック
+> 技術スタック・アーキテクチャ・デザインシステム・コーディング規約などの詳細は **[プロジェクトドキュメント](./docs/PROJECT.md)** を参照してください。
 
-- **フレームワーク**: Next.js 15 (App Router)
-- **言語**: TypeScript
-- **スタイリング**: Tailwind CSS
-- **ホスティング**: Cloudflare Pages
-- **データベース**: Cloudflare D1
-- **画像ストレージ**: Cloudflare R2
-
-## 開発環境のセットアップ
+## クイックスタート
 
 ### 必要なもの
 
 - Node.js (v20以上推奨)
 - npm
 
-### インストール
+### セットアップ
 
 ```bash
 npm install
+npm run dev        # → http://localhost:3000（モックデータ）
 ```
 
-### 開発サーバーの起動
-
-#### 通常の開発（D1なし）
+D1/R2 に接続してテストする場合：
 
 ```bash
-npm run dev
+npm run dev:remote # → http://localhost:8788（本番DB接続）
 ```
 
-`http://localhost:3000` でアクセスできます。D1データベースには接続されず、モックデータが使用されます。
-
-#### D1データベース接続ありの開発
-
-Cloudflare D1 に接続してテストする場合は、以下の手順で実行します：
-
-1. **ビルド**
-
-   ```bash
-   npm run pages:build
-   ```
-
-2. **ローカルサーバー起動**
-
-   ```bash
-   npx wrangler pages dev .vercel/output/static
-   ```
-
-   `http://localhost:8788` でアクセスできます。`wrangler.json` で設定された D1 データベースに接続されます。
-
-> **注意**: `--d1=DB` フラグを付けるとローカルのエミュレートDBが使用されます。リモートのD1に接続するにはフラグを付けずに実行してください。
-
-### データベース設定
-
-`wrangler.json` で D1 データベースを設定します：
-
-- **本番用**: `kindai-boxing`
-- **テスト用**: `boxing-club-test`
-
-テスト時は `database_id` をテスト用のものに書き換えてください。
-
-### データベースの運用
-
-D1データベースのスキーマ変更やデータの追加・修正などの運用ルールについては、以下のガイドラインを参照してください。
-
-👉 [データベース運用ガイド](./docs/database_guide.md)
+> コマンドの詳細は [開発フロー](./docs/PROJECT.md#7-開発フロー) を参照
 
 ## デプロイ
 
-Cloudflare Pages へのデプロイは GitHub 連携により自動で行われます。
+GitHub → Cloudflare Pages の自動デプロイ。
 
 ## 部員・スタッフ写真のガイドライン
 
@@ -88,4 +45,4 @@ Cloudflare のホスティング制限を考慮し、以下のガイドライン
 
 ### 画像の変換方法
 
-Mac のプレビューアプリや、オンラインの変換ツール（Squoosh など）を使用して、リサイズと WebP 変換を行ってください。
+オンラインの変換ツール（Squoosh など）を使用して、リサイズと WebP 変換を行ってください。
