@@ -85,6 +85,6 @@ export const memberConfig: EntityConfig<Member> = {
     weight_class: "50",
     is_manager: 0,
     faculty: null,
-    has_experience: false,
+    has_experience: 0,
   },
 };

@@ -13,7 +13,7 @@ export const MOCK_MEMBERS: Member[] = [
     faculty: "情報学部",
     is_manager: 0,
     state: "active",
-    has_experience: false,
+    has_experience: 0,
   },
   {
     id: 2,
@@ -24,7 +24,7 @@ export const MOCK_MEMBERS: Member[] = [
     faculty: "情報学部",
     is_manager: 0,
     state: "active",
-    has_experience: false,
+    has_experience: 0,
   },
   {
     id: 3,
@@ -35,7 +35,7 @@ export const MOCK_MEMBERS: Member[] = [
     faculty: "情報学部",
     is_manager: 0,
     state: "active",
-    has_experience: false,
+    has_experience: 0,
   },
   {
     id: 4,
@@ -46,7 +46,7 @@ export const MOCK_MEMBERS: Member[] = [
     faculty: "総合社会学部",
     is_manager: 0,
     state: "active",
-    has_experience: false,
+    has_experience: 0,
   },
   {
     id: 5,
@@ -57,7 +57,7 @@ export const MOCK_MEMBERS: Member[] = [
     faculty: "経営学部",
     is_manager: 0,
     state: "active",
-    has_experience: false,
+    has_experience: 0,
   },
   {
     id: 6,
@@ -68,7 +68,7 @@ export const MOCK_MEMBERS: Member[] = [
     faculty: "経営学部",
     is_manager: 0,
     state: "active",
-    has_experience: false,
+    has_experience: 0,
   },
   {
     id: 7,
@@ -79,7 +79,7 @@ export const MOCK_MEMBERS: Member[] = [
     faculty: "経済学部",
     is_manager: 0,
     state: "active",
-    has_experience: false,
+    has_experience: 0,
   },
 ];
 
