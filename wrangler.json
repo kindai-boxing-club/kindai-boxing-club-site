@@ -1,8 +1,9 @@
 {
   "name": "kindai-boxing-club-site",
   "compatibility_date": "2026-04-24",
-	"compatibility_flags": ["nodejs_compat"],
-	"pages_build_output_dir": ".vercel/output/static",
+  "account_id": "df247782a61c8a80b62a11a80489542e",
+  "compatibility_flags": ["nodejs_compat"],
+  "pages_build_output_dir": ".vercel/output/static",
   "d1_databases": [
     {
       "binding": "DB",
