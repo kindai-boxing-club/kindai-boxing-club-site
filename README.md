@@ -2,6 +2,26 @@
 
 近畿大学体育会ボクシング部の公式ウェブサイトのソースコードです。
 
+## ドキュメントの案内
+
+目的別に4つに分かれています。**まず知りたいことから引く**構成です。
+
+| 知りたいこと | 見る場所 |
+|---|---|
+| 動かし方・写真の準備 | このファイル（README） |
+| どこに何を書くか／全体の設計 | [docs/PROJECT.md](./docs/PROJECT.md) |
+| DBの列の意味・ローカルDBの作り方 | [docs/database_guide.md](./docs/database_guide.md) |
+| 既知のバグと直し方 | [docs/ISSUES.md](./docs/ISSUES.md) |
+| AI（Claude Code）への指示の前提 | [CLAUDE.md](./CLAUDE.md) |
+
+### 作業を始める前に
+
+- **機能を追加する** → `docs/PROJECT.md` の「10. 新機能追加時のチェックリスト」をなぞる
+- **バグを直す** → `docs/ISSUES.md` に既出でないか先に確認する（原因と修正案が書いてある）
+- **DBの列を増やす** → `docs/database_guide.md` を更新し、`types/index.ts` → `lib/db/` → `lib/admin/*.config.ts` の順で追う
+- **挙動がおかしい** → `lib/db/client.ts` がエラーを握りつぶす設計なので、まずターミナルの
+  `Query execution failed` / `Execute failed` を確認する
+
 > 技術スタック・アーキテクチャ・デザインシステム・コーディング規約などの詳細は **[プロジェクトドキュメント](./docs/PROJECT.md)** を参照してください。
 
 ## クイックスタート
@@ -15,13 +35,15 @@
 
 ```bash
 npm install
-npm run dev        # → http://localhost:3000（モックデータ）
+npm run dev        # → http://localhost:3000（ローカルのD1/R2エミュレート）
 ```
 
-D1/R2 に接続してテストする場合：
+初回はローカルDBが空のためモックデータが表示されます。テーブル作成は [データベース運用ガイド](./docs/database_guide.md) を参照してください。
+
+本番の D1/R2 に接続してテストする場合：
 
 ```bash
-npm run dev:remote # → http://localhost:8788（本番DB接続）
+npm run dev:remote # → http://localhost:8788（本番DB/R2に直接接続。データ操作に注意）
 ```
 
 > コマンドの詳細は [開発フロー](./docs/PROJECT.md#7-開発フロー) を参照

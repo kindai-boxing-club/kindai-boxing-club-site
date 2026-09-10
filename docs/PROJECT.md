@@ -54,8 +54,10 @@ kindai-boxing-club-site/
 │       └── admin/
 │           ├── layout.tsx     # 管理画面レイアウト
 │           ├── page.tsx       # 管理画面トップ
-│           ├── [entity]/      # 動的ルート（members/staff）
-│           └── members/       # メンバー固有ページ
+│           ├── [entity]/[mode]/ # 動的ルート（members|staff × view|add|edit|delete）
+│           ├── members/state/ # 在籍状態の一括変更
+│           ├── members/year/  # 学年の一斉進級
+│           └── not-found.tsx
 ├── components/
 │   ├── public/                # 公開サイト用コンポーネント
 │   │   ├── hero/              # ヒーローセクション
@@ -76,7 +78,7 @@ kindai-boxing-club-site/
 │   │   ├── member.repository.ts
 │   │   ├── staff.repository.ts
 │   │   ├── person.repository.ts  # 共通操作（remove, restore, eliminate）
-│   │   └── person.mock.ts     # モックデータ（D1未接続時のフォールバック）
+│   │   └── person.mock.ts     # モックデータ（取得結果が空のときのフォールバック）
 │   ├── storage/               # R2ストレージ層
 │   │   ├── client.ts          # R2 URLヘルパー
 │   │   └── image.repository.ts # 画像URL生成
@@ -95,7 +97,8 @@ kindai-boxing-club-site/
 │   └── index.ts               # 型定義（Person, Member, Staff, GroupedMember 等）
 ├── docs/
 │   ├── PROJECT.md             # ← このファイル
-│   └── database_guide.md      # DBスキーマ・運用ガイド
+│   ├── database_guide.md      # DBスキーマ・運用ガイド
+│   └── ISSUES.md              # 既知の不具合・修正案
 ├── public/images/             # 静的画像アセット
 ├── wrangler.json              # Cloudflare設定（D1, R2バインディング）
 ├── next.config.ts             # Next.js設定
@@ -123,7 +126,7 @@ Cloudflare D1 / R2               ← getRequestContext() 経由
 ### データフロー: 公開サイト
 1. `page.tsx` (RSC) が `person.service` を直接呼び出す
 2. `person.service` → `member.repository` → D1 に SQL 発行
-3. D1 未接続時（`npm run dev`）は **モックデータ** にフォールバック
+3. 取得結果が空配列のときは **モックデータ** にフォールバック
 4. 取得データを `groupMembers()` でグループ化し、各セクションコンポーネントに props で渡す
 
 ### データフロー: 管理画面
@@ -135,8 +138,9 @@ Cloudflare D1 / R2               ← getRequestContext() 経由
 ### モックデータ戦略
 - `lib/db/person.mock.ts` にハードコードされたモックデータ
 - Service 層で「DB から取得した結果が空配列」の場合にフォールバック
-- `npm run dev`（通常の Next.js dev server）ではD1に接続しないため、常にモックが使われる
-- D1 接続してテストするには `npm run dev:remote`（ビルド → wrangler pages dev）
+- `npm run dev` でも D1 には接続される（`next.config.ts` の `setupDevPlatform({ persist: true })` により D1/R2 がバインドされ、データは `.wrangler/state/v3/` に永続化される）。ローカルDBが空の場合にモックが表示される
+- 本番の D1/R2 に接続してテストするには `npm run dev:remote`（ビルド → wrangler pages dev、`wrangler.json` の `"remote": true` により本番へ接続）
+- ローカルDBはGit管理外。新しい環境ではテーブルを作り直す必要がある（DDLは [データベース運用ガイド](./database_guide.md) 参照）
 
 ---
 
@@ -193,7 +197,7 @@ erDiagram
         text position "主将/副将/主務/会計 or NULL"
         int is_manager "0 or 1"
         text faculty "学部名 or NULL"
-        text weight_class "50/55/60/65/70/75 or NULL"
+        int weight_class "50/55/60/65/70/75 or NULL（DBはINTEGER、アプリの型は文字列リテラル）"
         text state "active/graduated/deleted"
         int has_experience "0 or 1"
     }
@@ -202,6 +206,7 @@ erDiagram
         text name
         text grade "部長/総監督/監督/コーチ"
         text state "active/deleted"
+        text bio "本番のみ。ローカルDBには未追加"
     }
 ```
 
@@ -226,10 +231,11 @@ erDiagram
 
 | コマンド | 用途 | URL |
 |---|---|---|
-| `npm run dev` | 通常のローカル開発（D1未接続、モックデータ） | `http://localhost:3000` |
-| `npm run dev:remote` | ビルド → wrangler pages dev（D1/R2接続あり） | `http://localhost:8788` |
+| `npm run dev` | ローカル開発（HMRあり）。接続先は `wrangler.json` の `"remote"` に引きずられる（[ISSUES.md 項目0](./ISSUES.md)） | `http://localhost:3000` |
+| `npm run dev:remote` | ビルド → wrangler pages dev。`"remote": true` なら**本番**のD1/R2に接続 | `http://localhost:8788` |
 | `npm run pages:build` | Cloudflare Pages 向けビルド | - |
 | `npm run lint` | ESLint | - |
+| `npx tsc --noEmit` | 型チェック（lint では型エラーを検出できない） | - |
 
 ### データベース設定
 
@@ -245,6 +251,11 @@ erDiagram
 ### デプロイ
 - GitHub → Cloudflare Pages の自動デプロイ
 - ビルドコマンド: `npx @cloudflare/next-on-pages`
+
+### 認証（管理画面）
+- アクセス制御は **Cloudflare Access**（`kindai-boxing.cloudflareaccess.com`）で行っており、**アプリ側にログイン実装は無い**
+- `app/(admin)/admin/layout.tsx` のログアウトリンクが Cloudflare Access のログアウトURLを指しているだけ
+- `package.json` の `generate-hash` スクリプトと `@types/bcrypt` は自前認証を検討していた頃の名残。参照先の `scripts/generate-password-hash.ts` は存在しない（削除して差し支えない）
 
 ### 環境変数
 
@@ -265,8 +276,13 @@ erDiagram
 - **注意**: `<body>` に font の variable クラスが設定されるが、実際は空文字なので影響なし
 
 ### ⚠️ D1 接続とモックのフォールバック
-- `npm run dev` では D1 に接続しないため、Service 層が自動的にモックデータを返す
-- フォールバック条件は「取得結果が空配列」なので、本番DBに `active` なレコードが0件の場合もモックが表示される点に注意
+- フォールバック条件は「取得結果が空配列」なので、ローカルDBが空のときだけでなく、本番DBに `active` なレコードが0件の場合もモックが表示される点に注意
+- `lib/db/client.ts` の `query` / `execute` は例外を握りつぶして `[]` / `false` を返すため、SQLエラーやスキーマ不一致も「モックが出る」「保存が効かない」という形でしか現れない。サーバーログの `Query execution failed` / `Execute failed` を確認すること
+
+### ⚠️ Edge Runtime の指定場所
+- D1/R2 に触れるルートには `export const runtime = "edge"` が必須
+- 動的ルートでは **`layout.tsx` に置く**パターンを採用している（`app/(admin)/admin/[entity]/[mode]/layout.tsx`, `members/state/layout.tsx`, `members/year/layout.tsx`）
+- 公開トップだけは `app/(public)/page.tsx` に直接指定している
 
 ### ⚠️ Edge Runtime 制約
 - `node:*` モジュール使用不可
@@ -275,8 +291,19 @@ erDiagram
 
 ### ⚠️ wrangler.json の `"remote": true`
 - D1・R2 ともに `"remote": true` が設定されている
-- ローカル開発（`wrangler pages dev`）でも **本番DB/R2 に直接接続** される
+- `npm run dev:remote`（`wrangler pages dev`）は **本番DB/R2 に直接接続** される。ここでの追加・編集・削除は本番データに対する操作になる
 - ローカルのエミュレートDBを使いたい場合は `"remote": false` に変更する
+- **`npm run dev` もこのフラグの影響を受ける**。`setupDevPlatform()` は渡したオプションを `getPlatformProxy()` にそのまま流し、`getPlatformProxy()` は同じ `wrangler.json` を読むため、`"remote": true` のままだと `npm run dev` が本番D1への認証を要求し `Failed to fetch auth token` で失敗する
+- 回避策は `setupDevPlatform({ persist: true, remoteBindings: false })`。詳細は [既知の不具合・改善候補](./ISSUES.md) の項目0を参照
+
+### ⚠️ staff テーブルのスキーマ差異
+- `lib/db/staff.repository.ts` の INSERT/UPDATE は `bio` 列を使うが、ローカルD1（`.wrangler/state`）の staff テーブルには `bio` 列が無い
+- `execute` がエラーを握りつぶすため、ローカルではスタッフの追加・更新が**黙って失敗する**。検証するなら `ALTER TABLE staff ADD COLUMN bio TEXT;` を実行しておく
+- `Staff.position` はDBの列ではなく、`getAllActive()` が読み取り時に `grade` をコピーして生成している派生値
+
+### ⚠️ 未実装のルート
+- 管理画面トップの「写真変更」ボタンは `/admin/{entity}/photo` を指すが、`[mode]` の許可値（`view` / `add` / `edit` / `delete`）に `photo` が無いため 404 になる
+- R2 への画像アップロード機能自体が未実装（現状は R2 の公開URLを組み立てて読むだけ）
 
 ---
 
@@ -312,5 +339,6 @@ erDiagram
 5. **Server Action** → `lib/actions/` に `"use server"` 関数
 6. **Component** → `components/{public|admin}/` に配置
 7. **Route** → `app/(public|admin)/` にページ追加
-8. **Edge Runtime** → `export const runtime = "edge"` を忘れずに
-9. **モック** → D1未接続時のフォールバックを考慮
+8. **Edge Runtime** → ルート（動的ルートは `layout.tsx`）に `export const runtime = "edge"` を忘れずに
+9. **モック** → 取得結果が空のときのフォールバックを考慮
+10. **確認** → `npm run lint` と `npx tsc --noEmit`
