@@ -11,16 +11,16 @@
 import { useState } from "react";
 import { EntityConfig } from "@/lib/admin/entity.config";
 
-/** 行データ型（id と state を除いた編集可能なフィールド群） */
+/** 行データ型（id を除いた編集可能なフィールド群） */
 type RowData = Record<string, unknown>;
 
 /**
- * 既存データから、編集に不要な id と state を除外したオブジェクトを生成
+ * 既存データから、編集に不要な id を除外したオブジェクトを生成
  */
 function stripId<T>(row: T): RowData {
   return Object.fromEntries(
     Object.entries(row as Record<string, unknown>).filter(
-      ([key]) => key !== "id" && key !== "state",
+      ([key]) => key !== "id",
     ),
   );
 }
