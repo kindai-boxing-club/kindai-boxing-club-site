@@ -29,7 +29,7 @@ import { useState } from "react";
 import { EntityConfig, ColumnDef } from "@/lib/admin/entity.config";
 import { useEditableRows } from "./useEditableRows";
 import InputCell from "./InputCell";
-import { MdDelete, MdSave } from "react-icons/md";
+import { MdDelete } from "react-icons/md";
 
 // ─── 型定義 ───────────────────────────────────────────
 
@@ -43,8 +43,8 @@ type Props<T extends { id: number }> = {
   onDelete?: (id: number) => void;
   /** add モード: 新規行をまとめて送信するコールバック */
   onSubmit?: (rows: Omit<T, "id" | "state">[]) => void;
-  /** edit モード: 1行ずつ更新するコールバック（state を含む） */
-  onUpdate?: (id: number, updates: Omit<T, "id">) => void;
+  /** edit モード: 変更行をまとめて送信するコールバック */
+  onUpdate?: (updates:{id:number; data:Omit<T, "id">}[]) => void | Promise<void>
 };
 
 // ─── メインコンポーネント ─────────────────────────────
@@ -58,14 +58,29 @@ export default function PersonTable<T extends { id: number; state: string }>({
   onUpdate,
 }: Props<T>) {
   // 状態管理はカスタムフックに委譲
-  const { rows, ids, isInputMode, updateField, addRow, removeRow } =
+  const { rows, ids, isInputMode, updateField, addRow, removeRow,isRowChanged, changedIndexes, commitRows, } =
     useEditableRows(config, data, mode);
 
   // 一覧・編集画面でのみ「卒業・退部」の表示切り替えを提供する
   const showStateToggle = mode === "view" || mode === "edit";
   const [showInactive, setShowInactive] = useState(false);
+  const [isSaving, setIsSaving] = useState(false);
   const isRowVisible = (index: number) =>
     !showStateToggle || showInactive || data[index]?.state === "active";
+
+  const handleSave = async () => {
+    if(changedIndexes.length === 0) return;
+    const snapshot = rows;
+    setIsSaving(true);
+    await onUpdate?.(
+      changedIndexes.map((i) => ({
+        id: ids[i],
+        data: snapshot[i] as Omit<T, "id">,
+      }))
+    );
+    commitRows(snapshot);
+    setIsSaving(false);
+  }
 
   // 表示するカラムを決定
   // - view/delete: 全カラム表示（id, state 含む）
@@ -77,14 +92,11 @@ export default function PersonTable<T extends { id: number; state: string }>({
       )
     : config.columns;
 
-  // アクション列（操作ボタン）を表示するか
-  const hasActionColumn = mode !== "view";
-
   return (
     <div>
       {/* ─── 卒業・退部の表示切り替え（view/edit） ─── */}
       {showStateToggle && (
-        <div className="mb-4">
+        <div className="mb-4 flex items-center justify-between">
           <button
             onClick={() => setShowInactive((v) => !v)}
             className={`px-4 py-2 text-sm rounded border transition-colors ${
@@ -97,6 +109,14 @@ export default function PersonTable<T extends { id: number; state: string }>({
               ? "卒業・退部を表示中"
               : "卒業・退部をフィルタリング中"}
           </button>
+
+          {mode === "edit" && (
+            <SaveChangesButton
+              count={changedIndexes.length}
+              isSaving={isSaving}
+              onClick={handleSave}
+            />
+          )}
         </div>
       )}
 
@@ -112,9 +132,6 @@ export default function PersonTable<T extends { id: number; state: string }>({
                 {col.label}
               </th>
             ))}
-            {hasActionColumn && (
-              <th className="px-4 py-3 text-left text-sm font-medium">操作</th>
-            )}
           </tr>
         </thead>
 
@@ -125,7 +142,13 @@ export default function PersonTable<T extends { id: number; state: string }>({
               rows.map(
                 (row, index) =>
                   isRowVisible(index) && (
-                    <tr key={index} className="border-t hover:bg-gray-50">
+                    <tr
+                      key={index}
+                      // ↓ 変更のある行を黄色くハイライト
+                      className={`border-t ${
+                        isRowChanged(index) ? "bg-yellow-50" : "hover:bg-gray-50"
+                      }`}
+                    >
                       {visibleColumns.map((col) => (
                         <td key={col.key} className="px-4 py-2">
                           {col.field && (
@@ -139,18 +162,14 @@ export default function PersonTable<T extends { id: number; state: string }>({
                           )}
                         </td>
                       ))}
-                      <td className="px-4 py-2 text-center">
-                        <ActionButton
-                          mode={mode}
-                          onAdd={() => removeRow(index)}
-                          onEdit={() =>
-                            onUpdate?.(
-                              ids[index],
-                              rows[index] as Omit<T, "id">,
-                            )
-                          }
-                        />
-                      </td>
+                      {// 操作ボタンは add モードの行削除のみ表示
+                      mode === "add" && (
+                        <td className="px-4 py-2 text-center">
+                          <button onClick={() => removeRow(index)}>
+                            <MdDelete size={20} className="text-red-500" />
+                          </button>
+                        </td>
+                      )}
                     </tr>
                   ),
               )
@@ -198,6 +217,16 @@ export default function PersonTable<T extends { id: number; state: string }>({
           </button>
         </div>
       )}
+      {/* ─── edit モード: 画面下部右の保存ボタン ─── */}
+      {mode === "edit" && (
+        <div className="mt-4 flex justify-end">
+          <SaveChangesButton
+            count={changedIndexes.length}
+            isSaving={isSaving}
+            onClick={handleSave}
+          />
+        </div>
+      )}
     </div>
   );
 }
@@ -223,31 +252,24 @@ function ViewCell<T extends { id: number }>({
 }
 
 /**
- * ActionButton — モードに応じた操作ボタン
- * add → 🗑（行削除）、edit → 💾（保存）
+ * SaveChangesButton — 変更のある行をまとめて保存するボタン（上部・下部で共用）
  */
-function ActionButton({
-  mode,
-  onAdd,
-  onEdit,
+function SaveChangesButton({
+  count,
+  isSaving,
+  onClick,
 }: {
-  mode: Mode;
-  onAdd: () => void;
-  onEdit: () => void;
+  count: number;
+  isSaving: boolean;
+  onClick: () => void;
 }) {
-  if (mode === "add") {
-    return (
-      <button onClick={onAdd}>
-        <MdDelete size={20} className="text-red-500" />
-      </button>
-    );
-  }
-  if (mode === "edit") {
-    return (
-      <button onClick={onEdit}>
-        <MdSave size={20} className="text-blue-500" />
-      </button>
-    );
-  }
-  return null;
+  return (
+    <button
+      onClick={onClick}
+      disabled={count === 0 || isSaving}
+      className="px-6 py-2 bg-blue-600 text-white font-bold rounded hover:bg-blue-700 disabled:opacity-50 disabled:cursor-not-allowed"
+    >
+      {isSaving ? "保存中..." : `${count}行の変更を保存`}
+    </button>
+  );
 }

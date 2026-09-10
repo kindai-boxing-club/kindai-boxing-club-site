@@ -48,6 +48,25 @@ export function useEditableRows<T extends { id: number; state: string }>(
     mode === "edit" ? data.map((d) => d.id) : [],
   );
 
+  // 保存済みの値(= 変更検知の基準)。保存成功時にcommitRowsで更新する
+  const [baseline, setBaseline] = useState<RowData[]>(() =>
+    mode === "edit" ? data.map(stripId) : [],
+  );
+
+  // 行に変更があるか。
+  const isRowChanged = (index: number) => {
+    const base = baseline[index];
+    if(!base) return false;
+    return Object.keys(rows[index]).some(
+      (key) => String(rows[index][key] ?? "") !== String(base[key] ?? ""),
+    );
+  }
+
+  // 変更のある行のindex一覧
+  const changedIndexes = rows.map((_, i) => i).filter((i) => isRowChanged(i));
+  // 保存が完了したようデータを新しい基準にする
+  const commitRows = (saved: RowData[]) => setBaseline(saved);
+
   /** 指定行の指定フィールドを更新 */
   const updateField = (index: number, key: string, value: unknown) => {
     setRows((prev) =>
@@ -65,5 +84,5 @@ export function useEditableRows<T extends { id: number; state: string }>(
     setRows((prev) => prev.filter((_, i) => i !== index));
   };
 
-  return { rows, isInputMode, ids, updateField, addRow, removeRow };
+  return { rows, isInputMode, ids, updateField, addRow, removeRow ,isRowChanged, changedIndexes, commitRows,};
 }

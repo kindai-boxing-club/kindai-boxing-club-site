@@ -22,7 +22,7 @@ type Props = {
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   onSubmit?: ((rows: MemberInput[]) => void) | ((rows: StaffInput[]) => void) | any;
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  onUpdate?: ((id: number, updates: MemberUpdate) => void) | ((id: number, updates: StaffUpdate) => void) | any;
+  onUpdate?: ((updates: {id: number, data: MemberUpdate}[]) => void) | ((updates: {id: number, data: StaffUpdate}[]) => void) | any;
 };
 
 /**

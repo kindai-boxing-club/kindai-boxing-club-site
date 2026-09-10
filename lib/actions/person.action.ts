@@ -30,11 +30,15 @@ export async function addMembersAction(members: MemberInput[]): Promise<void> {
  * @param id 更新対象MemberID
  * @param data 更新対象Memberデータ
  */
-export async function updateMemberAction(
-  id: number,
-  data: MemberUpdate,
+export async function updateMembersAction(
+  updates: {
+    id: number;
+    data: MemberUpdate;
+  }[],
 ): Promise<void> {
-  await personService.updateMember(id, data);
+  await Promise.all(
+    updates.map((u) => personService.updateMember(u.id, u.data))
+  );
   revalidatePath("/admin/members");
 }
 
@@ -61,11 +65,14 @@ export async function addStaffAction(staff: StaffInput[]): Promise<void> {
  * @param id 更新対象StaffID
  * @param data 更新対象Staffデータ
  */
-export async function updateStaffAction(
-  id: number,
-  data: StaffUpdate,
+export async function updateStaffsAction(
+  updates: {
+    id: number;
+    data: StaffUpdate;
+  }[],
 ): Promise<void> {
-  await personService.updateStaff(id, data);
+  await Promise.all(
+    updates.map((u) => personService.updateStaff(u.id, u.data)));
   revalidatePath("/admin/staff");
 }
 

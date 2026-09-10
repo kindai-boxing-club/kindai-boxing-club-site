@@ -4,10 +4,10 @@ import * as staffRepository from "@/lib/db/staff.repository";
 import {
   deleteMemberAction,
   addMembersAction,
-  updateMemberAction,
+  updateMembersAction,
   deleteStaffAction,
   addStaffAction,
-  updateStaffAction,
+  updateStaffsAction,
 } from "@/lib/actions/person.action";
 import { notFound } from "next/navigation";
 import AdminEntityView from "@/components/admin/AdminEntityView";
@@ -38,7 +38,7 @@ export default async function AdminEntityPage({
         mode={mode as Mode}
         onDelete={deleteMemberAction}
         onSubmit={addMembersAction}
-        onUpdate={updateMemberAction}
+        onUpdate={updateMembersAction}
       />
     );
   }
@@ -57,7 +57,7 @@ export default async function AdminEntityPage({
         mode={mode as Mode}
         onDelete={deleteStaffAction}
         onSubmit={addStaffAction}
-        onUpdate={updateStaffAction}
+        onUpdate={updateStaffsAction}
       />
     );
   }
