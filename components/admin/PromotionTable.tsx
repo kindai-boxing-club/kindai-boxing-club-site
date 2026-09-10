@@ -107,7 +107,7 @@ export default function PromotionTable({ members, onPromote }: Props) {
                 <td className="px-4 py-3 text-sm">{member.name}</td>
                 <td className="px-4 py-3 text-sm">{member.grade}</td>
                 <td className="px-4 py-3 text-sm">
-                  {isPromotable ? (
+                  {selected.has(member.id) ? (
                     <span className="text-blue-600 font-medium">
                       {nextGrade}
                     </span>
