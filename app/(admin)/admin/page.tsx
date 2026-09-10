@@ -68,6 +68,8 @@ function AdminCard({
 export default function AdminPage() {
   return (
     <div className="max-w-4xl mx-auto">
+
+
       <AdminCard
         mode="member"
         additionalButton={
@@ -78,7 +80,19 @@ export default function AdminPage() {
           />
         }
       />
-      <AdminCard mode="staff" />
+      <AdminCard mode="staff" />      
+      <details>
+        <summary>msg tmp</summary>
+        <p>一覧→一覧表示するだけ</p>
+        <p>追加→新しいやつを追加する</p>
+        <p>編集→名前とか学年とか色々編集できる（卒業・退部もここからできる）</p>
+        <p>写真→まだ作ってない</p>
+        <p>進級→全員学年を一つ進めれる</p>
+        <br />
+        <p>staffはめっちゃハードコードしてるから、コーチ以外を編集せんといて</p>
+        <p>変えなあかん場合は製作者に連絡</p>
+        <p>連絡先は名城監督が持ってるはず</p>
+      </details>
     </div>
   );
 }

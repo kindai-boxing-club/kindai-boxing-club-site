@@ -32,14 +32,22 @@ export default async function AdminEntityPage({
           ? await memberRepository.getAllActive()
           : await memberRepository.getAll();
     return (
-      <AdminEntityView
-        entity="members"
-        data={data}
-        mode={mode as Mode}
-        onDelete={deleteMemberAction}
-        onSubmit={addMembersAction}
-        onUpdate={updateMembersAction}
-      />
+      <div>
+        {mode === "add" && (
+          <div>
+            <p>名字と名前の間に半角空白を入れるように</p>
+            <br />
+          </div>
+        )}
+        <AdminEntityView
+          entity="members"
+          data={data}
+          mode={mode as Mode}
+          onDelete={deleteMemberAction}
+          onSubmit={addMembersAction}
+          onUpdate={updateMembersAction}
+        />
+      </div>
     );
   }
 

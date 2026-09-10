@@ -10,6 +10,7 @@ export default async function PromotionPage() {
   return (
     <div className="space-y-6">
       <h1 className="text-2xl font-bold">一斉進級</h1>
+      <p>チェックしたやつの学年を進める。間違えたら編集画面で一個ずつ戻さなあかん。</p>
       <PromotionTable members={members} onPromote={promoteMembersAction} />
     </div>
   );
