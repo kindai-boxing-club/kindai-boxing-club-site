@@ -20,6 +20,7 @@ export type FieldDef = {
   type: FieldType;
   options?: SelectOption[];
   placeholder?: string;
+  editOnly?: boolean; // true: add モードでは表示せず edit モードでのみ表示・編集する（例: state）
 };
 
 /**テーブルのカラム定義 */

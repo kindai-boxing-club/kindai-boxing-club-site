@@ -6,11 +6,13 @@ import { MOCK_MEMBERS, MOCK_STAFF } from "@/lib/db/person.mock";
 
 import {
   MemberInput,
+  MemberUpdate,
   GroupedMember,
   Member,
   Staff,
   GroupedStaff,
   StaffInput,
+  StaffUpdate,
   MemberGrade,
   StaffGrade,
 } from "@/types";
@@ -149,7 +151,7 @@ export async function deleteStaff(id: number): Promise<boolean> {
  */
 export async function updateMember(
   id: number,
-  data: MemberInput,
+  data: MemberUpdate,
 ): Promise<boolean> {
   return memberRepository.update(id, data);
 }
@@ -163,7 +165,7 @@ export async function updateMember(
  */
 export async function updateStaff(
   id: number,
-  data: StaffInput,
+  data: StaffUpdate,
 ): Promise<boolean> {
   return staffRepository.update(id, data);
 }
@@ -173,15 +175,4 @@ export async function updateStaff(
  */
 export async function promoteMembers(ids: number[]): Promise<boolean> {
   return memberRepository.promoteGrade(ids);
-}
-
-/**
- * 複数メンバーの状態を一括変更
- */
-export async function changeMemberStates(
-  changes: { id: number; state: string }[],
-): Promise<void> {
-  await Promise.all(
-    changes.map((c) => memberRepository.changeState(c.id, c.state)),
-  );
 }

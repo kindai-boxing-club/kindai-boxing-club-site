@@ -25,7 +25,12 @@ export default async function AdminEntityPage({
   if (!VALID_MODES.includes(mode as Mode)) return notFound();
 
   if (entity === "members") {
-    const data = mode === "add" ? [] : await memberRepository.getAllActive();
+    const data =
+      mode === "add"
+        ? []
+        : mode === "delete"
+          ? await memberRepository.getAllActive()
+          : await memberRepository.getAll();
     return (
       <AdminEntityView
         entity="members"
@@ -39,7 +44,12 @@ export default async function AdminEntityPage({
   }
 
   if (entity === "staff") {
-    const data = mode === "add" ? [] : await staffRepository.getAllActive();
+    const data =
+      mode === "add"
+        ? []
+        : mode === "delete"
+          ? await staffRepository.getAllActive()
+          : await staffRepository.getAll();
     return (
       <AdminEntityView
         entity="staff"
@@ -54,4 +64,3 @@ export default async function AdminEntityPage({
 
   return notFound();
 }
-

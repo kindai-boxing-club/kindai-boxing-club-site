@@ -1,7 +1,7 @@
 /** メンバーテーブルへのデータアクセス */
 
 import { query, execute } from "./client";
-import { MemberInput, Member } from "@/types";
+import { MemberInput, Member , MemberUpdate} from "@/types";
 import {
   restore as restorePerson,
   remove as removePerson,
@@ -72,9 +72,9 @@ export async function create(data: MemberInput): Promise<boolean> {
  * @param data - 更新するデータ
  * @returns 更新に成功したかどうか
  */
-export async function update(id: number, data: MemberInput): Promise<boolean> {
+export async function update(id: number, data: MemberUpdate): Promise<boolean> {
   return execute(
-    `UPDATE members SET name = ?, grade = ?, position = ?, is_manager = ?, faculty = ?, weight_class = ?, has_experience = ? WHERE id = ?`,
+    `UPDATE members SET name = ?, grade = ?, position = ?, is_manager = ?, faculty = ?, weight_class = ?, has_experience = ?, state = ? WHERE id = ?`,
     [
       data.name,
       data.grade,
@@ -83,6 +83,7 @@ export async function update(id: number, data: MemberInput): Promise<boolean> {
       data.faculty,
       data.weight_class,
       data.has_experience,
+      data.state,
       id,
     ],
   );
@@ -121,11 +122,4 @@ export async function getAll(): Promise<Member[]> {
       id ASC`,
     [],
   );
-}
-
-/**
- * メンバーの状態を変更する
- */
-export async function changeState(id: number, state: string): Promise<boolean> {
-  return execute(`UPDATE members SET state = ? WHERE id = ?`, [state, id]);
 }

@@ -4,7 +4,7 @@
 "use server";
 
 import * as personService from "@/lib/service/person.service";
-import { MemberInput, StaffInput } from "@/types";
+import { MemberInput, MemberUpdate, StaffInput, StaffUpdate } from "@/types";
 import { revalidatePath } from "next/cache";
 
 /**
@@ -32,7 +32,7 @@ export async function addMembersAction(members: MemberInput[]): Promise<void> {
  */
 export async function updateMemberAction(
   id: number,
-  data: MemberInput,
+  data: MemberUpdate,
 ): Promise<void> {
   await personService.updateMember(id, data);
   revalidatePath("/admin/members");
@@ -63,7 +63,7 @@ export async function addStaffAction(staff: StaffInput[]): Promise<void> {
  */
 export async function updateStaffAction(
   id: number,
-  data: StaffInput,
+  data: StaffUpdate,
 ): Promise<void> {
   await personService.updateStaff(id, data);
   revalidatePath("/admin/staff");
@@ -78,13 +78,3 @@ export async function promoteMembersAction(ids: number[]): Promise<void> {
   revalidatePath("/admin/members");
 }
 
-/**
- * メンバーの状態を一括変更
- * @param changes 変更対象の { id, state } の配列
- */
-export async function changeStateAction(
-  changes: { id: number; state: string }[],
-): Promise<void> {
-  await personService.changeMemberStates(changes);
-  revalidatePath("/admin/members");
-}

@@ -18,9 +18,14 @@
  * セルの描画ルール:
  *   - view/delete: col.render があればカスタム描画、なければ String(value)
  *   - add/edit:    col.field があるカラムだけ表示 → InputCell で描画
+ *                  ただし col.field.editOnly は edit モードのみ表示（例: state）
+ *
+ * view/edit モードには「卒業・退部」の表示切り替えボタンを表示する。
+ * デフォルトは非表示（現役のみ）。
  */
 "use client";
 
+import { useState } from "react";
 import { EntityConfig, ColumnDef } from "@/lib/admin/entity.config";
 import { useEditableRows } from "./useEditableRows";
 import InputCell from "./InputCell";
@@ -38,8 +43,8 @@ type Props<T extends { id: number }> = {
   onDelete?: (id: number) => void;
   /** add モード: 新規行をまとめて送信するコールバック */
   onSubmit?: (rows: Omit<T, "id" | "state">[]) => void;
-  /** edit モード: 1行ずつ更新するコールバック */
-  onUpdate?: (id: number, updates: Omit<T, "id" | "state">) => void;
+  /** edit モード: 1行ずつ更新するコールバック（state を含む） */
+  onUpdate?: (id: number, updates: Omit<T, "id">) => void;
 };
 
 // ─── メインコンポーネント ─────────────────────────────
@@ -53,17 +58,23 @@ export default function PersonTable<T extends { id: number; state: string }>({
   onUpdate,
 }: Props<T>) {
   // 状態管理はカスタムフックに委譲
-  const { rows, isInputMode, updateField, addRow, removeRow } = useEditableRows(
-    config,
-    data,
-    mode,
-  );
+  const { rows, ids, isInputMode, updateField, addRow, removeRow } =
+    useEditableRows(config, data, mode);
+
+  // 一覧・編集画面でのみ「卒業・退部」の表示切り替えを提供する
+  const showStateToggle = mode === "view" || mode === "edit";
+  const [showInactive, setShowInactive] = useState(false);
+  const isRowVisible = (index: number) =>
+    !showStateToggle || showInactive || data[index]?.state === "active";
 
   // 表示するカラムを決定
   // - view/delete: 全カラム表示（id, state 含む）
-  // - add/edit:    field 定義があるカラムだけ（入力可能なもののみ）
+  // - add:         field があり、editOnly ではないカラムだけ
+  // - edit:        field があるカラムすべて（state を含む）
   const visibleColumns = isInputMode
-    ? config.columns.filter((col) => col.field)
+    ? config.columns.filter(
+        (col) => col.field && (mode === "edit" || !col.field.editOnly),
+      )
     : config.columns;
 
   // アクション列（操作ボタン）を表示するか
@@ -71,6 +82,24 @@ export default function PersonTable<T extends { id: number; state: string }>({
 
   return (
     <div>
+      {/* ─── 卒業・退部の表示切り替え（view/edit） ─── */}
+      {showStateToggle && (
+        <div className="mb-4">
+          <button
+            onClick={() => setShowInactive((v) => !v)}
+            className={`px-4 py-2 text-sm rounded border transition-colors ${
+              showInactive
+                ? "bg-slate-800 text-white border-slate-800"
+                : "bg-white text-slate-600 border-slate-300 hover:bg-slate-50"
+            }`}
+          >
+            {showInactive
+              ? "卒業・退部を表示中"
+              : "卒業・退部をフィルタリング中"}
+          </button>
+        </div>
+      )}
+
       <table className="min-w-full bg-white rounded shadow table-auto">
         {/* ─── ヘッダー ─── */}
         <thead className="bg-slate-100">
@@ -93,54 +122,62 @@ export default function PersonTable<T extends { id: number; state: string }>({
         <tbody>
           {isInputMode
             ? /* === 入力モード（add / edit） === */
-              rows.map((row, index) => (
-                <tr key={index} className="border-t hover:bg-gray-50">
-                  {visibleColumns.map((col) => (
-                    <td key={col.key} className="px-4 py-2">
-                      {col.field && (
-                        <InputCell
-                          field={col.field}
-                          value={row[col.key]}
-                          onChange={(val) => updateField(index, col.key, val)}
+              rows.map(
+                (row, index) =>
+                  isRowVisible(index) && (
+                    <tr key={index} className="border-t hover:bg-gray-50">
+                      {visibleColumns.map((col) => (
+                        <td key={col.key} className="px-4 py-2">
+                          {col.field && (
+                            <InputCell
+                              field={col.field}
+                              value={row[col.key]}
+                              onChange={(val) =>
+                                updateField(index, col.key, val)
+                              }
+                            />
+                          )}
+                        </td>
+                      ))}
+                      <td className="px-4 py-2 text-center">
+                        <ActionButton
+                          mode={mode}
+                          onAdd={() => removeRow(index)}
+                          onEdit={() =>
+                            onUpdate?.(
+                              ids[index],
+                              rows[index] as Omit<T, "id">,
+                            )
+                          }
                         />
-                      )}
-                    </td>
-                  ))}
-                  <td className="px-4 py-2 text-center">
-                    <ActionButton
-                      mode={mode}
-                      onAdd={() => removeRow(index)}
-                      onEdit={() =>
-                        onUpdate?.(
-                          data[index].id,
-                          rows[index] as Omit<T, "id" | "state">,
-                        )
-                      }
-                    />
-                  </td>
-                </tr>
-              ))
+                      </td>
+                    </tr>
+                  ),
+              )
             : /* === 表示モード（view / delete） === */
-              data.map((row) => (
-                <tr key={row.id} className="border-t hover:bg-gray-50">
-                  {visibleColumns.map((col) => (
-                    <td key={col.key} className="px-4 py-3 text-sm">
-                      <ViewCell col={col} row={row} />
-                    </td>
-                  ))}
-                  {mode === "delete" && (
-                    <td className="px-4 py-3">
-                      <button
-                        onClick={() => {
-                          if (confirm("削除しますか？")) onDelete?.(row.id);
-                        }}
-                      >
-                        <MdDelete size={20} className="text-red-500" />
-                      </button>
-                    </td>
-                  )}
-                </tr>
-              ))}
+              data.map(
+                (row, index) =>
+                  isRowVisible(index) && (
+                    <tr key={row.id} className="border-t hover:bg-gray-50">
+                      {visibleColumns.map((col) => (
+                        <td key={col.key} className="px-4 py-3 text-sm">
+                          <ViewCell col={col} row={row} />
+                        </td>
+                      ))}
+                      {mode === "delete" && (
+                        <td className="px-4 py-3">
+                          <button
+                            onClick={() => {
+                              if (confirm("削除しますか？")) onDelete?.(row.id);
+                            }}
+                          >
+                            <MdDelete size={20} className="text-red-500" />
+                          </button>
+                        </td>
+                      )}
+                    </tr>
+                  ),
+              )}
         </tbody>
       </table>
 

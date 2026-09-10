@@ -17,7 +17,7 @@ type RowData = Record<string, unknown>;
 /**
  * 既存データから、編集に不要な id と state を除外したオブジェクトを生成
  */
-function stripIdAndState<T>(row: T): RowData {
+function stripId<T>(row: T): RowData {
   return Object.fromEntries(
     Object.entries(row as Record<string, unknown>).filter(
       ([key]) => key !== "id" && key !== "state",
@@ -36,8 +36,16 @@ export function useEditableRows<T extends { id: number; state: string }>(
   // edit モード: data から id/state を除いた編集用コピーを作成
   const [rows, setRows] = useState<RowData[]>(() =>
     mode === "edit"
-      ? data.map(stripIdAndState)
+      ? data.map(stripId)
       : [{ ...config.defaultValues } as RowData],
+  );
+
+  // rows と同じスナップショットから採ったID（edit モードでのみ使用）
+  // data は revalidatePath 後に差し替わるため、rows とはズレ得る。
+  // 同じタイミングで採った ids を使うことで、保存時に index がズレても
+  // 別人のIDに書き込まれないようにする。
+  const [ids] = useState<number[]>(() =>
+    mode === "edit" ? data.map((d) => d.id) : [],
   );
 
   /** 指定行の指定フィールドを更新 */
@@ -57,5 +65,5 @@ export function useEditableRows<T extends { id: number; state: string }>(
     setRows((prev) => prev.filter((_, i) => i !== index));
   };
 
-  return { rows, isInputMode, updateField, addRow, removeRow };
+  return { rows, isInputMode, ids, updateField, addRow, removeRow };
 }

@@ -35,6 +35,14 @@ export const staffConfig: EntityConfig<Staff> = {
     {
       key: "state",
       label: "状態",
+      field:{
+        type: "select",
+        options:[
+          {value:"active", label:"現役"},
+          {value:"retired", label:"退勤"},
+        ],
+        editOnly: true,
+      },
       render: (v) => (v === "active" ? "現役" : "退勤"),
     },
   ],

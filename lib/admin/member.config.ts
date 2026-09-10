@@ -68,6 +68,15 @@ export const memberConfig: EntityConfig<Member> = {
     {
       key: "state",
       label: "状態",
+      field:{
+        type: "select",
+        options:[
+          {value: "active", label: "現役"},
+          {value: "graduated", label: "卒業"},
+          {value: "deleted", label: "退部"},
+        ],
+        editOnly: true
+      },
       render: (v) =>
         v === "active" ? "現役" : v === "graduated" ? "卒業" : "退部",
     },

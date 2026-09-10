@@ -71,18 +71,11 @@ export default function AdminPage() {
       <AdminCard
         mode="member"
         additionalButton={
-          <>
-            <Button
-              name="状態変更"
-              href={`/admin/members/state`}
-              icon={<FaUserFriends size={36} />}
-            />
-            <Button
-              name="一斉進級"
-              href={`/admin/members/year`}
-              icon={<FaUserFriends size={36} />}
-            />
-          </>
+          <Button
+            name="一斉進級"
+            href={`/admin/members/year`}
+            icon={<FaUserFriends size={36} />}
+          />
         }
       />
       <AdminCard mode="staff" />

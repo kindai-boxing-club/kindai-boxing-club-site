@@ -3,7 +3,14 @@
 import { memberConfig } from "@/lib/admin/member.config";
 import { staffConfig } from "@/lib/admin/staff.config";
 import PersonTable from "./PersonTable";
-import { Member, Staff, MemberInput, StaffInput } from "@/types";
+import {
+  Member,
+  Staff,
+  MemberInput,
+  StaffInput,
+  MemberUpdate,
+  StaffUpdate,
+} from "@/types";
 
 type Mode = "view" | "delete" | "edit" | "add";
 
@@ -15,7 +22,7 @@ type Props = {
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   onSubmit?: ((rows: MemberInput[]) => void) | ((rows: StaffInput[]) => void) | any;
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  onUpdate?: ((id: number, updates: MemberInput) => void) | ((id: number, updates: StaffInput) => void) | any;
+  onUpdate?: ((id: number, updates: MemberUpdate) => void) | ((id: number, updates: StaffUpdate) => void) | any;
 };
 
 /**

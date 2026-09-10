@@ -86,4 +86,14 @@ export type MemberInput = Omit<Member, "id" | "state">;
  */
 export type StaffInput = Omit<Staff, "id" | "state">;
 
+/**
+ * メンバー更新用（idなし）
+ */
+export type MemberUpdate = Omit<Member, "id">;
+
+/**
+ * スタッフ更新用（idなし）
+ */
+export type StaffUpdate = Omit<Staff, "id">;
+
 export type Table = "members" | "staff";
