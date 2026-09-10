@@ -73,4 +73,5 @@ npx wrangler d1 execute kindai-boxing-db --local --file=./schema.sql
 ### 状態（state）の扱い
 - 削除は物理削除ではなく `state` を `'deleted'` にする論理削除（`lib/db/person.repository.ts`）
 - `restore` は `deleted` → `active`、`eliminate`（物理削除）は `deleted` のレコードにのみ実行できる
-- 公開サイト・管理画面の一覧はいずれも `state = 'active'` のみを取得する（状態変更ページのみ全件表示）
+- 公開サイトは常に `state = 'active'` のみを取得する
+- 管理画面の一覧・編集画面はデフォルト `active` のみ表示だが、「卒業・退部を表示」トグルで全状態を表示できる。状態の変更自体も編集画面のセレクトから行う（専用の状態変更ページは廃止）

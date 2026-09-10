@@ -55,7 +55,7 @@ kindai-boxing-club-site/
 │           ├── layout.tsx     # 管理画面レイアウト
 │           ├── page.tsx       # 管理画面トップ
 │           ├── [entity]/[mode]/ # 動的ルート（members|staff × view|add|edit|delete）
-│           ├── members/state/ # 在籍状態の一括変更
+│           │                     # 状態変更（在籍/卒業/退部）は edit モードに統合
 │           ├── members/year/  # 学年の一斉進級
 │           └── not-found.tsx
 ├── components/
@@ -281,7 +281,7 @@ erDiagram
 
 ### ⚠️ Edge Runtime の指定場所
 - D1/R2 に触れるルートには `export const runtime = "edge"` が必須
-- 動的ルートでは **`layout.tsx` に置く**パターンを採用している（`app/(admin)/admin/[entity]/[mode]/layout.tsx`, `members/state/layout.tsx`, `members/year/layout.tsx`）
+- 動的ルートでは **`layout.tsx` に置く**パターンを採用している（`app/(admin)/admin/[entity]/[mode]/layout.tsx`, `members/year/layout.tsx`）
 - 公開トップだけは `app/(public)/page.tsx` に直接指定している
 
 ### ⚠️ Edge Runtime 制約
