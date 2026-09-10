@@ -9,8 +9,7 @@
     "lint": "eslint",
     "pages:build": "npx @cloudflare/next-on-pages",
     "pages:dev": "npx wrangler pages dev .vercel/output/static",
-    "dev:remote": "npm run pages:build && npx wrangler pages dev .vercel/output/static",
-    "generate-hash": "tsx scripts/generate-password-hash.ts"
+    "dev:remote": "npm run pages:build && npx wrangler pages dev .vercel/output/static"
   },
   "dependencies": {
     "clsx": "^2.1.1",
@@ -26,7 +25,6 @@
     "@cloudflare/workers-types": "^4.20251205.0",
     "@eslint/eslintrc": "^3.3.3",
     "@tailwindcss/postcss": "^4",
-    "@types/bcrypt": "^6.0.0",
     "@types/node": "^20",
     "@types/react": "^19",
     "@types/react-dom": "^19",
