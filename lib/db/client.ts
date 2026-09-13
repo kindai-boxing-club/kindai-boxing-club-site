@@ -51,6 +51,30 @@ export async function query<T>(
     return [];
   }
 }
+
+/**
+ * 複数のSQLクエリをバッチ実行し、1回のDB呼び出しで全結果を取得する
+ * @param queries 実行するSQLとパラメータの配列
+ * @returns 各クエリの結果の配列のタプル
+ */
+export async function batchQuery<T extends unknown[]>(
+  queries: { sql: string; params?: QueryParam[] }[],
+): Promise<T> {
+  const db = getDB();
+  if (!db) return queries.map(() => []) as unknown as T;
+
+  try {
+    const statements = queries.map((q) =>
+      db.prepare(q.sql).bind(...(q.params ?? [])),
+    );
+    const results = await db.batch(statements);
+    return results.map((r) => r.results) as unknown as T;
+  } catch (e) {
+    console.error("Batch query execution failed:", e);
+    return queries.map(() => []) as unknown as T;
+  }
+}
+
 /**
  * SQLクエリ(INSERT/UPDATE/DELETE)を実行して結果を取得する
  *

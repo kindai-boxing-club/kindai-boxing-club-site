@@ -10,18 +10,12 @@ import DataSection from "@/components/public/recruit/DataSection";
 import RecruitmentCTA from "@/components/public/recruit/RecruitmentCTA";
 import InstagramSection from "@/components/public/sections/InstagramSection";
 
-import {
-  getGroupedStaff,
-  getMembers,
-  groupMembers,
-} from "@/lib/service/person.service";
+import { getTopPageData } from "@/lib/service/person.service";
 
 export const runtime = "edge";
 
 export default async function Home() {
-  const members = await getMembers();
-  const groupedMembers = groupMembers(members);
-  const groupedStaff = await getGroupedStaff();
+  const { members, groupedMember, groupedStaff } = await getTopPageData();
   return (
     <div className="bg-white">
       <HeroSection />
@@ -29,7 +23,7 @@ export default async function Home() {
       <MessageSection />
       <DataSection members={members} />
       <ActivitySection />
-      <MemberSection groupedMembers={groupedMembers} />
+      <MemberSection groupedMembers={groupedMember} />
       <StaffSection groupedStaff={groupedStaff} />
       <RecruitmentCTA />
       <InstagramSection />

@@ -2,6 +2,7 @@
 
 import * as memberRepository from "@/lib/db/member.repository";
 import * as staffRepository from "@/lib/db/staff.repository";
+import * as personRepository from "@/lib/db/person.repository";
 import { MOCK_MEMBERS, MOCK_STAFF } from "@/lib/db/person.mock";
 
 import {
@@ -20,6 +21,21 @@ import {
 const MEMBER_GRADE_ORDER = ["マネージャー", "4年", "3年", "2年", "1年", "院生"];
 
 const STAFF_GRADE_ORDER = ["部長", "総監督", "監督", "コーチ"];
+
+export async function getTopPageData(): Promise<{
+  members: Member[];
+  groupedMember: GroupedMember[];
+  groupedStaff: GroupedStaff[];
+}> {
+  const [members, rawStaff] = await personRepository.getPublicData();
+  const staff = rawStaff.map((s) => ({ ...s, position: s.grade }));
+
+  return {
+    members,
+    groupedMember: groupMembers(members),
+    groupedStaff: groupStaff(staff),
+  };
+}
 
 /**
  * 全メンバーを取得 (役職順、学年順、ID順)
