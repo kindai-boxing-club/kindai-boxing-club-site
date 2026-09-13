@@ -10,7 +10,7 @@ import { Person } from "@/types";
  * @returns 画像URL
  */
 export function getPersonImageUrl(person: Person): string {
-  if (!person.id) return "/images/default.png";
+  if (!person.id) return "/images/default.webp";
   const folder = "faculty" in person ? "members" : "staff";
   return getPublicUrl(`/${folder}/${person.id}.webp`);
 }
