@@ -11,7 +11,10 @@ Edit / Write でコードを書き換えず、**変更内容をチャットに�
 ユーザーがそれを写経・コピペして実装する（学習を兼ねた進め方のため）。
 
 - 対象: `app/` `components/` `lib/` `types/` および `package.json` / 各種 config ファイル
-- 例外: `*.md`（`CLAUDE.md`、`README.md`、`docs/`）は直接編集してよい
+- 例外: `*.md`（`CLAUDE.md`、`GEMINI.md`、`README.md`、`docs/`、`privateDocs/`）は直接編集してよい
+- **ドキュメントの配置ルール**:
+  - 公開・永続ドキュメント（プロジェクト仕様、DB構成等）は `docs/` に置く
+  - **AI からユーザーへの指示・不具合管理・修正案・調査メモ等（`ISSUES.md` など）は `privateDocs/` 配下に作成・保存する**（`.gitignore` 対象）
 - 出力の粒度: **ファイル全文は貼らない。** 構造が変わる場合でも、変更箇所とその前後数行だけを示す
 - どこに貼るかが自明になるよう、**ファイルパスと周辺の数行**を必ず添える
 - 既存のコメントは、それ自体が変更対象でない限り再掲しない
@@ -24,16 +27,16 @@ Edit / Write でコードを書き換えず、**変更内容をチャットに�
 
 > 詳細は [docs/PROJECT.md](./docs/PROJECT.md)（アーキテクチャ・デザインシステム・規約）、
 > [docs/database_guide.md](./docs/database_guide.md)（DBスキーマ）、
-> [docs/ISSUES.md](./docs/ISSUES.md)（**既知の不具合と修正案。コードを触る前に必読**）を参照。
+> [privateDocs/ISSUES.md](./privateDocs/ISSUES.md)（**既知の不具合と修正案。コードを触る前に必読**）を参照。
 
 ## コマンド
 
 | コマンド | 内容 |
 |---|---|
-| `npm run dev` | Next.js dev サーバー（`localhost:3000`、HMRあり）。`setupDevPlatform` は `wrangler.json` の `remote` フラグを共有するため、`"remote": true` のままだと本番D1/R2への認証（OAuth）を要求し `Failed to fetch auth token` で失敗する。**`setupDevPlatform({ persist: true, remoteBindings: false })` にすれば常にローカルで起動できる**（[ISSUES.md 項目0](./docs/ISSUES.md)） |
+| `npm run dev` | Next.js dev サーバー（`localhost:3000`、HMRあり）。`setupDevPlatform` は `wrangler.json` の `remote` フラグを共有するため、`"remote": true` のままだと本番D1/R2への認証（OAuth）を要求し `Failed to fetch auth token` で失敗する。**`setupDevPlatform({ persist: true, remoteBindings: false })` にすれば常にローカルで起動できる**（[ISSUES.md 項目0](./privateDocs/ISSUES.md)） |
 | `npm run dev:remote` | `pages:build` → `wrangler pages dev`（`localhost:8788`）。接続先は `wrangler.json` の `"remote"` 次第。フルビルドが走るため遅く、HMRも効かない。**本番データでの最終確認のときだけ**使う |
 | `npm run pages:build` | `@cloudflare/next-on-pages` でCloudflare Pages向けビルド（デプロイと同じ経路） |
-| `npm run lint` | ESLint。**現状は壊れている**（`ignores` 不足でビルド成果物まで検査し約3万件のエラーを出す）。当面は `npx eslint app components lib types` を使う（ソースはエラー0件）。直し方は [ISSUES.md 項目1](./docs/ISSUES.md) |
+| `npm run lint` | ESLint。**現状は壊れている**（`ignores` 不足でビルド成果物まで検査し約3万件のエラーを出す）。当面は `npx eslint app components lib types` を使う（ソースはエラー0件）。直し方は [ISSUES.md 項目1](./privateDocs/ISSUES.md) |
 | `npx tsc --noEmit` | 型チェック（`npm run lint` は型エラーを検出しない） |
 
 - テストフレームワークは未導入。動作確認は上記 dev サーバーで行う。
@@ -89,11 +92,11 @@ config は関数（`render`）を含むため RSC から直接渡せない。`Ad
 ## 触るときに事故りやすい箇所
 
 - **フォント**: `next/font/google` は WSL でビルドがタイムアウトするため使っていない。`globals.css` の `@import url(...)` でブラウザロードし、`lib/fonts.ts` は空スタブ（`{variable:"", className:""}`）。layout が import しているので**削除しない**。`<body>` に付く variable クラスは空文字。
-- **`wrangler.json` の `"remote"` フラグ**: `true` にすると D1・R2ともに本番を向き、`npm run dev:remote` での追加・編集・削除・一斉進級が**本物の部員データに反映される**。しかもこの値は `npm run dev` の `setupDevPlatform` とも共有されるため、両コマンドが1つのフラグを奪い合う。`next.config.ts` 側で `remoteBindings: false` を指定すると分離できる（[ISSUES.md 項目0](./docs/ISSUES.md)）。**現在は `false`** なので `dev:remote` も本番にはつながっていない。
+- **`wrangler.json` の `"remote"` フラグ**: `true` にすると D1・R2ともに本番を向き、`npm run dev:remote` での追加・編集・削除・一斉進級が**本物の部員データに反映される**。しかもこの値は `npm run dev` の `setupDevPlatform` とも共有されるため、両コマンドが1つのフラグを奪い合う。`next.config.ts` 側で `remoteBindings: false` を指定すると分離できる（[ISSUES.md 項目0](./privateDocs/ISSUES.md)）。**現在は `false`** なので `dev:remote` も本番にはつながっていない。
 - **staff テーブルのスキーマ差異**: `staff.repository.ts` の INSERT/UPDATE は `bio` 列を使うが、ローカルの D1（`.wrangler/state`）には `bio` 列が無い。`execute` はエラーを握りつぶすため、スタッフの追加・更新が黙って失敗する。ローカルで検証するなら `bio TEXT` を足しておく。
 - **staff の `position`**: DBの列ではなく、`staff.repository.getAllActive()` が読み取り時に `grade` をコピーして作っている派生値。
 - **`weight_class`**: DB側は INTEGER、アプリ側の型は文字列リテラル（`"50"`〜`"75"`）。SQLite の型親和性で数値として戻るため、厳密比較を書くときは注意。
 - **未実装のルート**: 管理画面トップの「写真変更」は `/admin/{entity}/photo` を指すが、`[mode]` の許可値に `photo` が無いため 404 になる。
 
 判明済みの不具合（統計グラフのハードコード、`has_experience` の型不一致、一斉進級のコメント矛盾、
-編集モードのID取り違えなど）は [docs/ISSUES.md](./docs/ISSUES.md) に確認方法と修正案つきでまとめてある。
+編集モードのID取り違えなど）は [privateDocs/ISSUES.md](./privateDocs/ISSUES.md) に確認方法と修正案つきでまとめてある。

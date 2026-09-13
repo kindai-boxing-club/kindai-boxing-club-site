@@ -97,8 +97,10 @@ kindai-boxing-club-site/
 │   └── index.ts               # 型定義（Person, Member, Staff, GroupedMember 等）
 ├── docs/
 │   ├── PROJECT.md             # ← このファイル
-│   ├── database_guide.md      # DBスキーマ・運用ガイド
-│   └── ISSUES.md              # 既知の不具合・修正案
+│   └── database_guide.md      # DBスキーマ・運用ガイド
+├── privateDocs/               # AI指示・不具合管理（.gitignore対象）
+│   ├── ISSUES.md              # 既知の不具合・修正案
+│   └── db_fetching_architecture.md # DB取得アーキテクチャ調査報告
 ├── public/images/             # 静的画像アセット
 ├── wrangler.json              # Cloudflare設定（D1, R2バインディング）
 ├── next.config.ts             # Next.js設定
@@ -231,7 +233,7 @@ erDiagram
 
 | コマンド | 用途 | URL |
 |---|---|---|
-| `npm run dev` | ローカル開発（HMRあり）。接続先は `wrangler.json` の `"remote"` に引きずられる（[ISSUES.md 項目0](./ISSUES.md)） | `http://localhost:3000` |
+| `npm run dev` | ローカル開発（HMRあり）。接続先は `wrangler.json` の `"remote"` に引きずられる（[ISSUES.md 項目0](../privateDocs/ISSUES.md)） | `http://localhost:3000` |
 | `npm run dev:remote` | ビルド → wrangler pages dev。`"remote": true` なら**本番**のD1/R2に接続 | `http://localhost:8788` |
 | `npm run pages:build` | Cloudflare Pages 向けビルド | - |
 | `npm run lint` | ESLint | - |
@@ -294,7 +296,7 @@ erDiagram
 - `npm run dev:remote`（`wrangler pages dev`）は **本番DB/R2 に直接接続** される。ここでの追加・編集・削除は本番データに対する操作になる
 - ローカルのエミュレートDBを使いたい場合は `"remote": false` に変更する
 - **`npm run dev` もこのフラグの影響を受ける**。`setupDevPlatform()` は渡したオプションを `getPlatformProxy()` にそのまま流し、`getPlatformProxy()` は同じ `wrangler.json` を読むため、`"remote": true` のままだと `npm run dev` が本番D1への認証を要求し `Failed to fetch auth token` で失敗する
-- 回避策は `setupDevPlatform({ persist: true, remoteBindings: false })`。詳細は [既知の不具合・改善候補](./ISSUES.md) の項目0を参照
+- 回避策は `setupDevPlatform({ persist: true, remoteBindings: false })`。詳細は [既知の不具合・改善候補](../privateDocs/ISSUES.md) の項目0を参照
 
 ### ⚠️ staff テーブルのスキーマ差異
 - `lib/db/staff.repository.ts` の INSERT/UPDATE は `bio` 列を使うが、ローカルD1（`.wrangler/state`）の staff テーブルには `bio` 列が無い
