@@ -13,3 +13,4 @@ const R2_BASE_URL = process.env.NEXT_PUBLIC_R2_BASE_URL || "";
 export function getPublicUrl(path: string): string {
   return `${R2_BASE_URL}${path}`;
 }
+
