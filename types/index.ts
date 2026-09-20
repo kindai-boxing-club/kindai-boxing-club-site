@@ -86,6 +86,12 @@ export type MemberInput = Omit<Member, "id" | "state">;
  */
 export type StaffInput = Omit<Staff, "id" | "state">;
 
+export type addResult = {
+  successCount: number;
+  failureCount: number;
+  results: boolean[];
+};
+
 /**
  * メンバー更新用（idなし）
  */
