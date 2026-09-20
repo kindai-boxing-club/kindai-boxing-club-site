@@ -213,7 +213,10 @@ export default function PersonTable<T extends { id: number; state: string }>({
                         // 操作ボタンは add モードの行削除のみ表示
                         mode === "add" && (
                           <td className="px-4 py-2 text-center">
-                            <button onClick={() => removeRow(index)}>
+                            <button
+                              onClick={() => removeRow(index)}
+                              disabled={isSubmitting}
+                            >
                               <MdDelete size={20} className="text-red-500" />
                             </button>
                           </td>
