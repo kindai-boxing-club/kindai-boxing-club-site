@@ -23,9 +23,13 @@ export async function optimizeImage(file: File): Promise<OptimizedImageResult> {
       imageOrientation: "from-image",
     });
   } catch {
-    if (/\.(heic|heif)$/i.test(file.name)) {
+    const isHeic =
+      /\.(heic|heif)$/i.test(file.name) ||
+      file.type === "image/heic" ||
+      file.type === "image/heif";
+    if (isHeic) {
       throw new Error(
-        "HEIC形式の写真はPCから読み込めません。JPG/PNG形式の写真を選んでください",
+        "HEIC形式の写真はPCから読み込めません。JPG/PNG形式の写真を選んでください\nhttps://www.iloveimg.com/ja/convert-to-jpg/heic-to-jpg",
       );
     }
     throw new Error(
@@ -48,17 +52,22 @@ export async function optimizeImage(file: File): Promise<OptimizedImageResult> {
   const sx = (bitmap.width - sw) / 2;
   const sy = (bitmap.height - sh) / 2;
 
-  const ctx = canvas.getContext("2d");
-  if (!ctx) throw new Error("Canvas の初期化に失敗しました");
-  ctx.drawImage(bitmap, sx, sy, sw, sh, 0, 0, w, h);
-  bitmap.close();
+  try {
+    const ctx = canvas.getContext("2d");
+    if (!ctx) throw new Error("Canvas の初期化に失敗しました");
+    ctx.imageSmoothingEnabled = true;
+    ctx.imageSmoothingQuality = "high";
+    ctx.drawImage(bitmap, sx, sy, sw, sh, 0, 0, w, h);
+  } finally {
+    bitmap.close();
+  }
 
-  // 4. WebP 形式、品質0.85 で圧縮
+  // 4. WebP 形式、品質0.9 で圧縮
   const blob = await new Promise<Blob>((resolve, reject) =>
     canvas.toBlob(
       (b) => (b ? resolve(b) : reject(new Error("WebP変換に失敗しました"))),
       "image/webp",
-      0.85,
+      0.9,
     ),
   );
   const optimizedFile = new File(
