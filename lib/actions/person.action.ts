@@ -21,8 +21,16 @@ export async function deleteMemberAction(id: number): Promise<void> {
  * @param members 追加対象Member配列
  */
 export async function addMembersAction(members: MemberInput[]): Promise<void> {
-  await Promise.all(members.map((m) => personService.addMember(m)));
-  revalidatePath("/admin/members");
+  const result = await Promise.all(
+    members.map((m) => personService.addMember(m)),
+  );
+  if (result.some((success) => !success)) {
+    throw new Error(
+      "データベースへの追加に失敗しました。入力値を確認してください",
+    );
+  }
+  revalidatePath("/admin/members", "layout");
+  revalidatePath("/");
 }
 
 /**
@@ -37,7 +45,7 @@ export async function updateMembersAction(
   }[],
 ): Promise<void> {
   await Promise.all(
-    updates.map((u) => personService.updateMember(u.id, u.data))
+    updates.map((u) => personService.updateMember(u.id, u.data)),
   );
   revalidatePath("/admin/members");
 }
@@ -72,7 +80,8 @@ export async function updateStaffsAction(
   }[],
 ): Promise<void> {
   await Promise.all(
-    updates.map((u) => personService.updateStaff(u.id, u.data)));
+    updates.map((u) => personService.updateStaff(u.id, u.data)),
+  );
   revalidatePath("/admin/staff");
 }
 
@@ -84,4 +93,3 @@ export async function promoteMembersAction(ids: number[]): Promise<void> {
   await personService.promoteMembers(ids);
   revalidatePath("/admin/members");
 }
-
