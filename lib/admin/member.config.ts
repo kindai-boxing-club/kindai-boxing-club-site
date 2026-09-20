@@ -68,14 +68,14 @@ export const memberConfig: EntityConfig<Member> = {
     {
       key: "state",
       label: "状態",
-      field:{
+      field: {
         type: "select",
-        options:[
-          {value: "active", label: "現役"},
-          {value: "graduated", label: "卒業"},
-          {value: "deleted", label: "退部"},
+        options: [
+          { value: "active", label: "現役" },
+          { value: "graduated", label: "卒業" },
+          { value: "deleted", label: "退部" },
         ],
-        editOnly: true
+        editOnly: true,
       },
       render: (v) =>
         v === "active" ? "現役" : v === "graduated" ? "卒業" : "退部",
@@ -93,7 +93,7 @@ export const memberConfig: EntityConfig<Member> = {
     position: null,
     weight_class: "50",
     is_manager: 0,
-    faculty: null,
+    faculty: FACULTIES[0],
     has_experience: 0,
   },
 };
