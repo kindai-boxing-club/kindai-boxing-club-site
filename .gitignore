@@ -37,12 +37,14 @@ yarn-error.log*
 .vscode/
 .idea/
 
-# Gemini / Agent
+# Gemini / Claude / Agent
 .agent/
+GEMINI.md
+CLAUDE.md
 
 # Certificates
 *.pem
 
-#other
+# Private Documents (AIからの指示・内部メモ・不具合管理等)
+privateDocs/
 memo.md
-docs/ISSUES.md

@@ -10,6 +10,7 @@ import {
   StaffInput,
   MemberUpdate,
   StaffUpdate,
+  addResult,
 } from "@/types";
 
 type Mode = "view" | "delete" | "edit" | "add";
@@ -19,10 +20,16 @@ type Props = {
   data: (Member | Staff)[];
   mode: Mode;
   onDelete?: (id: number) => void;
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  onSubmit?: ((rows: MemberInput[]) => void) | ((rows: StaffInput[]) => void) | any;
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  onUpdate?: ((updates: {id: number, data: MemberUpdate}[]) => void) | ((updates: {id: number, data: StaffUpdate}[]) => void) | any;
+  onSubmit?:
+    | ((rows: MemberInput[]) => Promise<addResult | void> | void)
+    | ((rows: StaffInput[]) => Promise<addResult | void> | void)
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    | any;
+  onUpdate?:
+    | ((updates: { id: number; data: MemberUpdate }[]) => void)
+    | ((updates: { id: number; data: StaffUpdate }[]) => void)
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    | any;
 };
 
 /**

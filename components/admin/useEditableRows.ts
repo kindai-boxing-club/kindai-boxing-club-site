@@ -56,11 +56,11 @@ export function useEditableRows<T extends { id: number; state: string }>(
   // 行に変更があるか。
   const isRowChanged = (index: number) => {
     const base = baseline[index];
-    if(!base) return false;
+    if (!base) return false;
     return Object.keys(rows[index]).some(
       (key) => String(rows[index][key] ?? "") !== String(base[key] ?? ""),
     );
-  }
+  };
 
   // 変更のある行のindex一覧
   const changedIndexes = rows.map((_, i) => i).filter((i) => isRowChanged(i));
@@ -84,5 +84,27 @@ export function useEditableRows<T extends { id: number; state: string }>(
     setRows((prev) => prev.filter((_, i) => i !== index));
   };
 
-  return { rows, isInputMode, ids, updateField, addRow, removeRow ,isRowChanged, changedIndexes, commitRows,};
+  const removeSuccessfulRows = (results: boolean[]) => {
+    setRows((prev) => {
+      const remaining = prev.filter((_, i) =>
+        i < results.length ? !results[i] : true,
+      );
+      return remaining.length == 0
+        ? [{ ...config.defaultValues } as RowData]
+        : remaining;
+    });
+  };
+
+  return {
+    rows,
+    isInputMode,
+    ids,
+    updateField,
+    addRow,
+    removeRow,
+    isRowChanged,
+    changedIndexes,
+    commitRows,
+    removeSuccessfulRows,
+  };
 }

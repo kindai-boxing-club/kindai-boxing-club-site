@@ -45,7 +45,7 @@ export interface Member extends Person {
   position: MemberPosition;
 
   is_manager: 0 | 1;
-  faculty: Faculty | null;
+  faculty: Faculty;
   weight_class: WeightClass | null;
   has_experience: 0 | 1;
 }
@@ -85,6 +85,12 @@ export type MemberInput = Omit<Member, "id" | "state">;
  * 新規スタッフ追加用（IDなし）
  */
 export type StaffInput = Omit<Staff, "id" | "state">;
+
+export type addResult = {
+  successCount: number;
+  failureCount: number;
+  results: boolean[];
+};
 
 /**
  * メンバー更新用（idなし）

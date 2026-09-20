@@ -11,9 +11,11 @@ import {
 } from "@/lib/actions/person.action";
 import { notFound } from "next/navigation";
 import AdminEntityView from "@/components/admin/AdminEntityView";
+import PhotoManager from "@/components/admin/PhotoManager";
 
-const VALID_MODES = ["view", "delete", "add", "edit"] as const;
+const VALID_MODES = ["view", "delete", "add", "edit", "photo"] as const;
 type Mode = (typeof VALID_MODES)[number];
+type TableMode = Exclude<Mode, "photo">;
 
 export default async function AdminEntityPage({
   params,
@@ -25,6 +27,11 @@ export default async function AdminEntityPage({
   if (!VALID_MODES.includes(mode as Mode)) return notFound();
 
   if (entity === "members") {
+    if (mode === "photo") {
+      const data = await memberRepository.getAllActive();
+      return <PhotoManager entity="members" data={data} />;
+    }
+
     const data =
       mode === "add"
         ? []
@@ -42,7 +49,7 @@ export default async function AdminEntityPage({
         <AdminEntityView
           entity="members"
           data={data}
-          mode={mode as Mode}
+          mode={mode as TableMode}
           onDelete={deleteMemberAction}
           onSubmit={addMembersAction}
           onUpdate={updateMembersAction}
@@ -52,6 +59,10 @@ export default async function AdminEntityPage({
   }
 
   if (entity === "staff") {
+    if (mode === "photo") {
+      const data = await staffRepository.getAllActive();
+      return <PhotoManager entity="staff" data={data} />;
+    }
     const data =
       mode === "add"
         ? []
@@ -62,7 +73,7 @@ export default async function AdminEntityPage({
       <AdminEntityView
         entity="staff"
         data={data}
-        mode={mode as Mode}
+        mode={mode as TableMode}
         onDelete={deleteStaffAction}
         onSubmit={addStaffAction}
         onUpdate={updateStaffsAction}
