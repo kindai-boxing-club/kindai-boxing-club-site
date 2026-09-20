@@ -45,7 +45,7 @@ export interface Member extends Person {
   position: MemberPosition;
 
   is_manager: 0 | 1;
-  faculty: Faculty | null;
+  faculty: Faculty;
   weight_class: WeightClass | null;
   has_experience: 0 | 1;
 }
